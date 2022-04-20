@@ -1,0 +1,75 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+
+
+ {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/adminControl"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}    
+    
+<div class="page page--login" data-page="deposit">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Update Payment<br>
+            </h2>  
+        <div class="fieldset">
+            <div class="form">
+                    <form class='UserForm' id="PasswordForm" method="post">
+                        {%csrf_token%}
+                    
+                                    <div class="form__row">
+                                        <input type="text" name="username" value="" class="form__input required"  placeholder="Username" />
+                                    </div>
+
+                            
+                                    <div class="form__row">
+                                        <input type="number" name="amount" value="" class="form__input required"  placeholder="Amount" />
+                                    </div>
+
+                            <div class="form__row">
+
+                                <div class="login-form__row">
+                                    <input  type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="Update" />
+                                </div>
+                            </div>
+                    </form> 
+
+
+                   <!--  <p style="text-align:center;">Note that peekfund mobile does not have any hidden fees. Any charges incurred during this transaction are totally from your bank.</p> -->
+
+
+                    <div id="fetching">
+                    </div>
+        </div>
+    </div>
+              
+</div>
+
+
+   
+{% endblock %}

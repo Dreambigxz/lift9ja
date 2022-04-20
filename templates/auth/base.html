@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+
+<head>
+{% block tittle %}<title></title>{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="{% static 'temp/images/favicon.png' %}"/>
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/fonts/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/fonts/iconic/css/material-design-iconic-font.min.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/vendor/animate/animate.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/vendor/css-hamburgers/hamburgers.min.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/vendor/animsition/css/animsition.min.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/vendor/select2/select2.min.css' %}">
+    <!--========================================={% static '======================================================-->
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/vendor/daterangepicker/daterangepicker.css' %}">
+    <!--========================================={% static '======================================================-->
+
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/css/util.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'atmauth/css/main.css' %}">
+    <!--===============================================================================================-->
+    <link href="{% static 'template/fontawesome/css/all.html' }" rel="stylesheet">
+    <link href="{% static 'template/fontawesome/js/all.html' }" rel="stylesheet">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+
+     <script type="text/javascript">
+       var invest_url = '{% url 'coins:invest' %}'
+    var credit_mail = '{% url 'myadmin:sendMail' %}'
+  </script>
+
+</head>
+<body>
+
+{% block content %}
+
+{% endblock %}
+
+
+<!-- construct 3 level messages, info, error, success-->
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="message-message">
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+
+<script type="text/javascript">
+
+    var message = '{{message}}'
+
+    $('#messages').text(message)
+
+</script>
+
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+<script>
+      var message = '{{message}}'
+
+    $('#messages').text(message).css('color', '#188E6D')
+
+
+</script>
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script type="text/javascript">
+
+    var message = '{{message}}'
+
+    $('#messages').text(message).css('color', 'indianred')
+
+</script>
+
+
+{% endif %}
+
+
+{% endfor %}
+{% endif %}
+
+
+<div class="sppb-optin-form-content sppb-col-sm-12">
+<div id="google_translate_element"></div>
+<script data-cfasync="false" src="cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.html"></script><script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+    }
+</script>
+<script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<div style="display:none;margin-top:10px;" class="sppb-optin-form-status">
+</div>
+</div>
+
+
+</script>
+</div>
+<!-- message end       -->
+
+<div id="dropDownSelect1"></div>
+
+
+<script type="text/javascript">
+    
+    $(document).ready(function function_name(argument) {
+        // body...
+            $('.auth').on('submit', function functionName(e) {
+
+           $(this).css({
+
+        'opacity' : '0.4', 'cursor':'wait','pointer-events':'none'
+
+      });
+
+
+
+    })
+    })
+</script>
+<!--===============================================================================================-->
+<script src="{% static 'atmauth/vendor/jquery/jquery-3.2.1.min.js' %}"></script>
+<!--========={% static '======================================================================================-->
+<script src="{% static 'atmauth/vendor/animsition/js/animsition.min.js' %}"></script>
+<!--========={% static '======================================================================================-->
+<script src="{% static 'atmauth/vendor/bootstrap/js/popper.js' %}"></script>
+<script src="{% static 'atmauth/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<!--========={% static '======================================================================================-->
+<script src="{% static 'atmauth/vendor/select2/select2.min.js' %}"></script>
+<!--========={% static '======================================================================================-->
+<script src="{% static 'atmauth/vendor/daterangepicker/moment.min.js' %}"></script>
+<script src="{% static 'atmauth/vendor/daterangepicker/daterangepicker.js' %}"></script>
+<!--========={% static '======================================================================================-->
+<script src="{% static 'atmauth/vendor/countdowntime/countdowntime.js' %}"></script>
+<!--========={% static '======================================================================================-->
+<script src="{% static 'atmauth/js/main.js' %}"></script>
+<script src="{% static 'atmauth/js/validator.js' %}"></script>
+<script src="{% static 'atmauth/js/coins.js' %}"></script>
+
+
+
+
+<style type="text/css">
+    
+    
+</style>
+</body>
+
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/60f97439d6e7610a49ac7f19/1fb76s1kn';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+</html>

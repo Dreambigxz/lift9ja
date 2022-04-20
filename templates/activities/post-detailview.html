@@ -1,0 +1,227 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/activities"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}    
+    
+<div class="page page--login" data-page="deposit">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Activity<br>
+            </h2>  
+        <div class="fieldset">
+            <div class="post-details">
+            <span class="post-details__share open-popup" data-popup="social"><img src="static/assets/images/icons/black/love.svg" alt="" title=""/></span>
+            <div class="post-details__date">{{data.datetime}}</div>
+            <h2 class="post-details__title">{{data.head_line}}</h2>
+            <div class="post-details__user">
+                <img src="{% static 'assets/images/photos/admin.jpg' %}" alt="img here" title=""/>
+                <span>Tina</span>
+            </div>
+            <div class="post-details__feat-image">
+
+                 {% if data.type == 'image' %}
+                  <img src="{{data.images.url}}" alt="" title=""/></a>
+                            
+                {%else%}
+                    <video class="vid" width="50%" controls>
+                      <source src="{{data.video.url}}" type="video/mp4">
+                    Your browser does not support the video tag
+                    </video>
+                {% endif %}
+            </div>
+
+            <div class="post-details__entry mb-20">
+                <p>{{data.content}}</p>
+                <p>{{data.time|timesince}}</p>
+            </div>
+
+            <div class="tabs tabs--style1 mb-20">
+                <input type="radio" name="tabs2" class="tabs__radio" id="tab1" checked="checked">
+                <label class="tabs__label tabs__label--12" for="tab1">Comments</label>  
+                <div class="tabs__content">
+                    <h4>{{user.count_comment}} comments</h4>
+                    {% for i in user.comment %}
+                        <ul class="comments">
+                            <li>
+                                {% if i.profile.user_image != ''%}
+                                    <span class="user-line"><img src="{{i.profile.user_image.url }}" alt="" title=""/>
+                                {%else%}
+                                    <span class="user-line"><img src="{% static 'assets/images/photos/avatar.png' %}" alt="" title=""/>
+                                {% endif %}
+                                <span>{{i.user|title}}</span></span>
+                                <p>{{i.comment}}</p>
+                                <i>{{i.time|timesince}}</i>
+                            </li>
+                            
+                        </ul>
+                    {% endfor %}
+
+                           <div class="pagination">
+                            <span class="step-links">
+                                {% if user.comment.has_previous %}
+                                    <a href="?page=1#deposit-user.comment">&laquo; First</a>
+                                    <a href="?page={{ user.comment.previous_page_number }}"><i
+                                       style="background:#121330; color: #fff;
+                                       padding: 5px"
+                                      class="la la-angle-left"><</i></a>
+
+                                <span class="current">
+                                    Page {{ user.comment.number }} of {{ user.comment.paginator.num_pages }}.
+                                </span>
+
+                            {% endif %}
+
+
+                                {% if user.comment.has_next %}
+                                    <a href="?page={{ user.comment.next_page_number }}"><i
+                                      style="background:#121330; color: #fff;
+                                      padding: 5px"
+                                      class="fa fa-angle-right">></i></a>
+                                    <a href="?page={{ user.comment.paginator.num_pages }}">Last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                </div>
+
+
+                  {% if not user.user_plan %}
+                    <p class="color:red">You have no active subscription here, subscribe to start earning.</p>
+                       <div class="form__row">
+
+                                <div class="login-form__row">
+                                   <a href="/plan-subscription"> <input  type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="Subscribe" /></a>
+                                </div>
+
+                                
+                        </div>
+                            </div>
+
+                    {%else%}
+
+
+                            {% if user.subscription != 'None' %}
+
+
+                                {% if user.plan == user.subscription.plan.plan %}
+                                        <input type="radio" name="tabs2" class="tabs__radio" id="tab2">
+                                        <label class="tabs__label tabs__label--12" for="tab2">Like and comment</label>
+                                        <div class="tabs__content">
+                                            <h4>Your comment</h4>
+                                            <div class="form">
+                                                <form class="UserForm" method="post" id="PasswordForm" action="/process-activity">
+
+                                                    {% csrf_token %}
+                                                    <div class="form__row">
+                                                         <div class="checkbox-simple checkbox-group.required">
+                                                            <input type="checkbox" name="checkbox" id="agree" value=""  /><label for="agree">Like</span></label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form__row">
+                                                        <textarea name="comment" class="form__textarea required" maxlength="100" placeholder="Comment"></textarea>
+                                                    </div>  
+
+                                                    <div style="display: none;" class="form__row">
+                                                        <input  name="slug" class="form__input required" maxlength="100" value="{{user.slug}}">
+                                                    </div> 
+                                                   <!--  <div class="form__row">
+                                                        <div class="checkbox-simple">
+                                                            <input type="checkbox" name="agree" id="agree" value="agree" checked /><label for="agree">Make my comment private</span></label>
+                                                        </div>
+                                                    </div> -->
+                                                    <div class="form__row mt-20">
+                                                        <input type="submit" name="submit" class="form__submit button button--blue button--full" id="submit" value="COMMENT" onclick="if(!this.form.checkbox.checked){alert('You must like this post  to continue.');return false}"/>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div> 
+                                {%endif%}
+
+                            {%else%}
+                                <label class="tabs__label tabs__label--12" for="tab2">Next activity date is tommorrow</label>
+
+                            {% endif %}
+
+                                
+                    {% endif %}
+            </div>  
+        </div>
+
+        </div>
+    </div>
+              
+</div>
+
+
+<script type="text/javascript">
+
+
+    $('.active').css('background', '{{success}}')
+     // $('.pending').css('background', '{{info}}')
+     $('.ended').css('background', '{{error}}')
+
+$('#agree').on('click', function function_name(argument) {
+
+    $(this).val('liked')
+    // body...
+    
+})
+
+</script>
+
+<style type="text/css">
+
+
+@media only screen and (min-width: 600px) {
+ .post-details__feat-image img  {
+    display: block;
+    max-width: 30%;
+    border-radius: 30px;
+}
+
+ .vid  {
+    display: block;
+    max-width: 30%;
+    border-radius: 30px;
+}
+
+}
+
+.table__section {
+    width: 25%;
+    -align: center; 
+}
+
+.table__row {
+    margin-left: -73px;
+
+}
+</style>
+<!-- PAGE END -->
+   
+{% endblock %}

@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="en-US">
+{% load humanize %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <meta name="theme-color" content="#3199b7">
+
+    <meta name="description" content="Get cheap mobile data for all networks 😎🇳🇬
+Excess airtime for fast cash 💵💸 
+E-pin Dealer 💳
+Cable TV Sub 📡
+We train people on recharge card printing.">
+    <meta name="keywords" content="data, mtn, glo, 9mobile, airtime, subscription, plans, share and sell">
+
+    <link rel="icon" href="static/resources/uploads/1/roguhema-5e0aba8d6c8d1.png" type="image/x-icon">
+    <link rel="shortcut icon" href="static/resources/uploads/1/roguhema-5e0aba8d6c8d1.png" type="image/x-icon">
+
+
+    <!-- Plugin styles -->
+    <link rel="stylesheet" href="static/vendors/bundle.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/slick/slick-theme.css" type="text/css">
+    <link rel="stylesheet" href="static/vendors/datepicker/daterangepicker.css">
+    <link rel="stylesheet" href="static/vendors/enjoyhint/enjoyhint.css">
+
+    <!-- Vmap -->
+    <link rel="stylesheet" href="static/vendors/vmap/jqvmap.min.css">
+    <link rel="stylesheet" href="static/assets/css/app.css" type="text/css">
+
+
+    <link rel="stylesheet" href="static/vendors/dataTable/dataTables.min.css" type="text/css">
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    <style>
+        th, td { white-space: nowrap; }
+        div.dataTables_wrapper {
+            margin: 0 auto;
+        }
+
+        div.container {
+            width: 80%;
+        }
+
+    </style>
+    <title>DCC |Data</title>
+</head>
+<body>
+<!-- begin::preloader-->
+<div class="preloader">
+    <div class="preloader-icon"></div>
+</div>
+<!-- end::preloader -->
+<div class="header">
+    <div>
+    <ul class="navbar-nav">
+
+        <!-- begin::navigation-toggler -->
+        <li class="nav-item navigation-toggler">
+            <a href="#" class="nav-link" title="Hide navigation">
+                <i data-feather="arrow-left"></i>
+            </a>
+        </li>
+        <li class="nav-item navigation-toggler mobile-toggler">
+            <a href="#" class="nav-link" title="Show navigation">
+                <i data-feather="menu"></i>
+            </a>
+        </li>
+        <!-- end::navigation-toggler -->
+
+        <li class="nav-item">
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Create</a>
+            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Contact</a>
+            </div>
+        </li>
+            </ul>
+</div>
+
+<div>
+    <ul class="navbar-nav">
+
+        <!-- begin::header search -->
+        <li class="nav-item">
+            <a href="#" class="nav-link" title="Search" data-toggle="dropdown">
+                <i data-feather="search"></i>
+            </a>
+            <div class="dropdown-menu p-2 dropdown-menu-right">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-prepend">
+                            <button class="btn" type="button">
+                                <i data-feather="search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+        <!-- end::header search -->
+
+        <!-- begin::header minimize/maximize -->
+       <li class="nav-item dropdown">
+            <a href="#" class="nav-link" title="Fullscreen" data-toggle="fullscreen">
+                <i class="maximize" data-feather="maximize"></i>
+                <i class="minimize" data-feather="minimize"></i>
+            </a>
+        </li>
+
+
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link" title="Wallet: ₦{{wallet|intcomma}}">
+                <i data-feather="credit-card"></i>
+            </a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a href="#" class="nav-link" title="Messages: 0" >
+                <i data-feather="message-square"></i>
+            </a>
+        </li>
+                <!-- end::user menu -->
+        <li class="nav-item dropdown">
+            <a href="/logout" class="nav-link" title="Logout" >
+                <i data-feather="log-out"></i>
+            </a>
+        </li>
+    </ul>
+
+    <!-- begin::mobile header toggler -->
+    <ul class="navbar-nav d-flex align-items-center">
+        <li class="d-sm-none">₦{{wallet|intcomma}}</li>
+        <li class="nav-item header-toggler">
+            <a href="#" class="nav-link">
+                <i data-feather="arrow-down"></i>
+            </a>
+        </li>
+
+    </ul>
+    <!-- end::mobile header toggler -->
+</div>
+</div>
+
+<div id="main">
+    <!-- begin::navigation -->
+<div class="navigation">
+
+    <div class="navigation-menu-tab">
+        <div>
+            <div class="navigation-menu-tab-header user-avatar" data-usersname="{{request.user.full_name|title}}l" data-toggle="tooltip" title="{{request.user.full_name|title}}l" data-placement="right">
+                <a href="#" class="nav-link" data-toggle="dropdown" aria-expanded="false">
+                    <figure class="avatar avatar-sm">
+                        <img src="static/assets/media/image/user.png" class="rounded-circle" alt="avatar">
+                    </figure>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right dropdown-menu-big" style="transform: none!important;">
+                    <div class="p-3 text-center" data-backround-image="static/assets/media/image/image1.jpg">
+                        <figure class="avatar mb-3">
+                            <img src="https://via.placeholder.com/128X128" class="rounded-circle" alt="image">
+                        </figure>
+                        <h6 class="d-flex align-items-center justify-content-center">
+                            {{request.user.full_name|title}}                          <a href="/my-account" class="btn btn-primary btn-sm ml-2" data-toggle="tooltip" title="Edit profile">
+                                <i data-feather="edit-2"></i>
+                            </a>
+                        </h6>
+                        <small>Balance: <strong> NGN {{wallet|intcomma}}</strong></small>
+                    </div>
+                    <div class="dropdown-menu-body">
+                        <div class="border-bottom p-4">
+                            <h6 class="text-uppercase font-size-11 d-flex justify-content-between">
+                                Profile Completion
+                                <span>%25</span>
+                            </h6>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-primary" role="progressbar" style="width: 35%;"
+                                     aria-valuenow="35"
+                                     aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="/my-account" class="list-group-item">Profile</a>
+                            <a href="#" class="list-group-item d-flex">
+                                Contacts <span class="text-muted ml-auto">{{count_contacts}}</span>
+                            </a>
+                            <a href="#" class="list-group-item d-flex">
+                                Messages <span class="text-muted ml-auto">0</span>
+                            </a>
+                            <a href="#" class="list-group-item" data-sidebar-target="#settings">Billing</a>
+                            <a href="#" class="list-group-item" data-sidebar-target="#settings">Need help?</a>
+                            <a href="/logout" class="list-group-item text-danger">Sign Out!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="flex-grow-1">
+            <ul>
+                <li>
+                    <a class="active" href="#" data-toggle="tooltip" data-placement="right" title="Dashboards"
+                       data-nav-target="#dashboards">
+                        <i data-feather="home"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="#" data-toggle="tooltip" data-placement="right" title="Office" data-nav-target="#office">
+                        <i data-feather="briefcase"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="#" data-toggle="tooltip" data-placement="right" title="Financials"
+                       data-nav-target="#financials">
+                        <i data-feather="credit-card"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="#" data-toggle="tooltip" data-placement="right" title="Transactions"
+                       data-nav-target="#transactions">
+                        <i data-feather="list"></i>
+                    </a>
+                </li>
+                <li>
+                    <a class="" href="#" data-toggle="tooltip" data-placement="right" title="Messages" data-nav-target="#messages">  <i data-feather="inbox"></i></a>
+                </li>
+                <li>
+                    <a class="" href="#" data-toggle="tooltip" data-placement="right" title="Account" data-nav-target="#account">
+                        <i data-feather="user"></i>
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+        <div>
+            <ul>
+                <li>
+                    <a class="" href="#" data-toggle="tooltip" data-placement="right" title="Activities" data-nav-target="#activitys">
+                        <i data-feather="activity"></i>
+                    </a>
+                </li>
+                                <li>
+                    <a href="/logout" data-toggle="tooltip" data-placement="right" title="Logout">
+                        <i data-feather="log-out"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- begin::navigation menu -->
+    <div class="navigation-menu-body" style="overflow: hidden; outline: none; touch-action: none;">
+
+        <!-- begin::navigation-logo -->
+        <div>
+            <div id="navigation-logo">
+                <a href="/logout">
+                    Delight D.C
+                   <!--  <img class="logo" style="max-width: 140px;" src="static/resources/uploads/1/logo.svg"  alt="Honour World Limited">
+                    <img class="logo-light" style="max-width: 140px;"  src="static/resources/uploads/1/logo.svg"  alt="Honour World Limited"> -->
+                </a>
+            </div>
+        </div>
+        <!-- end::navigation-logo -->
+
+        <div class="navigation-menu-group">
+
+            <div class="open" id="dashboards">
+                <ul>
+                    <li class="navigation-divider">Main Menu</li>
+                    <li><a class="active" href="/dcc-dashboard">Dashboard</a></li>
+                                            <li><a class="" href="/data-top-up">Data Top-up</a></li>
+                    
+                   
+                        <li>
+                            <a class="" href="#">
+                                <span>Upgrade Account</span>
+                                <span class="badge badge-danger">New</span>
+                            </a>
+                        </li>
+
+
+                        <li>
+                            <a class="" href="/dashboard">
+                                <span style="color: #fff ; background-color: #f7921a; padding: 12px; border-radius: 11px">GoldStock</span>
+                              
+                        </a>
+                        </li>
+                                                            </ul>
+            </div>
+            <div class="" id="office">
+                <ul>
+                                        <li><a class="" href="#">Noticeboard</a></li>
+                                        <li class="navigation-divider">Contact Management</li>
+                    <li><a class="" href="#">New Contact</a></li>
+
+                    <li>
+                        <a class="" href="#">
+                            <span>List Contacts</span>
+                            <span class="badge badge-primary">{{count_contacts}}</span>
+                        </a>
+                    </li>
+
+                    <li class="navigation-divider">Group Management</li>
+                    <li><a class="" href="#">New Group</a></li>
+                    <li>
+                        <a class="" href="#">
+                            <span>List Groups</span>
+                            <span class="badge badge-primary">0</span>
+                        </a>
+                    </li>
+
+
+                    
+
+                </ul>
+            </div>
+            <div class="" id="financials">
+                <ul>
+                    <li class="navigation-divider">Financials</li>
+                    <li><a class="open " href="#">Wallet</a>
+                        <ul style="display:block" >
+                            <li><a class="" href="#">Fund Wallet</a></li>
+                            <li><a class="" href="#">Wallet Transfers</a></li>
+                            <li><a class="" href="#">Data Transfers</a></li>
+                        </ul>
+                    </li>
+                                    </ul>
+            </div>
+            <div class="" id="transactions">
+                <ul>
+                    <li class="navigation-divider">Transaction History</li>
+                    <li>
+                        <a href="#">All Transactions</a>
+                        <ul style="display:block" >
+                        <li><a class="" href="#">Data Top-up</a></li>
+                    <li><a class="" href="#">CG Top-up</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Wallet Transactions</a>
+                        <ul style="display:block" >
+                            <li><a class="" href="#">CG Transfer Tranx.</a></li>
+
+                            <li><a class="" href="#">Transfer Tranx.</a></li>
+                            <li><a class="" href="#">Top-up Tranx.</a></li>
+                        </ul>
+                    </li>
+                        <li><a class="" href="#">Referral Transactions</a></li>
+                    
+                    <li><a class="" href="#">Sales Transactions</a></li>
+                </ul>
+            </div>
+            <div class="" id="account">
+                <ul>
+                    <li class="navigation-divider">Accounts</li>
+
+                    <li><a class="" href="/my-account">My Profile</a></li>
+                                        
+                </ul>
+            </div>
+                        <div class="" id="activitys">
+                <ul>
+                    <li class="navigation-divider">Activities</li>
+                    <li><a class="" href="#">Activity Logs</a></li>
+
+                </ul>
+            </div>
+                    </div>
+    </div>
+    <!-- ::::navigation menu -->
+
+
+{% block body %}
+
+{% endblock %}  
+
+
+        <!-- begin::footer -->
+<style>
+    #scroll {
+        position:fixed;
+        right:10px;
+        bottom:100px;
+        cursor:pointer;
+        width:50px;
+        height:50px;
+        background-color:#3498db;
+        text-indent:-9999px;
+        display:none;
+        -webkit-border-radius:60px;
+        -moz-border-radius:60px;
+        border-radius:60px
+    }
+    #scroll span {
+        position:absolute;
+        top:50%;
+        left:50%;
+        margin-left:-8px;
+        margin-top:-12px;
+        height:0;
+        width:0;
+        border:8px solid transparent;
+        border-bottom-color:#ffffff;
+    }
+    #scroll:hover {
+        background-color:#e74c3c;
+        opacity:1;filter:"alpha(opacity=100)";
+        -ms-filter:"alpha(opacity=100)";
+    }
+</style>
+<footer>
+    <div class="container-fluid">
+        <div>© 2022 <a target="_blank" href="#"> DCC Limited</a> </div>
+        <div>
+            <nav class="nav">
+                <a href="#" class="nav-link">Privacy</a>
+                <a href="#" class="nav-link">Terms of Use</a>
+                <a href="#" class="nav-link">Get Help</a>
+            </nav>
+        </div>
+    </div>
+    <a href="#" id="scroll" style="display: none;"><span></span></a>
+</footer>
+<!-- end::footer -->
+<script>
+    var $authuser = '{{request.user.full_name|title}}l';
+
+</script>        <!-- begin::payment option modal -->
+<div class="modal fade" id="paymentModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Choose Option</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end::payment option modal -->
+<div class="modal fade mymodal" id="pleaseWaitDialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="vertical-alignment-helper">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1>Processing...</h1>
+                </div>
+                <div class="modal-body">
+                    <div class="progress">
+                        <div class="progress-bar progress-bar-success  progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">
+                            <span class="sr-only">40% Complete (success)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="paymentEvidenceModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Bank payment evidence</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <i class="ti-close"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img class="img-responsive" src="#" id="payEvidence_img"/>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+        <script type="text/javascript" src="static/resources/js/plugins.js"></script>
+<script type="text/javascript" charset="utf-8">
+    var __ = function(msgid) 
+    {
+        return window.i18n[msgid] || msgid;
+    };
+
+   
+</script>    </div>
+    <!-- end::main-content -->
+</div>
+
+
+<!-- Plugin scripts -->
+<script src="static/bundle.js"></script>
+<!-- <script src="static/enjoyhint/enjoyhint.min.js"></script>
+<script src="static/dataTable/jquery.dataTables.min.js"></script>
+<script src="static/dataTable/dataTables.bootstrap4.min.js"></script>
+<script src="static/dataTable/dataTables.responsive.min.js"></script>
+<script src="static/assets/js/examples/datatable.js"></script> -->
+<script>
+
+    $(document).ready(function (){
+        $('#topups-datatable').DataTable({
+            "scrollY": "480",
+            "scrollX": true,
+            "autoFill": false,
+            "oSearch": {"sSearch": " "},
+            "otherOptions": {},
+            initComplete: function() {
+                $(this.api().table().container()).find('input').parent().wrap('<form>').parent().attr('autocomplete', 'off');
+            }
+        });
+    });
+    $(document).ready(function (){
+
+        $('#yourtopups-datatable').DataTable({
+            scrollY:        "300px",
+            scrollX:        true,
+            scrollCollapse: false,
+            columnDefs: [
+                { width: '1%', targets: 0 }
+            ],
+            fixedColumns:   {
+                leftColumns: 2
+            },
+            "autoFill": false,
+            "oSearch": {"sSearch": " "},
+            "otherOptions": {},
+            initComplete: function() {
+                $(this.api().table().container()).find('input').parent().wrap('<form>').parent().attr('autocomplete', 'off');
+            }
+        });
+        $('#wallettopups-datatable').DataTable({
+            scrollY:        "300px",
+            scrollX:        true,
+            scrollCollapse: false,
+            columnDefs: [
+                { width: '1%', targets: 0 }
+            ],
+            fixedColumns:   {
+                leftColumns: 2
+            },
+            "autoFill": false,
+            "oSearch": {"sSearch": " "},
+            "otherOptions": {},
+            initComplete: function() {
+                $(this.api().table().container()).find('input').parent().wrap('<form>').parent().attr('autocomplete', 'off');
+            }
+        });
+        $('#yourwallettopups-datatable').DataTable({
+            scrollY:        "300px",
+            scrollX:        true,
+            scrollCollapse: false,
+            columnDefs: [
+                { width: '1%', targets: 0 }
+            ],
+            fixedColumns:   {
+                leftColumns: 2
+            },
+            "autoFill": false,
+            "oSearch": {"sSearch": " "},
+            "otherOptions": {},
+            initComplete: function() {
+                $(this.api().table().container()).find('input').parent().wrap('<form>').parent().attr('autocomplete', 'off');
+            }
+        });
+
+
+
+        window.onload = function() {
+
+            if (!sessionStorage.alreadyDisplayed) {
+                var enjoyhint_instance = new EnjoyHint({});
+
+                enjoyhint_instance.set([
+                    {
+                        'next .header': 'Quick toolbar.',
+                    },
+                    {
+                        'next .navigation': 'Navigation to navigate the page.',
+                    },
+                    {
+                        'next .bankwallets': 'Bank Accounts for wallet Top-up',
+                    }
+                ]);
+                enjoyhint_instance.run();
+                sessionStorage.alreadyDisplayed = "true";
+            }
+
+        };
+    });
+</script>
+
+<!-- Apex chart -->
+<script src="static/vendors/charts/apex/apexcharts.min.js?v=000000018"></script>
+<script src="static/vendors/charts/chartjs/chart.min.js?v=000000018"></script>
+<script src="static/vendors/circle-progress/circle-progress.min.js?v=000000018"></script>
+<script src="static/vendors/datepicker/daterangepicker.js?v=000000018"></script>
+<script src="static/vendors/charts/peity/jquery.peity.min.js?v=000000018"></script>
+<script src="static/assets/js/examples/charts/peity.js?v=000000018"></script>
+
+<script src="static/assets/js/examples/dcc-dashboard.js?v=000000018"></script>
+<div class="colors"> <!-- To use theme colors with Javascript -->
+    <div class="bg-primary"></div>
+    <div class="bg-primary-bright"></div>
+    <div class="bg-secondary"></div>
+    <div class="bg-secondary-bright"></div>
+    <div class="bg-info"></div>
+    <div class="bg-info-bright"></div>
+    <div class="bg-success"></div>
+    <div class="bg-success-bright"></div>
+    <div class="bg-danger"></div>
+    <div class="bg-danger-bright"></div>
+    <div class="bg-warning"></div>
+    <div class="bg-warning-bright"></div>
+</div>
+
+<!-- App scripts -->
+<script src="static/assets/js/app.js"></script>
+        
+
+        <script>
+
+            $(document).ready(function(){
+                $(window).scroll(function(){
+                    if ($(this).scrollTop() > 100) {
+                        $('#scroll').fadeIn();
+                    } else {
+                        $('#scroll').fadeOut();
+                    }
+                });
+                $('#scroll').click(function(){
+                    $("html, body").animate({ scrollTop: 0 }, 600);
+                    return false;
+                });
+            });
+        </script>
+
+</body>
+</html>
+
+
+
+<!-- construct 3 level messages, info, error, success-->
+
+
+
+{% if messages %}
+{% for message in messages %}
+
+
+<div class="message-message">
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+
+<script type="text/javascript">
+
+var message = '{{message}}'
+
+     $(".messages").slideToggle();
+
+$('#messages').text(message)
+
+$('.alert').toggleClass('alert-danger')
+
+
+</script>
+
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+<script>
+  var message = '{{message}}'
+       $(".messages").slideToggle();
+
+$('#messages').text(message)
+$('.alert').toggleClass('alert-success')
+
+
+</script>
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+<script type="text/javascript">
+
+var message = '{{message}}'
+     $(".messages").slideToggle();
+
+
+$('#messages').text(message)
+$('.alert').toggleClass('alert-info')
+
+
+</script>
+
+
+{% endif %}
+
+
+{% endfor %}
+{% endif %}
+
+
+<script type="text/javascript">
+
+    $('#close').on('click', function function_name(argument) {
+    // body...
+    $('.messages').hide()
+  })
+
+
+</script>

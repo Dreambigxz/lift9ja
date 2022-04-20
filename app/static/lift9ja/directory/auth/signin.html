@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Mirrored from www.gabz.com.ng/directory/auth/signin.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Apr 2022 09:07:54 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Gabz">
+	<meta name="author" content="Gabz">
+	<meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="icon" type="image/x-icon" href="https://gabz.com.ng/ico/favicon.png">
+	<meta name="theme-color" content="#022B69">
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<title>Gabz Investment and Loan | Sign In</title>
+	<link rel="stylesheet" type="text/css" href="../library/css/auth.css">
+	<script type="text/javascript" src="../../assets/art%20js/bootstrap.min.js"></script>
+</head>
+<body>
+	<!-- gabz preoader -->
+	<style type="text/css">
+	.loader{
+	  position: fixed;
+	  z-index: 99999999999;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100vh;
+	  background-color: #fff;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	}
+	.loader>div{
+	  display: flex;
+	  justify-content: center;
+	  flex-direction: column;
+	  align-items: center;
+	  width: 90%;
+	}
+	.loader>img{
+	  width: 60px;
+	}
+	.loader.preloadX{
+	  animation: fadeOut 1s;
+	  animation-fill-mode: forwards;
+	  display: none;
+	}
+	@keyframes fadeOut {
+	  100%{
+	    opacity: 0;
+	    visibility: hidden;
+	  }
+	}
+	.LoaderX{
+	  width: 100px;
+	  height: 100px;
+	  background-position: center;
+	  background-size: 80px;
+	  animation-name: loaderslide;
+	  animation-duration: 2.5s;
+	  animation-iteration-count: infinite;
+	  background-repeat: no-repeat;
+	  transition: all 30s linear;
+	  backface-visibility: hidden;
+	  transform-style: preserve-3d;
+	  background-image: url(../../assets/images/icon-1.png);
+	}
+	.LoaderXtext{
+	  font-size: 25px;
+	  font-family: ea1art2;
+	  color: #022B69;
+	}
+	@keyframes loaderslide{
+	  0%{
+	    background-image: url(../../assets/images/icon-1.png);
+	    animation-name: fadeOut;
+	    animation-duration: 1s;
+	  }
+	  20%{
+	    background-image: url(../../assets/images/icon-2.png);
+	    animation-name: fadeOut;
+	    animation-duration: 1s;
+	  }
+	  40%{
+	    background-image: url(../../assets/images/icon-3.png);
+	    animation-name: fadeOut;
+	    animation-duration: 1s;
+	  }
+	  60%{
+	    background-image: url(../../assets/images/icon-4.png);
+	    animation-name: fadeOut;
+	    animation-duration: 1s;
+	  }
+	  80%{
+	    background-image: url(../../assets/images/icon-5.png);
+	    animation-name: fadeOut;
+	    animation-duration: 1s;
+	  }
+	  100%{
+	    background-image: url(../../assets/images/icon-1.png);
+	    animation-name: fadeOut;
+	    animation-duration: 1s;
+	  }
+	}
+	@keyframes fadeOut {
+	  from {
+	    opacity: 1;
+	  }
+
+	  to {
+	    opacity: 0;
+	  }
+	}
+</style>
+<!-- gabz preoader -->
+<div class="loader">
+	<div class="center">
+		<div class="LoaderX"></div>
+		<div class="LoaderXtext animated fadeIn"><span>Gabz Investment & Loan</span></div>
+	</div>
+</div>
+<!-- preloader ends here -->
+
+<script type="text/javascript">
+	window.addEventListener("load", function () {
+		const loader = document.querySelector(".loader");
+		loader.className += " preloadX";
+	})
+</script>	<!-- preloader ends here -->
+	<div class="container-signin">
+		<div>
+			<div>
+				<div class="hero-sign-in-input-container">
+					<div>
+						<div><a href="../../index-2.html"><img src="../../assets/images/gabzlogoicon.png"></a></div>
+						<div class="hero-text-signin"><span>Sign in to Gabz</span></div>
+						<div class="msgOut">
+													</div>
+							<form action="https://www.gabz.com.ng/directory/auth/signin.php" method="POST">
+							
+							<div class="input-form-email">
+								<div><span>Email</span></div>
+								<div><input type="text" name="email" required=""></div>
+							</div>
+							<div class="input-form-password">
+								<div><span>Password</span></div>
+								<div><input type="password" name="password" required=""></div>
+							</div>
+							<div class="btn-signin"><button name="logIn"><span>Sign In</span></button></div>
+							<div class="btn-extra-details">
+								<div><input type="checkbox" name=""> Remember me</div>
+								<div>Forgot Password?</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="hero-text-join"><span>Don't have an account yet?</span><a href="register.html"><span>Join Gabz</span></a></div>
+			</div>
+			<div><div class="hero-container-slide-bg"><div></div></div></div>
+		</div>
+	</div>
+	<script src="../../assets/art%20js/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+			$(document).ready(function () {
+				setTimeout(() => {
+				$('.msgOut').fadeOut(1000);
+			}, 8000);
+			});
+		});
+	</script>
+</body>
+
+<!-- Mirrored from www.gabz.com.ng/directory/auth/signin.php by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 16 Apr 2022 09:07:55 GMT -->
+</html>

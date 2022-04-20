@@ -1,0 +1,127 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+  {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/dashboard"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+
+{% block body %}    
+    
+<div class="page page--login" data-page="account">
+
+    {% endblock %}
+
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Profile.<br>
+            </h2>  
+        <div class="fieldset">
+            <div class="form">
+
+                   <form id="Form" class="UserForm" method="post">
+                    <h4 class="page__title">Personal Details</h4>  
+                    <small style="color: #121330; font-size:13px">Member since {{request.user.date_joined}}</small>
+                    <div class="form__row d-flex align-items-center justify-space">
+                        <input type="text" name="fullname" disabled="" value="{{request.user.full_name}}" class="form__input form__input--12" placeholder="Text 1/2" />
+                        <input type="text" name="username" disabled="" value="{{request.user.username}}" class="form__input form__input--12" placeholder="Text 1/2" />
+                        <input type="text" name="username" disabled="" value="{{request.user.username}}" class="form__input form__input--12" placeholder="Text 1/2" />
+                    </div>
+
+                </form>
+                    <form id="PersonalDetails" class="UserForm" action="/my-account" method="post">
+                        {%csrf_token%}
+                    
+
+                         <h4 class="page__title">Update Details</h4>  
+                        <div class="form__row">
+                            <input type="number" name="phone" value="{{number}}"  class="form__input required"  placeholder="Phone number" />
+                        </div>
+
+                        <div class="form__row">
+                            <input type="text" name="address" value="{{address}}" class="form__input required"  placeholder="Address" />
+                        </div>
+
+                        <div class="form__row">
+                            <input type="text" name="country" value="{{country}}" class="form__input required"  placeholder="Country" />
+                        </div>
+
+
+                        <div class="form__row d-flex align-items-center justify-space">
+                            <input type="text" name="state" value="{{state}}" class="form__input form__input--12 required" placeholder="State" />
+                            <input type="text" name="city" value="{{city}}" class="form__input form__input--12 required" placeholder="City" />
+                        </div>
+
+
+                            {% if address is None %}
+
+                                <div class="login-form__row">
+                                    <input type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="SUBMIT" />
+                                </div>
+
+                            {% endif %}
+
+                    </form> 
+
+
+
+
+                    <form id="PasswordForm" class="UserForm" action="/reset-password" method="post">
+                        {%csrf_token%}
+                    
+
+                    <h4 class="page__title">Change Password</h4> 
+                    <div class="form__row d-flex align-items-center justify-space">
+                        <input type="text" name="old_password" value="" class="form__input form__input--23 required" placeholder="Old Password" />
+                        <input type="text" name="new_password" value="" class="form__input form__input--13 required" placeholder="New Password" />
+                    </div>
+
+
+                   
+                    <div class="login-form__row">
+                            <input type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="SUBMIT" />
+                        </div>
+                    </form> 
+
+
+                        
+        </div>
+        </div>
+    </div>
+              
+</div>
+
+
+<script type="text/javascript">
+    
+    $('.form__input').each(function function_name(argument) {
+        // body...
+        if ($(this).val() == 'None') {
+
+            $(this).val('')
+        }
+    })
+</script>
+
+
+<!-- PAGE END -->
+   
+{% endblock %}

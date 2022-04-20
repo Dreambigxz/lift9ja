@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+
+{%load static%}
+{% load humanize %}
+
+<html lang="en" class=" ">
+
+
+<!-- Mirrored from www.jaybabani.com/ensign-html/app/ui-pages-home.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Oct 2021 22:18:13 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+ 
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{siteName|title}}</title>
+  <meta content="{{siteName}}" name="description" />
+  <meta content="{{siteName}}" name="author" />
+
+
+  <!-- App Icons -->
+  
+  <link rel="manifest" href="static/alertify/assets/images/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+<meta name="theme-color" content="#ffffff">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
+
+
+
+
+
+
+
+  <!-- CORE CSS FRAMEWORK - START -->
+  <link href="static/alertify/assets/css/preloader.css" type="text/css" rel="stylesheet" media="screen" />
+
+  <link href="static/alertify/modules/materialize/materialize.min.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="static/alertify/modules/fonts/mdi/appicon/appicon.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="static/alertify/modules/fonts/mdi/materialdesignicons.min.css" type="text/css" rel="stylesheet" media="screen" />
+  <link href="static/alertify/modules/perfect-scrollbar/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen" />
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!--   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" integrity="sha512-oHDEc8Xed4hiW6CxD7qjbnI+B07vDdX7hEPTvn9pSZO1bcRqHp8mj9pyr+8RVC2GmtEfI2Bi9Ke9Ass0as+zpg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css.map"></script>
+ -->
+
+
+      <meta name="referrer" content="no-referrer-when-downgrade"> 
+
+
+
+
+  <!-- CORE CSS FRAMEWORK - END -->
+
+  <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
+  <link href="static/alertify/modules/fancybox/jquery.fancybox.min.css" rel="stylesheet" type="text/css" media="screen"/><link href="static/alertify/modules/flickity/flickity.min.css" rel="stylesheet" type="text/css" media="screen"/>  <!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
+
+  <!-- CORE CSS TEMPLATE - START -->
+
+
+    <link href="static/alertify/assets/css/style.css" type="text/css" rel="stylesheet" media="screen" id="main-style" />
+  <!-- CORE CSS TEMPLATE - END -->
+
+
+
+</head>
+<!-- END HEAD -->
+
+<!-- BEGIN BODY -->
+
+
+<body class=" menu-full  contain-hc social-home header-image html"  data-header="dark" data-footer="dark"  data-header_align="app"  data-menu_type="left" data-menu="dark" data-menu_icons="on" data-footer_type="left" data-site_mode="dark" data-footer_menu="show" data-footer_menu_style="dark"  >
+    <div class="preloader-background">
+      <div class="preloader-wrapper">
+        <div class="configure-border-1">
+        </div>
+        <div class="configure-border-2">
+        </div>
+      </div>
+    </div>
+
+{% if request.user.is_authenticated %}
+
+    <script type="text/javascript">
+        
+    var last_earned = '{{last_earn}}'
+    var subscription = '{{user_subscriptions}}'
+
+    var today = new Date();
+
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
+
+    if (subscription >= 0 && last_earned <= date) {
+
+            $.ajax({
+
+        url: '/daily-login',
+        type: 'get',
+  
+    })
+
+              // alert('50 naira daily login earning has been added to your account, and will be added to your wallet balance after the end of each plan.')
+
+    }
+
+
+    
+    //save user locat ion and ip
+
+
+  
+
+    </script>
+
+{% endif %}
+
+  <!-- SIDEBAR - START -->
+
+<!-- MAIN MENU - START -->
+
+
+
+<!-- MAIN MENU - END -->
+
+
+
+<!--  SIDEBAR - END --><!-- SIDEBAR - START -->
+
+<!-- MAIN MENU - START -->
+
+
+
+<!-- MAIN MENU - END -->
+
+
+
+<!--  SIDEBAR - END -->
+
+<!-- START navigation -->
+<nav class="fix_topscroll logo_on_fixed  topbar navigation">
+  <div class="nav-wrapper container">
+    <a id="logo-container" href="/welcome" class=" brand-logo " >{{siteName}}</a>
+
+   <!--    <a href="#" data-target="" class="waves-effect waves-circle navicon back-button htmlmode show-on-large "><i class="mdi mdi-arrow-left" data-page=""></i></a>
+ -->    
+<!--  
+    <a href="#" data-target="slide-nav" class="waves-effect waves-circle navicon sidenav-trigger show-on-large"><i class="app-icon-menu1"></i></a>
+
+     -->
+
+    <a href="/dashboard" data-target="" class="waves-effect waves-circle navicon right show-on-large"><i class="mdi mdi-home-outline"></i></a>
+
+    <!-- <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a> -->
+  </div>
+</nav>
+<ul id="slide-nav" class="sidenav sidemenu">
+  <li class="user-wrap">
+
+    {% if request.user.is_authenticated %}
+            <div class="user-view row">
+
+                    <div class="col s3 imgarea">
+                <a href="#user" class="status available"><img class="circle" src="static/alertify/assets/images/avatar.png" alt="menu user"></a>
+              </div>
+                    <div class="col s9 infoarea">
+                <a href="/dashboard"><span class="name">{{request.user.full_name|title}}</span></a>
+                <a href="/dashboard"><span class="email">{{request.user.email}}</span></a>
+                <span class="title">Wallet Balance</span><div class='lvl1-tag'>{{currency}}{{wallet|intcomma}}</div></a>
+
+              </div>
+            </div>
+    {% endif %}
+
+
+
+
+  </li>
+
+
+  <li class="menulinks">
+    <ul class="collapsible">
+      <!-- Menu Data Start-->
+    <li class="sh-wrap"><div class="subheader">Menu</div></li>
+
+                        {% if request.user.is_authenticated %}
+
+                          <li class="lvl1 ">
+                            
+                        <div class=" waves-effect ui-pages-home" >
+                            <a href="/dashboard">
+                            <i class="mdi mdi-home-outline"></i>
+                            <span class="title">Dashboard</span><div class='lvl1-tag'>View dashboard</div></a>
+
+                            </div>
+                        </li>
+
+                         <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="/welcome">
+                            <i class="mdi mdi-comment"></i>
+                            <span class="title">Daily Posts</span><div class='lvl1-tag'>Click here to perform your activities</div><span class="badge">{{activity}}</span></a>
+                            </div>
+                        </li>
+                            <li class="lvl1 ">
+                            
+                        <div class=" waves-effect ui-pages-home" >
+                            <a href="/my-investments">
+                            <i class="mdi mdi-square-edit-outline"></i>
+                            <span class="title">My plan (investment)</span><div class='lvl1-tag'>Click here to track your investment</div>
+                            <span class="badge">{{user_subscriptions}}</span></a>
+
+                            </div>
+                        </li>
+
+                               <li class="lvl1 ">
+                            
+                        <div class=" waves-effect ui-pages-home" >
+                            <a href="/my-referral">
+                            <i class="mdi mdi-group"></i>
+                            <span class="title">My Referrals</span><div class='lvl1-tag'>Open referral page</div>
+                            <span class="badge">{{five_active}}</span></a>
+
+                            </div>
+                        </li>
+
+                        <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/deposit">
+                            <i class="mdi mdi-wallet"></i>
+                            <span class="title">Fund</span><div class='lvl1-tag'>Click here to fund your wallet</div></a>
+
+                            </div>
+                        </li>
+
+                          <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/withdraw">
+                            <i class="mdi mdi-credit-card"></i>
+                            <span class="title">Withdraw</span><div class='lvl1-tag'>Click here to make a withdrawal</div></a>
+
+                            </div>
+                        </li>
+
+                          <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/history">
+                            <i class="mdi mdi-script"></i>
+                            <span class="title">History</span><div class='lvl1-tag'>My account history</div></a>
+
+                            </div>
+                        </li>
+
+                        <hr>
+
+                              <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/about-us">
+                            <i class="mdi mdi-script"></i>
+                            <span class="title">About us</span><div class='lvl1-tag'>Want to know more?</div></a>
+
+                            </div>
+                        </li>
+
+
+                               <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/contact-us">
+                            <i class="mdi mdi-contacts"></i>
+                            <span class="title">Contact us</span><div class='lvl1-tag'>Click here to reach us</div></a>
+
+                            </div>
+                        </li>
+
+                        
+                            {% else %}
+
+                               <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/about-us">
+                            <i class="mdi mdi-script"></i>
+                            <span class="title">About us</span><div class='lvl1-tag'>Want to know more?</div></a>
+
+                            </div>
+                        </li>
+
+
+                               <li class="lvl1 ">
+
+                         <div class=" waves-effect ui-pages-home" >
+                            <a href="/contact-us">
+                            <i class="mdi mdi-contacts"></i>
+                            <span class="title">Contact us</span><div class='lvl1-tag'>Click here to reach us</div></a>
+
+                            </div>
+                        </li>
+
+
+
+                                <li class="lvl1 ">
+                            <div class=" waves-effect " >
+                                <a class="waves-light btn bg-primary" href="/sign-in">
+                                <span class="title">Login</span>
+                            </a>
+                        </div>
+                            </li>
+
+
+                                <li class="lvl1 ">
+                            <div class=" waves-effect  " >
+                                <a class="waves-light btn bg-primary" style="background: #000; color:#fff"; href="/sign-up">
+                                <span class="title">Register</span>
+                                                               </a>
+
+                            </li>
+                        </div>
+                        {% endif %}
+
+
+
+                       <!--  <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="sub-screens.html">
+                            <i class="mdi mdi-script"></i>
+                            <span class="title">App Screens</span><div class='lvl1-tag'>Commonly used App Screens</div></a>
+                            </div>
+                        </li>
+                        <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="sub-account.html">
+                            <i class="mdi mdi-account-search-outline"></i>
+                            <span class="title">User Account</span><div class='lvl1-tag'>User dependent personal screens</div><span class="badge">4</span></a>
+                            </div>
+                        </li>
+                        <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="sub-userinterface.html">
+                            <i class="mdi mdi-flask-outline"></i>
+                            <span class="title">User Interface</span><div class='lvl1-tag'>Styled App UI elements</div></a>
+                            </div>
+                        </li>
+                        <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="sub-elements.html">
+                            <i class="mdi mdi-clipboard-outline"></i>
+                            <span class="title">Elements</span><div class='lvl1-tag'>Usable App ready sections</div></a>
+                            </div>
+                        </li>
+                        <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="sub-components.html">
+                            <i class="mdi mdi-cellphone-settings"></i>
+                            <span class="title">Components</span><div class='lvl1-tag'>App inbuilt UX components </div></a>
+                            </div>
+                        </li>
+                        <li class="lvl1 ">
+                        <div class=" waves-effect   ui-pages-home " >
+                            <a href="sub-apps-ecommerce.html">
+                            <i class="mdi mdi-cart-outline"></i>
+                            <span class="title">Shop</span><div class='lvl1-tag'>Ecommerce and shopping platform</div><span class="badge">7</span></a>
+                            </div>
+                        </li>
+                    <li class="lvl1 ">
+                    <div class="waves-effect "><a href="#" data-target="slide-settings" class="sidenav-trigger"><i class="mdi mdi-settings-outline"></i><span class="title">Settings</span><div class='lvl1-tag'>Custom App branding settings</div>  </a>
+                        </div></li>  -->   <!-- Menu Data End-->
+
+
+</ul>
+</li>
+<!-- 
+
+      <li class="sep-wrap"><div class="divider"></div></li>
+    <li class="sh-wrap"><div class="subheader">Recent Chats</div></li>
+    <li class="menu-users">
+
+
+
+
+<ul class="collection friends contacts  z-depth-1 " >
+
+
+  <li class="collection-item avatar  ">
+
+    <a href="#!" class='chatlink waves-effect  status offline'>    <img src="static/alertify/assets/images/user-9.jpg" alt="Grove Stark" title="Grove Stark" class="circle">
+    <span class="title">Grove Stark</span>
+    <p>App Developer</p>
+    </a>            <div class="secondary-content">
+                      <span class="badge primary-bg">9</span>
+                  </div>
+      </li>
+
+
+  <li class="collection-item avatar  ">
+
+    <a href="#!" class='chatlink waves-effect  status available'>    <img src="static/alertify/assets/images/user-34.jpg" alt="Anast Lyle" title="Anast Lyle" class="circle">
+    <span class="title">Anast Lyle</span>
+    <p>Photographer</p>
+    </a>            <div class="secondary-content">
+                      <span class="badge primary-bg">3</span>
+                  </div>
+      </li>
+
+
+  <li class="collection-item avatar  ">
+
+    <a href="#!" class='chatlink waves-effect  status available'>    <img src="static/alertify/assets/images/user-24.jpg" alt="Kelci Willars" title="Kelci Willars" class="circle">
+    <span class="title">Kelci Willars</span>
+    <p>Web Developer</p>
+    </a>            <div class="secondary-content">
+                      <span class="badge primary-bg">9</span>
+                  </div>
+      </li>
+
+
+  <li class="collection-item avatar  ">
+
+    <a href="#!" class='chatlink waves-effect  status available'>    <img src="static/alertify/assets/images/user-18.jpg" alt="Obed Enever" title="Obed Enever" class="circle">
+    <span class="title">Obed Enever</span>
+    <p>Graphic Designer</p>
+    </a>            <div class="secondary-content">
+                      <span class="badge primary-bg">5</span>
+                  </div>
+      </li>
+
+
+
+</ul> -->
+
+<!--   </li>
+ -->
+
+<li class="copy-spacer"></li>
+<li class="copy-wrap">
+  <div class="copyright">&copy; Copyright @ Alertify</div>
+
+  </ul>
+  <!-- END navigation -->
+
+
+  <ul id="slide-settings" class="sidenav sidesettings ">
+    <li class="menulinks">
+      <ul class="collapsible">
+      <!-- Menu Settings Start-->
+      <li class="sh-wrap"><div class="subheader">Themes</div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="red">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate red-text text-darken-2"></i>
+                        <span class="title">Red</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="orange">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline deep-orange-text text-darken-2"></i>
+                        <span class="title">Orange</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="blue">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline blue-text text-darken-2"></i>
+                        <span class="title">Blue</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="teal">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline teal-text text-darken-2"></i>
+                        <span class="title">Teal</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="pink">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline pink-text text-darken-2"></i>
+                        <span class="title">Pink</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="dark-green">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline dark-green-text text-darken-2"></i>
+                        <span class="title">dark Green</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="purple">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline purple-text text-darken-2"></i>
+                        <span class="title">Violet</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="green">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline green-text text-darken-2"></i>
+                        <span class="title">Green</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings active" data-type="theme" data-value="deep-purple">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline deep-purple-text text-darken-2"></i>
+                        <span class="title">Purple</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="amber">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline amber-text"></i>
+                        <span class="title">Yellow</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="indigo">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline indigo-text text-darken-2"></i>
+                        <span class="title">Indigo</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="blue-grey">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline blue-grey-text text-darken-2"></i>
+                        <span class="title">Blue Grey</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="brown">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline brown-text text-darken-2"></i>
+                        <span class="title">Brown</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="cyan">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline cyan-text text-darken-2"></i>
+                        <span class="title">Cyan</span>  </a>
+                        </div></li>
+                    <li class="lvl1  theme">
+                    <div class="waves-effect appsettings " data-type="theme" data-value="grey">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline grey-text text-darken-2"></i>
+                        <span class="title">Black</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Site Mode</div></li>
+                    <li class="lvl1  site_mode">
+                    <div class="waves-effect appsettings active" data-type="site_mode" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">dark Mode</span>  </a>
+                        </div></li>
+                    <li class="lvl1  site_mode">
+                    <div class="waves-effect appsettings " data-type="site_mode" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Dark Mode</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Header Style</div></li>
+                    <li class="lvl1  header">
+                    <div class="waves-effect appsettings active" data-type="header" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">dark Header</span>  </a>
+                        </div></li>
+                    <li class="lvl1  header">
+                    <div class="waves-effect appsettings " data-type="header" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Dark Header</span>  </a>
+                        </div></li>
+                    <li class="lvl1  header">
+                    <div class="waves-effect appsettings " data-type="header" data-value="colored">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Colored Header</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Header Alignment</div></li>
+                    <li class="lvl1  header_align">
+                    <div class="waves-effect appsettings " data-type="header_align" data-value="left">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">Left Align Header</span>  </a>
+                        </div></li>
+                    <li class="lvl1  header_align">
+                    <div class="waves-effect appsettings " data-type="header_align" data-value="center">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Center Align Header</span>  </a>
+                        </div></li>
+                    <li class="lvl1  header_align">
+                    <div class="waves-effect appsettings " data-type="header_align" data-value="right">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Right Align Header</span>  </a>
+                        </div></li>
+                    <li class="lvl1  header_align">
+                    <div class="waves-effect appsettings active" data-type="header_align" data-value="app">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">App Based Align Header</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Menu Style</div></li>
+                    <li class="lvl1  menu">
+                    <div class="waves-effect appsettings active" data-type="menu" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">dark Menu</span>  </a>
+                        </div></li>
+                    <li class="lvl1  menu">
+                    <div class="waves-effect appsettings " data-type="menu" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Dark Menu</span>  </a>
+                        </div></li>
+                    <li class="lvl1  menu">
+                    <div class="waves-effect appsettings " data-type="menu" data-value="colored">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Colored Menu</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Menu Icons</div></li>
+                    <li class="lvl1  menu_icons">
+                    <div class="waves-effect appsettings active" data-type="menu_icons" data-value="on">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">Menu Icons Show</span>  </a>
+                        </div></li>
+                    <li class="lvl1  menu_icons">
+                    <div class="waves-effect appsettings " data-type="menu_icons" data-value="off">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Menu Icons Hide</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Page Footer Style</div></li>
+                    <li class="lvl1  footer">
+                    <div class="waves-effect appsettings active" data-type="footer" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">dark Footer</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer">
+                    <div class="waves-effect appsettings " data-type="footer" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Dark Footer</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer">
+                    <div class="waves-effect appsettings " data-type="footer" data-value="colored">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Colored Footer</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Page Footer Type</div></li>
+                    <li class="lvl1  footer_type">
+                    <div class="waves-effect appsettings " data-type="footer_type" data-value="minimal">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">Minimal Footer</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer_type">
+                    <div class="waves-effect appsettings active" data-type="footer_type" data-value="left">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Left Aligned Footer</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer_type">
+                    <div class="waves-effect appsettings " data-type="footer_type" data-value="center">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Centered Footer</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Fixed Footer Menu</div></li>
+                    <li class="lvl1  footer_menu">
+                    <div class="waves-effect appsettings active" data-type="footer_menu" data-value="show">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">Show Fixed Footer Menu</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer_menu">
+                    <div class="waves-effect appsettings " data-type="footer_menu" data-value="hide">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Hide Fixed Footer Menu</span>  </a>
+                        </div></li><li class="sep-wrap"><div class="divider"></div></li><li class="sh-wrap"><div class="subheader">Fixed Footer Menu Style</div></li>
+                    <li class="lvl1  footer_menu_style">
+                    <div class="waves-effect appsettings active" data-type="footer_menu_style" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-intermediate"></i>
+                        <span class="title">dark Fixed Menu</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer_menu_style">
+                    <div class="waves-effect appsettings " data-type="footer_menu_style" data-value="dark">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Dark Fixed Menu</span>  </a>
+                        </div></li>
+                    <li class="lvl1  footer_menu_style">
+                    <div class="waves-effect appsettings " data-type="footer_menu_style" data-value="colored">
+                        <a href="#!">
+                        <i class="mdi mdi-checkbox-blank-outline"></i>
+                        <span class="title">Colored Fixed Menu</span>  </a>
+                        </div></li>      <!-- Menu Settings End-->
+      </ul>
+    </li>
+  </ul>
+<div class="menu-close"><i class="mdi mdi-close"></i></div>
+{% block body %}
+
+{%endblock %}
+
+
+
+
+
+{% block messages %}
+
+<!-- construct 3 level messages, info, error, success-->
+
+{% if messages %}
+
+
+
+{% for message in messages %}
+
+<div class="message-message">
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+
+
+<script type="text/javascript">
+    
+
+      $(".messages").slideToggle();
+
+    $('.alert').text('{{message}}').css("color", '#d9534f')
+
+</script>
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+
+
+<script type="text/javascript">
+    
+
+     $(".messages").slideToggle();
+
+    $('.alert').text('{{message}}').css("color", '#01ddac')
+
+</script>
+
+{% endif %}
+
+{% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}
+
+<script type="text/javascript">
+    
+$(".messages").slideToggle();
+
+    $('.alert').text('{{message}}').css("color", '#5bc0de')
+
+</script>
+
+
+{% endif %}
+
+
+{% endfor %}
+{% endif %}
+
+{% endblock %}
+
+<script type="text/javascript">
+	
+	$('.close').on('click', function function_name(argument) {
+		// body...
+		$('.messages').hide()
+	})
+
+    $('.login-form__input').on('click', function function_name(argument) {
+        // body...
+        $('.messages').hide()
+    })
+
+
+</script>
+
+
+<style type="text/css">
+	
+
+@media only screen and (max-width: 600px) {
+  .table__row {
+    table-layout: fixed;
+    width: 300%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ddd; }
+    select.form__input.required {
+    width: calc(100% - 0px) !important;
+}
+
+
+}
+
+
+
+</style>
+
+  </div>
+
+
+{% block fotter %}
+<footer class="page-footer center social-colored ">
+  <div class="container footer-content">
+    <div class="row">
+      <div class="">
+        <h5 class="logo">{{name|title}}</h5>
+              </div>
+  <!--     <div class="link-wrap">
+
+                <ul class="social-wrap">
+          <li class="social">
+            <a class="" href="#!"><i class="mdi mdi-facebook"></i></a>
+            <a class="" href="#!"><i class="mdi mdi-twitter"></i></a>
+            <a class="" href="#!"><i class="mdi mdi-dribbble"></i></a>
+            <a class="" href="#!"><i class="mdi mdi-google-plus"></i></a>
+
+          </li>
+        </ul> -->
+      </div>
+    </div>
+
+
+
+
+  <div class="footer-copyright">
+      <div class="container">
+        &copy; Copyright <a class="" href="/">Alertify</a>. All rights reserved.
+      </div>
+    </div>
+</footer>
+
+{% endblock %}
+
+
+<div class="backtotop">
+  <a class="btn-floating btn primary-bg">
+    <i class="mdi mdi-chevron-up"></i>
+  </a>
+</div>
+
+{% if request.user.is_authenticated %}
+<div class="footer-menu circular">
+  <ul>
+
+        <li >
+      <a href="/dashboard" >      <i class="mdi mdi-script"></i>
+      <span>Dashboard</span>
+      </a>  
+        </li>
+        <li >
+
+ 
+
+  </ul>
+</div>
+
+{% else%}
+
+    <style type="text/css">
+        [data-footer_menu="show"] .page-footer {
+     margin-bottom: 1px ; 
+}
+    </style>
+
+{% endif %}
+
+
+<script type="text/javascript">
+        $('.UserForm').on('submit', function function_name(argument) {
+        // body...
+
+               $(this).css({
+
+         'cursor':'wait','pointer-events':'none'
+
+      });
+
+        $('.submit').each(function function_name(argument) {
+          // body...
+          $(this).text('Please wait...')
+        })
+    })
+
+
+  
+
+</script>
+
+<style type="text/css">
+    .footer-menu li span {
+    display: block;
+    font-size: 10px;
+    line-height: 20px;
+}
+
+.invoice-item .item-det p {
+    font-size: 15px;
+    opacity: 0.8;
+    font-style: italic;
+}
+</style>
+
+
+<script src="static/alertify/assets/js/pwa.js"></script>
+
+<!-- LOAD FILES AT PAGE END FOR FASTER LOADING -->
+
+<!-- CORE JS FRAMEWORK - START -->
+<script src="static/alertify/modules/jquery/jquery-2.2.4.min.js"></script>
+<script src="static/alertify/modules/materialize/materialize.js"></script>
+<script src="static/alertify/modules/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+<script src="static/alertify/assets/js/variables.js"></script>
+<!-- CORE JS FRAMEWORK - END -->
+
+
+<!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - START -->
+<script src="static/alertify/modules/masonry/masonry.pkgd.min.js" ></script>
+<script src="static/alertify/modules/fancybox/jquery.fancybox.min.js" ></script>
+<script src="static/alertify/modules/flickity/flickity.pkgd.min.js" ></script><script src="static/alertify/assets/js/common.js"></script><!-- OTHER SCRIPTS INCLUDED ON THIS PAGE - END -->
+
+
+<!-- CORE TEMPLATE JS - START -->
+<script src="static/alertify/modules/app/init.js"></script>
+<script src="static/alertify/modules/app/settings.js"></script>
+
+<script src="static/alertify/modules/app/scripts.js"></script>
+
+<!-- END CORE TEMPLATE JS - END -->
+
+
+<script src="static/alertify/assets/js/preloader.js"></script>
+</body>
+
+
+<!-- Mirrored from www.jaybabani.com/ensign-html/app/ui-pages-home.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 26 Oct 2021 22:23:50 GMT -->
+</html>

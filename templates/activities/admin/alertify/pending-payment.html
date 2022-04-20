@@ -1,0 +1,153 @@
+{% extends 'admin/alertify/base.html' %}
+{%load static%}
+{% load humanize %}
+
+{% block body %}
+
+
+<div class="content-area">
+
+  <div class="pagehead-bg   primary-bg" >
+    </div> 
+
+  <div class="container has-pagehead is-pagetitle">
+    <div class="section">
+      <h5 class="pagetitle">Withdrawals<span style="color:#000"> {{currency}}{{pending_withdrawal|intcomma}}</span>({{count_withdrawal}})</h5>
+          </div>
+  </div>
+  
+  
+<div class="container full">
+  <div class="section">
+
+     <div style="display:none" class="container messages">
+    <br>
+    <br>
+    <br>
+    <br>  
+    <br>
+    <br>
+      <p style="text-align:center; color: pink;" class="close">x</p>
+        <p style="text-align:center" class="alert"></p>
+    </div>  
+
+    
+<ul class="collection invoice-item ">
+  
+  {% if not withdrawal %}
+      <div class="item-det container">
+          <p>No data found.</p>
+        </div>
+  {% endif %}
+{% for i in withdrawal %}
+  
+  <li class="collection-item ">
+    <div class="item-det">
+
+                 <a onclick="return confirm('Are you sure?')" class="img-wrap waves-effect waves-light btn bg-primary" href="/process-payment?user_id={{i.id}}">Pay Manually</a>
+                                 <p> Name: {{i.user.full_name}}</p>
+
+                <p> Amount: {{currency}}{{i.amount|intcomma}}</p>
+                <p> AccNum: {{i.account_number}}</p>
+                <p> Bank: {{i.bank_name}}</p>
+                  <p>Time: {{i.date|timesince}}</p>
+
+
+          </div>
+
+    <div class="secondary-content">
+            <h6  onclick="return confirm('Are you sure?')" class="top-0 credit {{i.status}}"><a href="/auto-payment?user_id={{i.id}}">Pay Automatically</a></h6>
+          </div>
+
+  </li>
+  <hr>
+      <div class="spacer"></div>
+
+
+      {% endfor %}
+
+        {% if history %}
+
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if history.has_previous %}
+                                    <a href="?page=1">&laquo; First</a>
+                                    <a href="?page={{ history.previous_page_number }}"><i
+                                       style="background:#121330; color: #fff;
+                                       padding: 5px"
+                                      class="fa fa-angle-left"></i></a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ history.number }} of {{ history.paginator.num_pages }}.
+                                </span>
+
+                                {% if history.has_next %}
+                                    <a href="?page={{ history.next_page_number }}"><i
+                                      style="background:#121330; color: #fff;
+                                      padding: 5px"
+                                      class="fa fa-angle-right"></i></a>
+                                    <a href="?page={{ history.paginator.num_pages }}">Last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        {% endif %}
+
+
+    <li class="collection-item non-avatar total">
+    <div class="item-det">
+<!--             <h6 class="">Add more plan ?</h6>
+ -->          </div>
+   <!--  <div class="secondary-content">
+                        <a href="/plan-subscription" class="waves-effect waves-light btn bg-primary">+Create new plan</a>&nbsp; &nbsp;
+          </div> -->
+  </li>
+
+  
+
+<!--   
+  <li class="collection-item avatar">
+    <div class="item-det">
+            <img src="assets/images/user-3.jpg" alt="image" class="circle">
+                  <span class="title">Online Purchase</span>
+                  <p>Debit</p>
+          </div>
+
+    <div class="secondary-content">
+            <h6 class="top-0 debit">-$540.00</h6>
+          </div>
+
+  </li> -->
+
+
+
+</ul>
+
+
+    <div class="spacer"></div>
+
+
+  </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+  
+     $('.active').css('background', '{{success}}')
+     $('.ended').css('color', '{{error}}')
+
+
+</script>
+
+{% block fotter %}
+{% endblock %}
+
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+    <div class="spacer"></div>
+
+</div><!--.content-area-->
+{% endblock %}

@@ -1,0 +1,123 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+             <div class="header__logo header__logo--text"><a href="/"><strong>Wood</strong>West</a></div>    
+                <div class="header__icon"><a style="color: #fff;" href="#">Faqs</a></div>
+
+    <!--         <div class="header__icon"><a style="color: #fff;" href="/privacy-policy">Policy</a></div> -->
+            <div class="header__icon " data-panel="right" data-arrow="left"><a style="color:#fff" href="/contact-us">Contact</a></div>
+            </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}    
+    
+<div class="page page--main" data-page="intro-website">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+        <h2 style="text-align:center;" class="page__title"><strong><div>Frequently Ask Questions</div></strong></h2>
+        
+        <div class="toggle mb-20">
+            <div class="toggle__item">
+              <input class="toggle__input" id="togg1" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg1">What is {{sitename}} Mobile ?<span></span></label>
+                  <div class="toggle__content">
+                    <p>{{sitename}} is an Electric Utility Stocks company that allows users to benefit from the Utility Stocks market.
+                  </div>
+            </div>
+
+
+             <div class="toggle__item">
+              <input class="toggle__input" id="togg10" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg10">How does it work?<span></span></label>
+                  <div class="toggle__content">
+                    <p>
+You buy shares from us directly at a very low rate and also place the same share for sale to make your profit.</p>
+                  </div>
+            </div>
+            <div class="toggle__item">
+              <input class="toggle__input" id="togg2" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg2">How to create account ?<span></span></label>
+                  <div class="toggle__content">
+                    <p>To create an account simply click the "Account icon " on the welcome page and pass the registration form correctly. Make sure you provide a valid email address which {{sitename}} will request for account activation to enable you join the community.</p>
+                  </div>
+            </div>
+            <div class="toggle__item">
+              <input class="toggle__input" id="togg3" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg3">What is the profitability of the program? <span></span></label>
+                  <div class="toggle__content">
+                    <p>Profitability depends on the investment plan you have chosen. We offer 6 groups of investment plans with different specialization and investment terms.</p>
+                  </div>
+            </div>
+
+               <div class="toggle__item">
+              <input class="toggle__input" id="togg4" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg4">Are there any extra charges? <span></span></label>
+                  <div class="toggle__content">
+                    <p>The program does not provide any commission fees, additional and / or hidden charges. You pay only the fees charge by your bank and withdrawing payment fees</p>
+                  </div>
+            </div>
+
+
+
+               <div class="toggle__item">
+              <input class="toggle__input" id="togg5" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg5">How to buy coupon ?<span></span></label>
+                  <div class="toggle__content">
+                <p>To by coupon on {{sitename}} mobile, simply click the Buy coupon icon on the welcome page, fill the amount and click the Get vendor button. NOTE: Only chat  the number you see on woodwest.org on whatsapp.</p>
+                </p>
+                  </div>
+            </div>
+
+
+<!--               <div class="toggle__item">-->
+<!--              <input class="toggle__input" id="togg6" type="checkbox" name="toggle">-->
+<!--              <label class="toggle__label" for="togg6">How to buy shares? <span></span></label>-->
+<!--                  <div class="toggle__content">-->
+<!--                    <p>To subscribe to a plan, simply click on the subscribe icon on the welcome page, select the plan you wish to subscribe to and submit. If everything is validated correctly. you will get a success message and the system will redirect you to your investment page where you keep track of all your investment/earnings.</p>-->
+<!--                  </div>-->
+<!--            </div>-->
+
+
+              <div class="toggle__item">
+              <input class="toggle__input" id="togg7" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg7">How to withdraw? <span></span></label>
+                  <div class="toggle__content">
+                    <p>To withdraw on {{sitename}} mobile is quite simple, click on the withdraw icon on the welcome page, input your bank details correctly and submit, funds will be credited to your wallet within the hours provided to you.</p>
+                  </div>
+            </div>
+
+
+              <div class="toggle__item">
+              <input class="toggle__input" id="togg8" type="checkbox" name="toggle">
+              <label class="toggle__label" for="togg8">Do i earn for referring? <span></span></label>
+                  <div class="toggle__content">
+                    <p>Our affiliate program gives each of our members a chance to earn commission from all direct referrals.</p>
+                  </div>
+            </div>
+
+
+        </div>
+        
+              
+</div>
+
+
+
+<!-- PAGE END -->
+   
+{% endblock %}

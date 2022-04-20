@@ -1,0 +1,253 @@
+{% extends 'vtu/base2.html' %}
+{%load static%}
+
+    {% block body %}
+
+
+<!-- end::navigation -->
+        <!-- begin::main-content -->
+        <div class="main-content">
+            <!-- begin::page-header -->
+            <div class="page-header">
+                <div class="container-fluid d-sm-flex justify-content-between">
+                    <h4>Data Top-up</h4>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/dashboard">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Data Top-up</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+            <!-- end::page-header -->
+
+
+            <!-- begin::page content -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-xl-8 offset-xl-2">
+                    <div style="display:none;" class="messages alert">
+                        <div style="padding: 5px; font-size: 20px; float: right;" id="close" class="">x</div>
+                        <p id="messages"></p>
+                     </div><!-- 
+                                     <div>
+                                <figure class="avatar avatar-state-success m-r-15">
+                                    <img src="https://honourworld.ng/resources/uploads/provider/logo/851795469425700f089d82c983f328f6.png" class="rounded-circle" alt="image">
+                                </figure>
+                            </div> -->
+                            <!-- <div>
+                                <h6 class="m-b-0">Free MTN 1 gig for all active investors on GS.</h6><br><br>
+                                Bal Lef:
+                                <p style="font-size: 30px;"><strong>{{mtn}}{{mtn_val}} </strong></p>
+
+                            </div> -->
+                       <div class="card">
+                <div class="card-header bg-primary">
+                    Data Top-up
+                </div>
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-12">
+                            <form  
+                                  class="form-data"
+                                  method="POST">
+
+                                  {% csrf_token %}
+
+                                <input type="hidden" name="action" id="name" value="data-topup">
+                                <div class="form-result"></div>
+
+                                <div class="form-group">
+                                    <label for="data-network-option">Choose a network</label>
+                                    <div class="input-group input-group-sm">
+                                        <select title="Select a data category" required class="form-control js-query-dataitem "  data-action="get-plans" id="data-network-option" name="category_id">
+
+                                            <option selected disabled="disabled" value="">Select a data category</option>
+                                            <option data-thumbnail="static/resources/uploads/provider/logo/851795469425700f089d82c983f328f6.png" value="12">
+                                                    MTN                                      
+                                            </option>
+                                            <option data-thumbnail="static/resources/uploads/provider/logo/c699787e2ed88a4c524d510d911f02a9.png" value="9">
+                                                    9mobile                                      
+                                            </option>
+                                            <option data-thumbnail="static/resources/uploads/provider/logo/ce191b584e2b1104cadf3fe7b7b77c2f.png" value="8">
+                                                    Airtel                                                
+                                            </option>
+                                            <option data-thumbnail="static/resources/uploads/provider/logo/ad83c3f41e1ba0176408d0a1e5d3f15a.jpg" value="7">
+                                                    Glo                                              
+                                         </option>
+                                 <!--        <option data-thumbnail="static/resources/uploads/provider/logo/851795469425700f089d82c983f328f6.png" value="5">
+                                                    MTN SME                                       
+                                        </option> -->
+                                                                                    
+                                    </select>
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="data-plan-option">Choose a plan</label>
+                                    <div class="input-group">
+                                        <select type="number" required class="form-control js-query-datadest"  id="data-plan-option" name="plan_id">
+                                            <option selected=""  disabled="disabled" value="">Select a data plan</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="data-network-option">Choose Contact</label>
+                                    <div class="input-group">
+                                        <select title="Select a contact" required class="form-control js-query-datadest" required="" id="contact_opt" name="contact_opt">
+                                            <option selected value="">Select
+                                            </option>
+                                             <option  value="new">New Contact
+                                            </option>
+                                         
+
+                                            {% for i in contacts %}
+                                                <option value="{{i}}">
+                                                    {{i}}
+                                                </option>
+                                            {% endfor %}
+
+                                                                                   
+                                            
+                                        </select>
+
+                                    </div>
+                                    <small id="receipient_num_help" class="form-text text-muted">Select new if you cannot find number in your contacts below.</small>
+                                </div>
+
+                                <div class="form-group" id="phone_num_div">
+                                    <label for="phone_num">Enter Number</label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text" id="currencySymbolPrepend"><i data-feather="phone"></i></span>
+                                        </div>
+<!-- 
+                                        inputmode="numeric" pattern="^0\d{10}$" oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength); setCustomValidity('')" oninvalid="setCustomValidity('Please enter number  with 0, not +234. Number must be 11 digits exactly. ')" -->
+
+                                       <input id="contact"  type="number" maxlength="11" minlength="11" min="11" placeholder="Enter recipient's number" class="form-control" id="phone_num" name="phone_num" aria-describedby="currencySymbolPrepend">
+                                    </div>
+                                    <small id="receipient_num_help" class="form-text text-muted">Enter number without international format e.g.0816788998</small>
+
+                                    <div class="form-group">
+                                        <small id="num_warning" class="form-text text-danger">DCC cannot be held responsible for numbers entered incorrectly. Please double check the cell number you've entered before Data Top-up.</small>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="btn btn-primary btn-block btn-square success submit">Submit Data Top-up</button>
+                            </form>
+                        </div>
+                        <div class="col-5">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+       $('.form-data').on('submit', function function_name(argument) {
+        // body...
+             $('.submit').text('Processing…').attr('disabled', true)
+        
+    })
+$(document).ready(function(){
+
+function TurnOnRequired(getdata) {
+    // body...
+  $(getdata).prop('required',true);
+
+}
+
+function TurnOffRequired(getdata) {
+    // body...
+  $(getdata).prop('required',false);
+
+}
+
+
+// element.removeAttribute("required");     //turns required off
+// element.required = false;                //turns required off through reflected attribute
+// jQuery(element).removeAttr('required');  //turns required off
+// $("#elementId").removeAttr('required');  //turns required off
+
+// if (edName.hasAttribute("required")) { }  //check if required
+// if (edName.required) { }                 //check if required using reflected attribute
+
+        $('#phone_num_div').hide()
+
+        $("select#contact_opt").change(function(){
+        var opt = $(this).children("option:selected").val();
+        // alert("You have selected the country - " + SeclctedService);
+
+        if (opt == 'new') {
+
+            $('#phone_num_div').show()
+            TurnOnRequired('#contact')
+        }else{
+                    
+                    TurnOffRequired('#contact')
+                    $('#phone_num_div').hide()
+
+
+
+        }
+
+
+    });
+
+
+    $("select#data-network-option").change(function(){
+        var SeclctedService = $(this).children("option:selected").val();
+        // alert("You have selected the country - " + SeclctedService);
+           $('#data-plan-option')
+                .find('option')
+                .remove()
+                .end()
+                .append('<option value="">Loading...</option>')
+
+        $.ajax({
+            url:'/get-plan',
+            type:'get',
+            data:{
+                plan:SeclctedService
+            },
+
+            success: function functionName(obj) {
+
+                 $('#data-plan-option')
+                .find('option')
+                .remove()
+                .end()
+                
+
+             
+            $(obj).each(function(index,value){ 
+             
+
+            $('#data-plan-option')
+            .append($('<option></option>')
+                .attr('value', value.id)
+                .text(value.text));
+
+        });
+
+            }
+        })
+
+
+    });
+});
+
+</script>
+{% endblock %}

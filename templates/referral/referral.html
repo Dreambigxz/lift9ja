@@ -1,0 +1,214 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/dashboard"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+{% block body %}    
+    
+<div class="page page--login" data-page="referral">
+
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">My Referral<br>
+            </h2>  
+        <div class="fieldset">
+            <div class="form">
+
+                    <!-- <form class='depositform' id="PasswordForm" method="post">
+                        {%csrf_token%}
+
+
+                        <div class="form__row">
+                            <input type="number" name="amount" value="" class="form__input required"  placeholder="Amount" />
+                        </div>
+
+                          <div class="form__row">
+                              <input type="number" name="account_number" value="" class="form__input required"  placeholder="Account number" />
+                          </div>
+                    
+                        <div class="form__row">
+                                <select id="bank"
+
+                                    name="bank-code" class="form__input required"  required>
+                                    <option  selected="true" disabled="disabled" >
+                                        Select Bank
+                                    </option>
+                             
+                              </select>
+                            </div>
+
+
+                                    <div style="display:none" class="form__row">
+                                        <input id="bankName" type="text" name="bankName" value="" class="form__input required"  placeholder="" />
+                                    </div>
+
+                                    <div class="form__row">
+                                        <input type="text" name="pin" value="" class="form__input required"  placeholder="Withdrawal pin" />
+                                    </div>
+
+
+                            <div class="form__row">
+
+                                <div class="login-form__row">
+                                    <input  type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="Withdraw" />
+                                </div>
+                            </div>
+                    </form>  -->
+
+                        <p>Help your friends discover {{sitename}} and earn continues 3% on their transactions when they sign up with your
+                                      referral link.
+                          <p>
+
+                            <div class="fieldset">
+                                <div class="form">        
+                                        <div class="form__row d-flex align-items-center justify-space">
+                                            <input id="copying" value="{{ref_link}}" class="form__input form__input--23" placeholder="Text 2/3" />
+                                          <label onclick="Copy()" style="font-size: 23px;" class="input-group-text"><i class="fa fa-copy"></i></label>
+
+                                        </div>                    
+                                </div>
+                            </div>
+
+                                    <script>
+                                        function Copy() {
+                                          var copyText = document.getElementById("copying");
+                                          copyText.select();
+                                          copyText.setSelectionRange(0, 99999)
+                                          document.execCommand("copy");
+                                          $('.copy').text('Copied to clipboard')
+                                        }
+                                    </script>
+        
+                      <div class="table table--5cols mb-20">
+                                                        <p>Scroll the table to see more </p>
+
+                    <div class="table__inner">  
+                        <div class="table__row">
+                            <div class="table__section table__section--header">Total Ref</div>
+                            <div class="table__section table__section--header">Active</div>
+                            <div class="table__section table__section--header">Not active</div>
+                           <div class="table__section table__section--header">Currently Earning</div>                     
+                           <div class="table__section table__section--header">Total Earning</div>                     
+                        </div>
+
+                        {% if total_ref > 0 %}
+                                <div class="table__row">
+                                    <div class="table__section">{{total_ref}}</div>
+                                    <div class="table__section">{{active_ref}}</div>
+                                    <div class="table__section">{{not_active}}</div> 
+                                    <div class="table__section">{{currency}}{{current_earning|intcomma}}
+                                    </div> 
+                                    <div class="table__section">{{currency}}{{total_earning|intcomma}}</div> 
+                                    
+                                </div>
+                        {% else %}
+                        <p>No data found</p>
+
+                        {% endif %}
+                            
+                        </div>
+
+                          <p>Available Bal: {{currency}}{{current_earning|intcomma}}</p>
+
+                            {% if ref_earning >= 1000 %}
+                              <div class="login-form__row">
+                                   <a href="/withdraw-referral"> <input  type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="Withdraw" /></a>
+                                </div>
+                            {%else%}
+                                <div class="login-form__row">
+                                   <a href="#"> <input  type="submit" name="submit" class="login-form__submit button button--blue button--full less-than" id="submit" value="Withdraw" /></a>
+                                </div>
+                            {% endif %}
+                            <p style="text-align:center;">Witdrawable from {{currency}}1,000 </p>
+                     
+
+                  <!--       <div class="pagination">
+                            <span class="step-links">
+                                {% if history.has_previous %}
+                                    <a href="?page=1">&laquo; First</a>
+                                    <a href="?page={{ history.previous_page_number }}"><i
+                                       style="background:#121330; color: #fff;
+                                       padding: 5px"
+                                      class="la la-angle-left">></i></a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ history.number }} of {{ history.paginator.num_pages }}.
+                                </span>
+
+                                {% if history.has_next %}
+                                    <a href="?page={{ history.next_page_number }}"><i
+                                      style="background:#121330; color: #fff;
+                                      padding: 5px"
+                                      class="fa fa-angle-right"><</i></a>
+                                    <a href="?page={{ history.paginator.num_pages }}">Last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+ -->
+
+                        
+
+                    
+                </div>
+
+
+                        
+        </div>
+        </div>
+    </div>
+              
+</div>
+
+
+<script type="text/javascript">
+
+            $('.less-than').css({
+
+        'opacity' : '0.4', 'cursor':'wait','pointer-events':'none'
+
+      });
+
+
+</script>
+
+<style type="text/css">
+
+
+
+span.command-copy:hover {
+  cursor: pointer;
+}
+
+</style>
+<!-- PAGE END -->
+   
+{% endblock %}

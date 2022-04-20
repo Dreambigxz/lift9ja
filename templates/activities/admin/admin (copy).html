@@ -1,0 +1,209 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/welcome"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+{% block body %}    
+    
+<div class="page__content page__content--with-header">
+
+    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <div class="user-welcome mb-10">Hello, <strong>{{request.user.username|title}}</strong></div>
+        <p class="welcome">Welcome to Peektop Admin Page</p>
+<!--             <span>Admin {{staffs}}</span>
+ -->              <div class="cards cards--alert">
+              <div class="card"> 
+                  <div class="card__details">
+                      <h4 class="card__title mb-10">Total available balance</h4>
+                      <p>{{currency}}0.0</p>
+                  </div>
+                 <div class="card__icon"></div>
+              </div>
+              </div>
+        <nav class="nav-medical mb-20">
+            <ul>
+                <li class="selected"><a href="/addPost"><span>Add post</span></a></li>
+
+                <li style="background: #000;" class="selected"><a href="/updatePayment"><span>Update payment</span></a></li> <br>
+
+               
+
+                  <!-- <li><a href="#"><span>Total Traded <span>{{currency}}0.0</span></span></a></li>
+
+                   <li><a href="#"><span>Total Return <span>{{currency}}0.0</span></span></a></li> -->
+
+                   <!-- <li><a href="#"><span>Total Spent <span>{{currency}}0.0</span></span></a></li> -->
+
+            
+            </ul>
+        </nav>
+        
+          <h2 class="page__title">Users Activities Tracking</h2>  
+              <div class="cards cards--11 mb-20">
+
+                <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">Total Spent</h4>
+                  </div>
+                  <div class="card__more"><a class="button button--white button--ex-small" href="#">{{currency}}0.0<br>
+                  </a></div>
+              </div>
+
+
+              <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">T/Deposit</h4>
+                  </div>
+                  <div class="card__more"><a class="button button--white button--ex-small" href="#">{{currency}}{{total_deposit_amount|intcomma}}<br>
+                    <span style="color:#000">{{count_total_deposit}}</span></a></div>
+              </div>
+              <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">T/withdrawal </h4>
+                  </div>
+                  <div  class="card__more"><a style="color: red" class="button button--white button--ex-small" href="#">{{currency}}{{total_withdrawal_amount|intcomma|floatformat:2}}<br>
+                    <span style="color:#000">{{count_total_withdrawal}}</span></a></div>
+              </div>
+              <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">T/users</h4>
+                  </div>
+                  <div class="card__more"><a class="button button--white button--ex-small" href="#">{{total_users}}</a></div>
+              </div>
+
+                <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">Active users</h4>
+                  </div>
+                  <div class="card__more"><a class="button button--white button--ex-small" href="#">{{active_users}}</a></div>
+              </div>
+
+               <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">T/investors</h4>
+                  </div>
+                  <div  class="card__more"><a style="color: red" class="button button--white button--ex-small" href="#"><br>
+                    <span style="color:#000">{{total_investors_count}}</span></a></div>
+              </div>
+
+              <div class="card">
+                  <div class="card__icon"></div>
+                  <div class="card__details">
+                      <h4 class="card__title">R/investment</h4>
+                  </div>
+                  <div  class="card__more"><a style="color: red" class="button button--white button--ex-small" href="#">{{currency}}{{total_running_investment_amount|intcomma}}<br>
+                    <span style="color:#000">{{total_running_investment_count}}</span></a></div>
+              </div>
+
+
+              </div>
+        
+        <div class="page__title-bar">
+            <h3>Pending withdrawal {{pending_withdrawal}}</h3>
+            <div class="page__title-right">
+                <div class="swiper-button-prev slider-thumbs__prev"></div>
+                <div class="swiper-button-next slider-thumbs__next"></div>
+            </div>
+        </div>
+
+
+        
+                <div class="table table--5cols mb-20">
+                    <div class="table__inner">  
+                        <div class="table__row">
+                            <div class="table__section table__section--header">Amount</div>
+                            <div class="table__section table__section--header">Account number</div>
+                            <div class="table__section table__section--header">Bank</div>
+                            <div class="table__section table__section--header">Date</div>
+                           <div class="table__section table__section--header">Status</div>                     
+                        </div>
+
+                        {% if history %}
+
+                            {% for i in history %}
+
+                                <div class="table__row">
+                                    <div class="table__section">{{currency}}{{i.amount|intcomma}}</div>
+                                    <div class="table__section">{{i.date}}</div>
+                                    <div class="table__section">{{i.tx_ref}}</div> 
+                                    <div class="table__section"><a href="#" class="button button--green button--ex-small {{i.status}}">{{i.status}}</a></div>
+                                </div>
+
+                            {% endfor %}
+
+
+
+                        {% else %}
+                        <p>No data found</p>
+
+                        {% endif %}
+                            
+                        </div>
+
+                        {% if history %}
+
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if history.has_previous %}
+                                    <a href="?page=1#deposit-history">&laquo; First</a>
+                                    <a href="?page={{ history.previous_page_number }}#deposit-history"><i
+                                       style="background:#121330; color: #fff;
+                                       padding: 5px"
+                                      class="la la-angle-left">></i></a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ history.number }} of {{ history.paginator.num_pages }}.
+                                </span>
+
+                                {% if history.has_next %}
+                                    <a href="?page={{ history.next_page_number }}#deposit-history"><i
+                                      style="background:#121330; color: #fff;
+                                      padding: 5px"
+                                      class="fa fa-angle-right"><</i></a>
+                                    <a href="?page={{ history.paginator.num_pages }}#deposit-history">Last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        {% endif %}
+                        
+        </div>
+        
+        
+    </div>
+   
+
+   <style type="text/css">
+       .nav-medical ul {
+    width: 150%;
+    display: flex;
+    flex-wrap: wrap;
+}
+   </style>
+{% endblock %}

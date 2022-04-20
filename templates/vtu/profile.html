@@ -1,0 +1,1042 @@
+
+{% extends 'app/base2.html' %}
+{%load static%}
+{% load humanize%}
+
+{% block body %}
+
+    
+<!-- end::navigation -->
+        <!-- begin::main-content -->
+        <div class="main-content">
+            <!-- begin::page-header -->
+            <div class="page-header">
+                <div class="container-fluid d-sm-flex justify-content-between">
+                    <h4>Profile</h4>
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a href="/dashboard">Home</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- end::page-header -->
+
+            <!-- begin::page content -->
+
+<div class="container-fluid">
+<div class="row">
+            <div class="col-md-4">
+
+                <div class="card">
+                    <div class="card-body text-center">
+                        <figure class="avatar avatar-lg m-b-20">
+                            <img src="https://honourworld.ng/assets/media/image/user.png" class="rounded-circle" alt="...">
+                        </figure>
+                        <h5 class="mb-1">{{request.user.full_name|title}}</h5>
+                        <button type="button" class="btn btn-dark btn-sm btn-pulse">
+                            <i class="ti-crown mr-2"></i> MEMBER                        </button>
+                                                    <p><span class="badge badge-dark-success"> {{user_type}}</span></p>
+                                            </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h6 class="card-title d-flex justify-content-between align-items-center">
+                            Information
+                            <!-- <a href="#editprofile" class="btn btn-outline-light btn-sm">
+                                <i data-feather="edit-2" class="mr-2"></i> Edit
+                            </a> -->
+                        </h6>
+                       <!--  <div class="row mb-2">
+                            <div class="col-3 text-muted">Your referrer:</div>
+                            <div class="col-9">None</div>
+                        </div> -->
+                        <div class="row mb-2">
+                            <div class="col-3 text-muted">Your mobile:</div>
+                            <div class="col-9">{{number}}</div>
+                        </div>
+                        <div class="row mb-2">
+                            <div class="col-3 text-muted">Your email:</div>
+                            <div class="col-9"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e48b8a9d81898b96808d80858a8d8188a48389858d88ca878b89">{{request.user.email}}</a></div>
+                        </div>
+                    </div>
+                </div>
+<!-- 
+                <div class="card">
+                    <div class="card-header">
+                        Primary API key                    </div>
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <input class="form-control copy-referral-to-clipboard" readonly value="">
+                        </div>
+                        <div class="text-right">
+                            <ul class="list-inline">
+                                <li class="list-inline-item">
+                                    <button class="btn btn-dark copy-referral-btn">Generate new Key</button>
+                                </li>
+                                <li class="list-inline-item">
+                                    <button class="btn btn-primary copy-referral-btn">Regenerate Key</button>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div> -->
+
+                <div class="card" id="editprofile">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col-12">
+                                <form
+                                        class="js-ajax-form"
+                                        method="POST"
+                                    
+                                >
+                                {% csrf_token %}
+
+                          <!--           <div class="form-result"></div>
+
+
+                                    <input type="hidden" name="action" id="name" value="save">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="bank_vn">BVN</label>
+                                                <div class="input-group">
+                                                    <input value=""
+                                                           type="text"
+                                                           class="form-control" id="bank_vn" name="bank_vn"
+                                                           placeholder="Enter your bvn">
+                                                </div>
+                                                <small id="firstnameHelp" class="form-text text-muted">Enter BVN</small>
+                                            </div>
+                                        </div>
+                                    </div> -->
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="firstname">Name</label>
+                                                <div class="input-group">
+                                                    <input value="{{request.user.full_name|title}}"
+                                                           required type="text"
+                                                           class="form-control" readonly id="firstname" name="firstname"
+                                                           placeholder="Enter firstname">
+                                                </div>
+                                                <small id="firstnameHelp" class="form-text text-muted">Enter Full name</small>
+                                            </div>
+                                        </div>
+                                       <!--  <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="lastname">Last Name</label>
+                                                <div class="input-group">
+                                                    <input value="Daniel"
+                                                           required type="text" class="form-control" id="lastname" name="lastname"
+                                                           placeholder="Enter lastname for the contact">
+                                                </div>
+                                                <small id="lastnameHelp" class="form-text text-muted">Enter lastname</small>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="phone">Phone</label>
+                                                <div class="input-group">
+                                                    <input value="{{number}}"
+                                                           pattern="^0\d{10}$"
+                                                        readonly oninvalid="setCustomValidity('Please enter number starting with 0, not +234. Number must be 11 digits exactly. ')"
+                                                           oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                           required type="tel" maxlength="11" minlength="11"
+                                                           class="form-control" id="phone" name="phone"
+                                                           placeholder="Enter phone for the contact">
+                                                </div>
+                                                <small id="amountHelp" class="form-text text-muted">Enter Phone</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <div class="input-group">
+                                                    <input value="onyemordidaniel@gmail.com"  readonly  type="email" class="form-control" id="email" name="email"
+                                                    placeholder="Enter email for the contact">
+                                                </div>
+                                                <small id="amountHelp" class="form-text text-muted">Enter Email</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="email">Wallet Balance</label>
+                                                    <div class="input-group">
+                                                        <input value="{{wallet.user_balance|intcomma}}"  readonly type="text" required type="number" class="form-control" id="email" name="wallet">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Wallet Amount</small>
+                                                </div>
+                                            </div>
+
+                                     <!--        <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="password-current">Current Password</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="password-current" name="password-current">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">If you want to change password you need to enter current password</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="email">New Password</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="password" name="password">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Leave Blank if you don't need to change the password</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="confirm-password">Confirm New Password</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="confirm-password" name="confirm-password">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Leave Blank if you don't need to change the password</small>
+                                                </div>
+                                            </div> -->
+                                        </div>
+
+
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="phone">Username</label>
+                                                <div class="input-group">
+                                                    <input value="Dreambigxz"
+                                                           required type="text" readonly class="form-control" id="username" name="username"
+                                                           placeholder="Enter username for user">
+                                                </div>
+                                                <small id="amountHelp" class="form-text text-muted">Enter Username</small>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="email">D.O.B</label>
+                                                <div class="input-group">
+                                                    <input  value="2022-01-10"
+                                                            type="date" class="form-control" id="dob" name="dob" required
+                                                            placeholder="Enter date of birth">
+                                                </div>
+                                                <small id="amountHelp" class="form-text text-muted">Enter DOB</small>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                                                            <div class="row">
+                                        <!--     <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="phone">Referrer username</label>
+                                                    <div class="input-group"><input value="Not referred"
+                                                               type="text"
+                                                            readonly class="form-control" id="referrer_id" name="referrer_id"
+                                                               placeholder="Enter Referrer for user">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Enter Referrer ID</small>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="phone">Referral Wallet</label>
+                                                    <div class="input-group">
+                                                        <input value="0.00"
+                                                               type="text"
+                                                            readonly class="form-control" id="referral_wallet" name="referral_wallet"
+                                                               placeholder="Enter Referral Wallet for user">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted"> Referral Wallet</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="custom-select-timezone">Date Format</label>
+                                                <div class="input-group input-group-sm">
+
+
+                                                    <select class="form-control" name="date-format">
+                                                        
+                                                        <option value="Y-m-d" selected>2017-07-25
+                                                        </option>
+                                                        <option value="d-m-Y" >25-07-2017
+                                                        </option>
+                                                        <option value="d/m/Y" >25/07/2017
+                                                        </option>
+                                                        <option value="m/d/Y" >07/25/2017
+                                                        </option>
+                                                        <option value="d F, Y" >01 November, 2017</option>
+                                                        <option value="F d, Y" >November 01, 2017</option>
+                                                        <option value="d M, Y" >03 Nov, 2017</option>
+                                                        <option value="M d, Y" >Nov 03, 2017</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="custom-select-timezone">Date Format</label>
+                                                <div class="input-group input-group-sm">
+
+
+                                                    <select class="form-control" name="time-format">
+                                              <option value="24" selected>24 hours</option>
+                                                        <option value="12" >12 hours</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                        <!-- <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="email">Wallet Balance</label>
+                                                    <div class="input-group">
+                                                        <input value="{{wallet.user_balance|intcomma}}"  readonly type="text" required type="number" class="form-control" id="email" name="wallet">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Wallet Amount</small>
+                                                </div>
+                                            </div> -->
+
+                                     <!--        <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="password-current">Current Password</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="password-current" name="password-current">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">If you want to change password you need to enter current password</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="email">New Password</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="password" name="password">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Leave Blank if you don't need to change the password</small>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="confirm-password">Confirm New Password</label>
+                                                    <div class="input-group">
+                                                        <input type="password" class="form-control" id="confirm-password" name="confirm-password">
+                                                    </div>
+                                                    <small id="amountHelp" class="form-text text-muted">Leave Blank if you don't need to change the password</small>
+                                                </div>
+                                            </div> 
+                                        </div>-->
+
+                                    <!-- <button type="submit" class="btn btn-primary btn-block btn-square">Submit</button> -->
+                                </form>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="col-md-8">
+
+                                <div class="card">
+                    <div class="card-body">
+
+                            <div class="form-group">
+                                <input class="form-control copy-referral-to-clipboard" readonly value="{{my_ref}}">
+                            </div>
+                            <div class="text-right">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <button class="btn btn-primary copy-referral-btn">Copy Link!</button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <ul class="nav nav-pills flex-column flex-sm-row" id="myTab" role="tablist">
+                                                        <li class="flex-sm-fill text-sm-center nav-item">
+                                <a class="nav-link active" id="referrals-tab" data-toggle="tab" href="#referrals"
+                                   role="tab">Referrals</a>
+                            </li>
+                            
+                            <li class="flex-sm-fill text-sm-center nav-item">
+                                <a class="nav-link " id="reviews-tab" data-toggle="tab" href="#reviews"
+                                   role="tab">Reviews</a>
+                            </li>
+                            <li class="flex-sm-fill text-sm-center nav-item">
+                                <a class="nav-link" id="contacts-tab1" data-toggle="tab" href="#contacts"
+                                   role="tab"> Contacts <span class="badge badge-light m-l-5">{{count_contacts}}</span>
+                                </a>
+                            </li>
+                            <li class="flex-sm-fill text-sm-center nav-item">
+                                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#apikeys"
+                                   role="tab">API Keys</a>
+                            </li>
+                     <!--        <li class="flex-sm-fill text-sm-center nav-item">
+                                <a class="nav-link" id="reviews-tab" data-toggle="tab" href="#upgrades"
+                                   role="tab">Upgrades</a>
+                            </li>
+                            <li class="flex-sm-fill text-sm-center nav-item">
+                                <a class="nav-link" id="contacts-tab1" data-toggle="tab" href="#activities"
+                                   role="tab"> Activities </a>
+                            </li> -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="tab-content" id="myTabContent">
+
+                                        <div class="tab-pane fade active show" id="referrals" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Referrals</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Item Sales Count</th>
+                                            <th>Earnings</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>monday, 12</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tuesday, 13</td>
+                                            <td>
+                                                2
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>wednesday, 14</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$420</td>
+                                        </tr>
+                                        <tr>
+                                            <td>thursday, 15</td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>friday, 15</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>saturday, 16</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sunday, 17</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monday, 18</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tuesday, 19</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th>28</th>
+                                            <th>$3720</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="tab-pane fade  " id="reviews" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Reviews</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Item Sales Count</th>
+                                            <th>Earnings</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>monday, 12</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tuesday, 13</td>
+                                            <td>
+                                                2
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>wednesday, 14</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$420</td>
+                                        </tr>
+                                        <tr>
+                                            <td>thursday, 15</td>
+                                            <td>
+                                                5
+                                            </td>
+                                            <td>$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>friday, 15</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>saturday, 16</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>sunday, 17</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        <tr>
+                                            <td>monday, 18</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$500</td>
+                                        </tr>
+                                        <tr>
+                                            <td>tuesday, 19</td>
+                                            <td>
+                                                3
+                                            </td>
+                                            <td>$400</td>
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th></th>
+                                            <th>28</th>
+                                            <th>$3720</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="contacts" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Contacts </h6>
+                                <div class="row">
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <figure class="avatar mr-3">
+                                                            <img src="https://via.placeholder.com/128X128"
+                                                                 class="rounded-circle" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Rosemary Krout</p>
+                                                        <p class="small text-muted mb-0 line-height-15">
+                                                            Team Leader
+                                                        </p>
+                                                    </div>
+                                                    <a href="#" class="ml-auto" title="Message"
+                                                       data-toggle="tooltip">
+                                                        <i data-feather="message-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <figure class="avatar mr-3">
+                                                            <img src="https://via.placeholder.com/128X128"
+                                                                 class="rounded-circle" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Miller Edwins</p>
+                                                        <p class="small text-muted mb-0 line-height-15">
+                                                            Team Leader
+                                                        </p>
+                                                    </div>
+                                                    <a href="#" class="ml-auto" title="Message"
+                                                       data-toggle="tooltip">
+                                                        <i data-feather="message-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <figure class="avatar mr-3">
+                                                            <img src="https://via.placeholder.com/128X128"
+                                                                 class="rounded-circle" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Cahra Smiz</p>
+                                                        <p class="small text-muted mb-0 line-height-15">
+                                                            Agent
+                                                        </p>
+                                                    </div>
+                                                    <a href="#" class="ml-auto" title="Message"
+                                                       data-toggle="tooltip">
+                                                        <i data-feather="message-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <figure class="avatar mr-3">
+                                                            <img src="https://via.placeholder.com/128X128"
+                                                                 class="rounded-circle" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Burgess Attwool</p>
+                                                        <p class="small text-muted mb-0 line-height-15">
+                                                            Contact
+                                                        </p>
+                                                    </div>
+                                                    <a href="#" class="ml-auto" title="Message"
+                                                       data-toggle="tooltip">
+                                                        <i data-feather="message-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <figure class="avatar mr-3">
+                                                            <img src="https://via.placeholder.com/128X128"
+                                                                 class="rounded-circle" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Allx Life</p>
+                                                        <p class="small text-muted mb-0 line-height-15">
+                                                            Agent
+                                                        </p>
+                                                    </div>
+                                                    <a href="#" class="ml-auto" title="Message"
+                                                       data-toggle="tooltip">
+                                                        <i data-feather="message-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-12">
+                                        <div class="card border">
+                                            <div class="card-body p-3">
+                                                <div class="d-flex align-items-center">
+                                                    <div>
+                                                        <figure class="avatar mr-3">
+                                                            <img src="https://via.placeholder.com/128X128"
+                                                                 class="rounded-circle" alt="...">
+                                                        </figure>
+                                                    </div>
+                                                    <div>
+                                                        <p class="mb-0">Marti Sorbey</p>
+                                                        <p class="small text-muted mb-0 line-height-15">
+                                                            Contact
+                                                        </p>
+                                                    </div>
+                                                    <a href="#" class="ml-auto" title="Message"
+                                                       data-toggle="tooltip">
+                                                        <i data-feather="message-circle"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="apikeys" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                                                <small class="text-center">No API Key</small>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="upgrades" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                                                <h6 class="card-title">Upgrades</h6>
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="thead-dark">
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Payment ID</th>
+                                            <th>Amount</th>
+                                            <th>Plan</th>
+                                            <th>Created</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                                                                    <tr>
+                                                <td>1</td>
+                                                <td>TRNX_61E8096F49569</td>
+                                                <td>₦1,000.00</td>
+                                                <td>₦1,000.00</td>
+                                                <td>2022-01-19 13:51:59</td>
+                                            </tr>
+                                                                                </tbody>
+                                        <tfoot class="thead-dark">
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Payment ID</th>
+                                            <th>Amount</th>
+                                            <th>Plan</th>
+                                            <th>Created</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                </div>
+                                                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="activities" role="tabpanel">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">Your Activities</h6>
+                                <div class="table-responsive">
+                                    <table id="profile-activities-datatables" class="table table-hover dt-responsive" style="width: 100%">
+                                        <thead class="thead-light">
+                                        <tr>
+                                            <th>S/N</th>
+                                            <th>Action</th>
+                                            <th>Device OS</th>
+                                            <th>Browser</th>
+                                            <th>IP Address</th>
+                                            <th>Date/Time</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                                                                <tr class="js-list-item">
+                                            <td>1</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.44.158</td>
+                                            <td>Saturday, 22-01-2022 21:01:05 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>2</td>
+                                            <td>Data Request</td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.44.158</td>
+                                            <td>Saturday, 22-01-2022 21:01:03 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>3</td>
+                                            <td>Data Request</td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.44.158</td>
+                                            <td>Saturday, 22-01-2022 16:01:24 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>4</td>
+                                            <td>Data Request</td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.44.158</td>
+                                            <td>Saturday, 22-01-2022 16:01:00 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>5</td>
+                                            <td>Data Request</td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.44.158</td>
+                                            <td>Saturday, 22-01-2022 15:01:59 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>6</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.79.61</td>
+                                            <td>Saturday, 22-01-2022 11:01:37 am</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>7</td>
+                                            <td>Login Activity</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.76.88</td>
+                                            <td>Friday, 21-01-2022 15:01:12 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>8</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.77.221</td>
+                                            <td>Friday, 21-01-2022 13:01:39 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>9</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.77.221</td>
+                                            <td>Friday, 21-01-2022 13:01:38 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>10</td>
+                                            <td>Login Activity</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.77.8</td>
+                                            <td>Friday, 21-01-2022 13:01:01 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>11</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.84.160</td>
+                                            <td>Friday, 21-01-2022 04:01:38 am</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>12</td>
+                                            <td>Data Request</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.227.62</td>
+                                            <td>Thursday, 20-01-2022 20:01:27 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>13</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>105.112.33.41</td>
+                                            <td>Thursday, 20-01-2022 16:01:23 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>14</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.64.201</td>
+                                            <td>Thursday, 20-01-2022 00:01:52 am</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>15</td>
+                                            <td>Data Request</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.71.178</td>
+                                            <td>Wednesday, 19-01-2022 19:01:29 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>16</td>
+                                            <td>Login Activity</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.71.178</td>
+                                            <td>Wednesday, 19-01-2022 19:01:28 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>17</td>
+                                            <td>Account Upgrade</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.79.99</td>
+                                            <td>Wednesday, 19-01-2022 13:01:51 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>18</td>
+                                            <td>Data Request</td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.78.210</td>
+                                            <td>Wednesday, 19-01-2022 13:01:47 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>19</td>
+                                            <td></td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>35.242.133.146</td>
+                                            <td>Wednesday, 19-01-2022 13:01:46 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>20</td>
+                                            <td></td>
+                                            <td>Unknown OS Platform</td>
+                                            <td>Unknown Browser</td>
+                                            <td>35.242.133.146</td>
+                                            <td>Wednesday, 19-01-2022 13:01:38 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>21</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.79.70</td>
+                                            <td>Wednesday, 19-01-2022 04:01:44 am</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>22</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.79.24</td>
+                                            <td>Wednesday, 19-01-2022 04:01:12 am</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>23</td>
+                                            <td>Login Activity</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>102.89.2.42</td>
+                                            <td>Wednesday, 19-01-2022 03:01:37 am</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>24</td>
+                                            <td>Login Activity</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.76.188</td>
+                                            <td>Thursday, 13-01-2022 13:01:57 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>25</td>
+                                            <td>Login Activity</td>
+                                            <td>Linux</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.79.218</td>
+                                            <td>Wednesday, 12-01-2022 23:01:54 pm</td>
+                                        </tr>
+                                                                                <tr class="js-list-item">
+                                            <td>26</td>
+                                            <td>Login Activity</td>
+                                            <td>Android</td>
+                                            <td>Unknown Browser</td>
+                                            <td>197.210.70.145</td>
+                                            <td>Tuesday, 11-01-2022 15:01:15 pm</td>
+                                        </tr>
+                                                                                </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                            </div>
+        </div>
+<!-- end::page content -->
+
+        <!-- begin::footer -->
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends 'lift9ja/base.html' %} {% load static %} {%load humanize%}
+{% block footer %}{% endblock %}
+{% block nav %} {% endblock %}
+
+ {% block body %}
+
+
+<div class="containergabz">
+		<div class="hero-card-register animated fadeIn">
+			<div>
+				<div>
+					<div class="animated fadeIn gabzdly1"><a href="/"><img src="static/lift9ja/assets/images/gabzlogoicon.png" alt="Gabz Investment"></a></div>
+					<div>
+						<div class="animated fadeIn gabzdly2"><span>See Lift9ja In Action</span></div>
+						<div class="drop-s-input-5 animated fadeIn gabzdly3">
+							<span>See how Lift9ja can help you Invest your money for the future</span>
+						</div>
+            {% if messages %}
+              {% for message in messages %}
+                <div class="bg bg-info text-danger text-center" style="padding:1em;">
+                  <p>{{message}}</p>
+                </div>
+              {% endfor %}
+            {% endif %}
+						<div style="margin-top: 10px;" class="msgOut">
+													</div>
+						<form class="formData" method="POST">
+							{% csrf_token %}
+							<div id="register-detail-a">
+                <div class="animated addanime gabzdly1">
+                  <div><span>Select Gender</span></div>
+                  <div>
+                    <select class="inputfocus" maxlength="25" name="gender" required>
+                     <option></option>
+                     <option value="male">Male</option>
+                     <option value="female">FeMale</option>
+                  </select>
+                </div>
+                </div>
+								<div class="animated fadeIn gabzdly4 countanime">
+									<div><span>Full Name</span></div>
+									<div><input type="text" name="fullName" class="inputfocus" required maxlength="25"></div>
+								</div>
+								<div class="animated fadeIn gabzdly5 countanime">
+									<div><span>User Name</span></div>
+									<div><input type="text" name="userName" required class="inputfocus" maxlength="25"></div>
+								</div>
+								<div class="animated fadeIn gabzdly6 countanime">
+									<div><span>Email</span></div>
+									<div><input type="text" name="email" required= id="email"  class="inputfocus"></div>
+								</div>
+
+								<div class="animated addanime gabzdly1">
+									<div><span>Phone number</span></div>
+									<div><input type="text" name="phoneNumber" required class="inputfocus" maxlength="25"></div>
+								</div>
+
+
+								<div class="animated addanime gabzdly2">
+									<div><span>Password</span></div>
+									<div><input type="password" name="password" required id="FormPassword" class="inputfocus"></div>
+									<p id="passmsg" class="animated fadeIn family1 colordanger"></p>
+								</div>
+								<div class="animated addanime gabzdly3">
+									<div><span>Confirm Password</span></div>
+									<div><input type="password" name="cpassword" required autocomplete id="ConfirmFormPassword" class="inputfocus"></div>
+									<p id="passmatchmsg" class="animated fadeIn family1 text-danger"></p>
+								</div>
+								<div class="animated addanime gabzdly3">
+									<div><span>Referral ID</span> <small>(optional)</small></div>
+									<div><input type="number" name="refNumber" class="as inputfocus" value=""></div>
+								</div>
+
+								<div class="animated addanime gabzdly3">
+								<div class="btn-continue">
+									<input type="submit" value="Sign Up" name="create_acct" id="regSubmit" class="button" style="opacity: 1;">
+								</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
+				<div class="hero-text-sign animated fadeIn gabzdly8"><span>Already have an account?</span> <a href="/login"><span>Sign In</span></a></div>
+			</div>
+			<div>
+				<div>
+					<div class="animated fadeIn gabzdlyimg"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}

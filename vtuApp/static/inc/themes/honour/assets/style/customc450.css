@@ -1,0 +1,35 @@
+.mtn-primary {
+    color: #000;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: #ffc108;
+    border-color: #d3d313;
+}
+
+.glo-primary {
+    color: #000;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: #3cb435;
+    border-color: #64c345;
+}
+
+.airtel-primary {
+    color: #000;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: #cb2e29;
+    border-color: #a93518;
+}
+
+.ninemobile-primary {
+    color: #000;
+    font-family: sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    background-color: #4ea214;
+    border-color: #4e9836;
+}

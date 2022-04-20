@@ -1,0 +1,29 @@
+Load PostgreSQL Backup into your Local PostgreSQL Database.
+https://www.codingforentrepreneurs.com/blog/live-postgresql-db-to-local-with-django
+su - postgres
+https://devcenter.heroku.com/articles/heroku-postgres-import-export
+postgress
+https://www.shubhamdipt.com/blog/create-user-and-database-in-postgresql/
+
+heroku pg:backups:capture
+heroku pg:backups:url
+
+pg_restore --verbose --clean --no-acl --no-owner -h localhost -U dreambigxz -d doughscoin latest.dump
+
+
+12345
+https://devcenter.heroku.com/articles/dyno-types
+
+export PATH=$PATH:/snap/bin
+heroku run bash -a APPNAME
+ulimit -n 99999
+<br>
+  Thanks for registering an account on PeekTop Mobile. We'll like to know if you need assistance or further inquiries on how to manage your peek wallet.
+             <br>
+
+              <!-- Please note that peektop daily activities will be available everyday between 9am to 10am, we'll also try to notify you by mail.  -->
+
+     <!--         Our daily post is available now. Login to your dashboard, like and comment to earn.
+      -->
+#read csv.
+https://www.teachyourselfpython.com/challenges.php?a=01_Solve_and_Learn&t=5-File_Handling_Read_Search_Write_Files&s=9a-How-to-DELETE_user_record_row_from_file

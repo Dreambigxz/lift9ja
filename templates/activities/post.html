@@ -1,0 +1,478 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/welcome"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}    
+    
+<div class="page page--login" data-page="deposit">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Recent Activities<br>
+            </h2>  
+        <div class="fieldset">
+<!--             <h3>Simple 3 Tabs</h3>
+ -->        
+            <div class="tabs  tabs--style1 mb-20">
+
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab3" checked="checked">
+            <label class="tabs__label tabs__label--13" for="tab3">Standard</label>    
+            <div class="tabs__content">
+            <p>
+
+                {%if post.standard%}
+
+                    {% for i in post.standard %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+
+                                {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                    <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+                              </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <i>{{i.datetime|timesince}}</i>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div>
+
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab4">
+            <label class="tabs__label tabs__label--13" for="tab4">Premium</label>
+            <div class="tabs__content">
+               <p>
+
+                {%if post.premium%}
+
+                    {% for i in post.premium %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+                                 {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                    <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+                              </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+            
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab5">
+            <label class="tabs__label tabs__label--13" for="tab5">Platinum</label>
+            <div class="tabs__content">
+                <p>
+
+                {%if post.platinum%}
+
+                    {% for i in post.platinum %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+                                 {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                     <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+
+                              </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+              <input type="radio" name="tabs3" class="tabs__radio" id="tab11">
+            <label class="tabs__label tabs__label--13" for="tab11">Steel</label>
+            <div class="tabs__content">
+               <p>
+
+                {%if post.steel%}
+
+                    {% for i in post.steel %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+                                 {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                    <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+                              </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab6">
+            <label class="tabs__label tabs__label--13" for="tab6">Silver</label>
+            <div class="tabs__content">
+                <p>
+
+                {%if post.silver%}
+
+                    {% for i in post.silver %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+                                 {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                    <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}
+                              </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab7">
+            <label class="tabs__label tabs__label--13" for="tab7">Gold</label>
+            <div class="tabs__content">
+                <p>
+
+                {%if post.gold%}
+
+                    {% for i in post.gold %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+
+                                {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                     <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+
+                                {% endif %}
+                            </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+
+             <input type="radio" name="tabs3" class="tabs__radio" id="tab12">
+            <label class="tabs__label tabs__label--13" for="tab12">Gold</label>
+            <div class="tabs__content">
+                <p>
+
+                {%if post.ruby%}
+
+                    {% for i in post.ruby %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+
+                                {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                     <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+
+                                {% endif %}
+                            </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab8">
+            <label class="tabs__label tabs__label--13" for="tab8">Diamond</label>
+            <div class="tabs__content">
+                <p>
+
+                {%if post.diamond%}
+
+                    {% for i in post.diamond %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+
+                                {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                    <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}          
+                            </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+            <input type="radio" name="tabs3" class="tabs__radio" id="tab10">
+            <label class="tabs__label tabs__label--13" for="tab10">Obsidain</label>
+            <div class="tabs__content">
+                <p>
+
+                {%if post.obsidian%}
+
+                    {% for i in post.obsidian %}
+                            <div class="posts">
+                            <div class="post">
+                              <div class="post__thumb">
+
+                                {% if i.type == 'image' %}
+                                  <a href="{{i.get_absolute_url}}"><img src="{{i.images.url}}" alt="" title=""/></a>
+                            
+                                {%else%}
+                                    <video class="vid" width="100" controls>
+                                      <source src="{{i.video.url}}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                    </video>
+                                {% endif %}          
+                            </div>
+                              <div class="post__details">
+                                <h4 class="post__title"><a href="{{i.get_absolute_url}}">{{i.head_line}}</a></h4>
+                                <p>{{i.datetime|timesince}}</p>
+                                <div>
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/comment.svg' %}" alt="" title=""/></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+                                    <span>{{i.count_activities}}<img class="activities-icon" src="{% static 'assets/images/icons/blue/like.svg' %}" alt="" title=""/></span>
+                                </div>
+                                <a href="{{i.get_absolute_url}}" class="post__more button button--blue button--ex-small">READ IT</a>
+                              </div>
+                            </div>
+                            
+                                 <!--<a href="blog.html" class="button button--green button--full">NEXT PAGE</a>-->              
+                            </div>
+        
+                    {% endfor %}
+                {% else %}
+
+                    No available data here, please check back later.</p>
+                {% endif %}
+                </p> 
+            </div> 
+
+
+
+
+
+
+
+
+
+
+
+        </div>     
+        </div>
+    </div>
+              
+</div>
+
+<style type="text/css">
+    .post__thumb img {
+    display: block; 
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+    .vid {
+    display: block; 
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+
+img.activities-icon {
+    max-width: 15px;
+}
+</style>
+
+
+<!-- PAGE END -->
+   
+{% endblock %}

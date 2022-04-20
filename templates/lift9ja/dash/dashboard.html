@@ -1,0 +1,398 @@
+{% extends 'lift9ja/dash/base.html' %} {% load static %} {%load humanize%}
+{% block footer %}{% endblock %}
+{% block nav %} {% endblock %}
+
+ {% block body %}
+<div class="page-content header-clear-medium">
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="text-center pb-4">
+    <h1 style="letter-spacing:7px;" class="font-12 color-white">💋💃 Lifters Testimonials 😁💄</h1>
+    </div>
+
+  <!-- <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div> -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="text-center pb-4">
+      <h3 class="font-15 color-white">Elvis Maco</h3>
+      <p style="color:#fff;">
+        Such an amazing platform 🇳🇬🇺🇸
+      </p>
+      <p style="color:#F27130">12 secs</p>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <div class="text-center pb-4">
+      <h3 class="font-15 color-white">Elvis Maco</h3>
+      <p style="color:#fff;">
+        Such an amazing platform 🇳🇬🇺🇸
+      </p>
+      <p style="color:#F27130">12 secs</p>
+      </div
+    </div>
+    <!-- <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div> -->
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="card card-style bg-18" data-card-height="250">
+<div class="card-top p-3">
+<h1 class="font-26 color-black">{{request.user.full_name|truncatechars:16}} <small style="font-size:11px">{{request.user.gender}}</small> </h1>
+<p class="font-11 mt-n3 color-black">Referral ID: {{wallet.user_account_number|floatformat:0}}</p>
+</div>
+<div class="card-top p-3">
+<i id="eye" type='password' class="fa fa-eye color-red-dark fa-2x float-end rotate-90" onclick="LoginLogout()">
+</i>
+
+</div>
+<div class="card-bottom px-3">
+<p class="font-11 mb-2 color-black">Joined: {{request.user.date_joined|date:"m / Y"}}</p>
+</div>
+<div class="card-bottom p-3">
+<p class="font-11 mb-2 color-black"><i class="fa fa-wifi float-end rotate-90"></i></p>
+</div>
+<div class="card-bottom text-center pb-4">
+<h1 class="font-40 color-black">{{currency}} {{balance|intcomma}}</h1>
+<p>Remaining Funds in your Acount</p>
+</div>
+<div class="card-overlay bg-white opacity-80"></div>
+</div>
+<a href="#" class="btn btn-center-m bg-green-dark font-700 text-uppercase btn-m under-slider-btn mb-4 rounded-xl" target="_blank">Add investment</a>
+
+<div class="container">
+</div>
+<div class="divider divider-margins"></div>
+
+<div class="card card-style bg-theme pb-0">
+  <div id="tab-group-1">
+    <div class="tab-controls tabs-large" data-highlight="bg-black-dark">
+          <a href="#" data-active data-bs-toggle="collapse" data-bs-target="#tab-1">
+            <button  type="button" class="btn btn-primary position-relative">
+                My Data's
+            </button>
+          </a>
+
+          <a href="#" data-bs-toggle="collapse" data-bs-target="#tab-2">
+            <button  type="button" class="btn btn-primary position-relative">
+                 History
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                  0
+                  <span class="visually-hidden">unread messages</span>
+                </span>
+            </button>
+          </a>
+    </div>
+    <div data-bs-parent="#tab-group-1" class="collapse pt-3 show" id="tab-1">
+        <div class="mx-3 list-group list-custom-large">
+        <a href="#" class="mt-n3">
+            <i class="fa fa-user rounded-xl shadow-xl bg-blue-dark"></i>
+            <span class="left-10">Affiliate Earnings </span>
+            <span style="margin-right:43px; margin-top:2em;" class="position-absolute translate-middle badge rounded-pill bg-danger">
+              0
+            <span class="visually-hidden">unread messages</span>
+            </span>
+            <strong class="left-10 text-green">Comission paid 😍</strong>
+            <span class="badge bg-green-light font-11">{{currency}} 0.0</span>
+            <i class="fa fa-angle-right"></i>
+        </a>
+        <a href="#">
+            <i class="fa fa-spotify rounded-xl shadow-xl bg-dark-dark"></i>
+            <span class="left-10">Cash Out</span>
+            <span style="margin-right:43px; margin-top:2em;" class="position-absolute translate-middle badge rounded-pill bg-danger">
+              0
+            <span class="visually-hidden">unread messages</span>
+            </span>
+            <strong class="left-10">Total cashed out 💳 </strong>
+            <span class="badge bg-red-light font-11">{{currency}} 0.0</span>
+            <i class="fab fa-angle-right"></i>
+        </a>
+        <a href="#">
+          <i class="fa fa-heart rounded-xl shadow-xl bg-red-dark"></i>
+          <span class="left-10">Invested + </span>
+          <span style="margin-right:43px; margin-top:2em;" class="position-absolute translate-middle badge rounded-pill bg-danger">
+            0
+          <span class="visually-hidden">unread messages</span>
+          </span>
+          <strong class="left-10">Total investment recycled 💹</strong>
+          <span class="badge bg-red-light font-11">{{currency}} 0.0</span>
+          <i class="fa fa-angle-right"></i>
+        </a>
+        <!-- <a href="#">
+        <i class="fa fa-dollar-sign rounded-xl shadow-xl bg-green-dark"></i>
+        <span class="left-10">Withdrawal</span>
+        <strong class="left-10">Bank Withdrawal</strong>
+        <span class="badge bg-green-dark font-11">{{currency}}0.0</span>
+        <i class="fa fa-angle-right"></i>
+        </a> -->
+        </div>
+    </div>
+
+      <!-- SECOND NAV -->
+      <div data-bs-parent="#tab-group-1" class="collapse pt-3" id="tab-2">
+          <p class="content mt-0">
+            No record here 😁
+          </p>
+        <div class="divider divider-margins"></div>
+        <div class="chart-container mb-4" style="height:300px;">
+        <canvas class="wallet-chart" id="wallet-chart" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="divider divider-margins"></div>
+  <div class="card card-style">
+  <div class="content">
+  <h1 class="font-21">Hi
+    <i class="fa fa mt-1 pt-1 font-15" style="color:#F27130">{{request.user.full_name|title}}‍ {{request.user.gender}}</i>
+  </h1>
+  <p>
+    Here you'd be able to see and manage all your investement, you can either withdraw or reinvest all running investment afrer 24hrs.
+    <ul>
+      <li>🔴 Awaiting for payment </li>
+      <li>🔵 Runing </li>
+      <li>😍 Completed (Withdraw or Reinvest) </li>
+    </ul>
+  </p>
+  </div>
+  <div class="divider mb-0"></div>
+  <!-- <a href="#" class="btn btn-m btn-full bg-transparent color-blue-dark text-uppercase font-700">Find out More<i class="fa fa-arrow-right ps-3"></i></a> -->
+  </div>
+
+  <div class="splide double-slider slider-no-arrows slider-no-dots visible-slider" id="double-slider-1">
+    <div class="splide__track">
+    <div class="splide__list">
+    <div class="splide__slide ps-3">
+        <a href="#">
+        <div data-card-height="250" class="card mx-0 card-style bg-8">
+        <div class="card-bottom mx-3">
+        <h1 class="color-white font-16">{{currency}} 500.00</h1>
+        <p class="mt-n2 mb-2 color-white opacity-70 font-9">✅ 5 mins ago</p>
+        </div>
+            <div id="clockdiv">
+              <h1 class="running"> 🔵</h1>
+              <div>
+                <span class="days"></span>
+                <div class="smalltext">Days</div>
+              </div>
+              <div>
+                <span class="hours"></span>
+                <div class="smalltext">Hours</div>
+              </div>
+            </div>
+        <div class="card-overlay bg-gradient"></div>
+        </div>
+        </a>
+    </div>
+    <div class="splide__slide ps-3">
+        <a href="#">
+        <div data-card-height="250" class="card mx-0 card-style bg-10">
+        <div class="card-bottom mx-3">
+          <h1 class="color-white font-16">{{currency}} 500.00</h1>
+          <p class="mt-n2 mb-2 color-white opacity-70 font-9">✅ 5 mins ago</p>
+        </div>
+        <div id="clockdiv">
+          <h1 class="completed"> 😍 </h1>
+          <div>
+              <button type="button" class="btn btn-success">Reinvest</button>
+          </div>
+          <div>
+            <button type="button" class="btn btn-danger">Withdraw</button>
+          </div>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+
+        </div>
+        </a>
+    </div>
+    <div class="splide__slide ps-3" style="width:2181px">
+        <a href="#">
+        <div data-card-height="250" class="card mx-0 card-style bg-10">
+        <div class="card-bottom mx-3">
+          <h1 class="color-white font-16">{{currency}} 500.00</h1>
+          <p class="mt-n2 mb-2 color-white opacity-70 font-7">Awaitng payment</p>
+        </div>
+        <div id="clockdiv">
+          <h1 class="pending">🔴</h1>
+          <div>
+            <button type="button" class="btn btn-danger">Pay Now</button>
+          </div>
+        </div>
+        <div class="card-overlay bg-gradient"></div>
+        </div>
+        </a>
+    </div>
+    </div>
+    </div>
+  </div>
+
+  <!-- <div class="card card-style" style="width: 30rem;">
+  <div class="card-header">
+    My Data History
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      🔄 Total Cycled
+      <span style="" class="position-absolute top-50 start-30 translate-middle badge rounded-pill bg-danger">
+        0
+      <span class="visually-hidden">unread messages</span>
+      </span>
+      <br>
+      <span class="badge bg-red-light font-11">{{currency}}0.0</span>
+    </li>
+
+    <li class="list-group-item">
+      🔄 Affiliate Data
+      <span style="float:right;" class="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-danger">
+        0
+      <span class="visually-hidden">unread messages</span>
+      </span>
+    </li>
+
+    <li class="list-group-item">
+      🔄 Investment Withdraw
+      <span style="float:right" class="position-absolute top-50 start-50 translate-middle badge rounded-pill bg-danger">
+        0
+      <span class="visually-hidden">unread messages</span>
+      </span>
+      <br>
+    </li>
+
+
+    <li class="list-group-item">
+      🔄 Total Withdraw
+      <strong class="left-10">Started 😍 5/4/2020</strong>
+    </li>
+
+  </ul>
+</div> -->
+
+</div>
+
+<style media="screen">
+      #clockdiv{
+      font-family: sans-serif;
+      color: #fff;
+      display: inline-block;
+      font-weight: 100;
+      text-align: center;
+      font-size: 30px;
+    }
+
+    #clockdiv > div{
+      padding: 10px;
+      border-radius: 3px;
+      display: inline-block;
+    }
+
+    #clockdiv div > span{
+      padding: 15px;
+      border-radius: 3px;
+      background: #161c38;
+      display: inline-block;
+    }
+
+    .smalltext{
+      padding-top: 5px;
+      font-size: 16px;
+    }
+
+    #clockdiv h1 {
+      font-size: 11px;
+      color:#fff;
+      font-weight:100;
+      background:#161c38;
+
+    }
+
+
+</style>
+
+<script type="text/javascript">
+    function getTimeRemaining(endtime) {
+    const total = Date.parse(endtime) - Date.parse(new Date());
+    const seconds = Math.floor((total / 1000) % 60);
+    const minutes = Math.floor((total / 1000 / 60) % 60);
+    const hours = Math.floor((total / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(total / (1000 * 60 * 60 * 24));
+
+    return {
+      total,
+      days,
+      hours,
+      minutes,
+      seconds
+    };
+  }
+
+  function initializeClock(id, endtime) {
+    const clock = document.getElementById(id);
+    const daysSpan = clock.querySelector('.days');
+    const hoursSpan = clock.querySelector('.hours');
+    const minutesSpan = clock.querySelector('.minutes');
+    const secondsSpan = clock.querySelector('.seconds');
+
+    function updateClock() {
+      const t = getTimeRemaining(endtime);
+
+      daysSpan.innerHTML = t.days;
+      hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+      minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+      secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+
+      if (t.total <= 0) {
+        clearInterval(timeinterval);
+      }
+    }
+
+    updateClock();
+    const timeinterval = setInterval(updateClock, 0);
+  }
+
+  const timeInMinutes = 1;
+  const timeInSeconds = 10;
+  const currentTime = Date.parse(new Date());
+  const deadline = new Date(currentTime + timeInMinutes*timeInSeconds*1000);
+  // initializeClock('clockdiv', deadline);
+
+  // GET DATA DIFF
+
+  function diff_hours(dt2, dt1)
+   {
+    var diff =(dt2.getTime() - dt1.getTime()) / 1000;
+    diff /= (60 * 60);
+    return Math.abs(Math.round(diff));
+   }
+
+    dt1 = new Date();
+    endDate = new Date("April 19, 2022 08:11:00");
+    result = diff_hours(dt1, endDate)
+    console.log(result);
+
+    $('.days').text(0).slice(-1);
+    $('.hours').text(result).slice(-2);
+    // minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+    // secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+
+
+
+</script>
+
+
+{% endblock %}

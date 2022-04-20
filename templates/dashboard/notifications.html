@@ -1,0 +1,179 @@
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">
+        <div class="header__inner">
+            <div class="header__icon"><a href="/dashboard"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+
+
+
+{% block body %}
+
+<div class="page page--login" data-page="deposit">
+
+        <br>
+
+        <div class="page__content page__content--with-header">
+
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Admin Messsages<br>
+            </h2>
+        <div class="col col-md-10 col-lg-9 col-xl-8 mx-auto my-auto">
+          <div class="card my-5 msgcard">
+            <div class="card-body">
+              <div class="container-fluid">
+                <div id="messages_container" class="chat-log">
+
+                        <br>
+                      <div class="chat-log_item chat-log_item-own z-depth-0">
+                        <div class="row justify-content-end mx-1 d-flex">
+                          <div class="col-auto px-0">
+                            <span class="chat-log_author">
+                              @admin
+                            </span>
+
+                          </div>
+                          <div class="col-auto px-0">
+                          </div>
+                        </div>
+                        <hr class="my-1 py-0 col-8" style="opacity: 0.5">
+                        <div class="chat-log_message">
+                          <p>
+
+                           <!--  Dear esteemed user, this is to officially announce our new partnership with Delight Data Company (DDC). It's a pleasure that DDC is happy to inform you there offering a new platform of telecommunication wholesale internet data at a very cheap rate.<br><br>
+
+                            We have different packages to suit all types of users and budgets,<br>
+                            # Merchants >> mtn 1gig as low as #230 <br>
+                            # End Users >> mtn 1gig as loaw as #250 <br> -->
+
+                            <br>
+
+                            Welcome to GS, we love you...
+                            <br><br>
+
+                              <a style="color: green" href="/dashboard?data=continue">
+                                Click here to go to your Dashboard
+                             </a>
+
+                             <br>
+                             <br>
+                            We are certain we have something astonishing to offer users. 
+                   
+                           <br><br>
+                            Your acknowledgment makes us stronger and better than our opponents.
+                            <br>
+                            <br>
+                             Your faith in us is greatly respected, Serving you is our biggest asset.<br>
+                              Goldstocks cares 💗.<br>
+
+                              
+                        </p>
+                        </div>
+                        <hr class="my-1 py-0 col-8" style="opacity: 0.5">
+                        <div class="row chat-log_time m-0 p-0 justify-content-end">
+                          {{mess.date}}
+                          <br><br><br>
+                          <br><br><br>
+                          <br><br><br>
+                        </div>
+                      </div>
+                      <br>
+                    <br>
+                    <br>
+
+                  <!--   <div>
+                      <p style="color: #000">Yes i have acknowledge and seen this message</p>
+                    <a href="/dashboard?data=continue">
+                      Click here to continue
+                    </a>
+                    </div> -->
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+</div>
+</div>
+
+<style type="text/css">
+        
+
+    .chat-log {
+      overflow: auto;
+      height: calc(75vh);
+    }
+
+    .chat-log_item {
+      background: #eaeaea;
+      padding: 10px;
+      margin: 0 auto 10px;
+      max-width: 95%;
+      min-width: 25%;
+      float: left;
+      font-size: 13px;
+      border-radius: 0 20px 20px 20px;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+      clear: both;
+    }
+
+    .chat-log_item.chat-log_item-own {
+      float: left;
+      background: #000000;
+      text-align: left;
+      margin-left: 0.7rem;
+      border-radius: 20px 0 20px 20px;
+    }
+
+    .chat-form {
+      background: #DDDDDD;
+      padding: 40px 0;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    .chat-log_author {
+      margin: 0 auto 0em;
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff
+    }
+
+    .chat-log_time {
+      margin: 0 auto .5em;
+      font-size: 12px;
+      opacity: 0.5;
+      color: #ffd
+    }
+
+
+    p{
+      color: #fff
+    }
+
+</style>
+
+<script type="text/javascript">
+    function scrollDown() {
+  $('#messages_container').animate({scrollTop:$('#messages_container').prop('scrollHeight')}, 1000);
+}
+</script>
+
+{% endblock %}

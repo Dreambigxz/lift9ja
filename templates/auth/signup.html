@@ -1,0 +1,73 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+ 	{% block header %}
+	<!-- HEADER -->
+	<header class="header header--fixed">	
+		<div class="header__inner">	
+			<div class="header__icon"><a href="/sign-in"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>	
+                </div>
+                <br>
+
+	                 <div style="display:none" class="container messages">
+                      <p style="text-align:center; color: pink;" class="close">x</p>
+                        <p style="text-align:center" class="alert"></p>
+                    </div>
+	</header>
+	{% endblock %}
+
+{% block body %}	
+	
+<div class="page page--login" data-page="login">
+	
+        <div class="login">
+		<div class="login__content">	
+			<h2 class="login__title">Join us for free!</h2>
+				<div class="login-form">
+					<form style="overflow-y:scroll;height:350px;"  id="LoginForm" class="UserForm" method="post">
+
+						{% csrf_token %}
+						<div class="login-form__row">
+							<label class="login-form__label">Full Name</label>
+							<input type="text" name="fullname" value="" class="login-form__input required" />
+						</div>
+						<div class="login-form__row">
+							<label class="login-form__label">Email</label>
+							<input type="email" name="email" value="" class="login-form__input required email" />
+						</div>
+						<div class="login-form__row">
+							<label class="login-form__label">UserName</label>
+							<input type="text" name="username" value="" class="login-form__input required username" />
+						</div>
+
+						<div class="login-form__row">
+							<label class="login-form__label">Phone number</label>
+							<input type="number" name="phone_number" value=""  class="login-form__input required username" />
+						</div>
+						<div class="login-form__row">
+							<label class="login-form__label">Withdraw Pin</label>
+							<input type="text" name="pin" value="" placeholder="For withdrawal security" class="login-form__input required pin" />
+						</div>
+						<div class="login-form__row">
+							<label class="login-form__label">Password</label>
+							<input type="text" name="password" value="" class="login-form__input required" />
+						</div>
+						<div class="login-form__row">
+							<input type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="SIGN UP" />
+						</div>
+					</form>	
+				</div>
+		</div>
+        </div>
+			  
+
+
+</div>
+<!-- PAGE END -->
+   
+{% endblock %}

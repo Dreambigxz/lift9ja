@@ -1,0 +1,295 @@
+
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, viewport-fit=cover" />
+<title>KolorMobile</title>
+<link rel="stylesheet" type="text/css" href="styles/bootstrap.css">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@200;400;500;600;700;800&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="fonts/css/fontawesome-all.min.css">
+<link rel="manifest" href="_manifest.json" data-pwa-version="set_in_manifest_and_pwa_js">
+<link rel="apple-touch-icon" sizes="180x180" href="app/icons/icon-192x192.png">
+</head>
+<body class="theme-light" data-gradient="gradient-1">
+<div id="preloader"><div class="spinner-border color-red-dark" role="status"></div></div>
+<div id="page">
+<div class="header header-fixed header-logo-app">
+<a href="index.html" class="header-title">KOLOR</a>
+<a href="#" data-menu="menu-main" class="header-icon header-icon-1"><i class="fas fa-bars"></i></a>
+<a href="#" data-toggle-theme class="header-icon header-icon-5 show-on-theme-dark"><i class="fas fa-lightbulb color-yellow-dark"></i></a>
+<a href="#" data-toggle-theme class="header-icon header-icon-5 show-on-theme-light"><i class="fas fa-moon"></i></a>
+<a href="#" data-menu="menu-color" class="header-icon header-icon-4"><i class="fas fa-cog fa-spin"></i></a>
+<a href="#" data-menu="menu-bell" class="header-icon header-icon-3"><i class="fas fa-bell"></i></a>
+<a href="#" data-menu="menu-mail" class="header-icon header-icon-2"><i class="fas fa-envelope"></i></a>
+</div>
+<div id="footer-bar" class="footer-bar-4">
+<a href="pages-list.html"><i class="fa fa-heart"></i><span>Pages</span></a>
+<a href="components-list-detailed.html"><i class="fa fa-star"></i><span>Features</span></a>
+<a href="index.html" class="active-nav"><i class="fa fa-home"></i><span>Home</span></a>
+<a href="pages-media.html"><i class="fa fa-image"></i><span>Media</span></a>
+<a href="contact.html"><i class="fa fa-envelope"></i><span>Contact</span></a>
+</div>
+
+<div id="menu-main" data-menu-load="menu-main.html" data-menu-active="nav-welcome" class="menu menu-box-left menu-gradient" data-menu-width="260" data-menu-effect="menu-parallax"></div>
+<div id="menu-color" data-menu-load="menu-color.html" class="menu menu-box-modal menu-gradient" data-menu-width="cover" data-menu-height="cover"></div>
+<div id="menu-share" data-menu-load="menu-share.html" data-menu-effect="menu-parallax" class="menu menu-box-bottom menu-box-detached" data-menu-height="390"></div>
+<div id="menu-bell" data-menu-load="menu-bell.html" data-menu-effect="menu-over" class="menu menu-box-detached menu-box-top" data-menu-height="380"></div>
+<div id="menu-mail" data-menu-load="menu-mail.html" data-menu-effect="menu-over" class="menu menu-box-modal" data-menu-height="470" data-menu-width="330"></div>
+<div class="page-content header-clear-medium">
+<div class="splide single-slider slider-no-arrows slider-no-dots" id="single-slider-1">
+<div class="splide__track">
+<div class="splide__list">
+<div class="splide__slide center-text">
+<div data-card-height="250" class="card card-style bg-10">
+<div class="card-bottom text-center">
+<h1 class="font-24 mb-0 font-700 color-white">Hello, I'm Kolor!</h1>
+<p class="mt-n2 pb-2 color-white font-12 opacity-80">A Gorgeous User Interface and User Experience</p>
+</div>
+<div class="card-overlay bg-gradient"></div>
+</div>
+</div>
+<div class="splide__slide center-text">
+<div data-card-height="250" class="card card-style bg-8">
+<div class="card-bottom text-center">
+<h1 class="font-24 mb-0 font-700 color-white">It's Nice to Meet You</h1>
+<p class="mt-n2 pb-2 color-white font-12 opacity-80">Let's get you Started on Beauty and Creativity</p>
+</div>
+<div class="card-overlay bg-gradient"></div>
+</div>
+</div>
+<div class="splide__slide center-text">
+<div data-card-height="250" class="card card-style bg-7">
+<div class="card-bottom mb-0 text-center">
+<h1 class="font-24 mb-0 font-700 color-white">Bootstrap & PWA</h1>
+<p class="mt-n2 pb-2 color-white font-12 opacity-80">And they're Incredibly Easy to Use</p>
+</div>
+<div class="card-overlay bg-gradient"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<a href="#" class="btn btn-center-m btn-m rounded-xl bg-red-dark font-700 text-uppercase under-slider-btn mb-4">Purchase Today</a>
+<div class="card card-style">
+<div class="content">
+<h1 class="font-21">Welcome<i class="fa fa-star color-yellow-dark float-end mt-1 pt-1 font-15"></i></h1>
+<p>
+The latest update to Kolor brings full Bootstrap 5 support. Kolor is a PWA, RTL and Dark Mode without jQuery dependency.
+</p>
+</div>
+<div class="divider mb-0"></div>
+<a href="#" class="btn btn-m btn-full bg-transparent color-blue-dark text-uppercase font-700">Find out More<i class="fa fa-arrow-right ps-3"></i></a>
+</div>
+<div class="splide double-slider slider-no-arrows slider-no-dots visible-slider" id="double-slider-1">
+<div class="splide__track">
+<div class="splide__list">
+<div class="splide__slide ps-3">
+<a href="#">
+<div data-card-height="250" class="card mx-0 card-style bg-8">
+<div class="card-bottom mx-3">
+<h1 class="color-white font-25">Flatylay</h1>
+<p class="mt-n2 mb-2 color-white opacity-70 font-11">Beautifuly Organized</p>
+</div>
+<div class="card-overlay bg-gradient"></div>
+</div>
+</a>
+</div>
+<div class="splide__slide ps-3">
+<a href="#">
+<div data-card-height="250" class="card mx-0 card-style bg-10">
+<div class="card-bottom mx-3">
+<h1 class="color-white font-25">Sidelay</h1>
+<p class="mt-n2 mb-2 color-white opacity-70 font-11">Creative & Colorful</p>
+</div>
+<div class="card-overlay bg-gradient"></div>
+</div>
+</a>
+</div>
+<div class="splide__slide ps-3">
+<a href="#">
+<div data-card-height="250" class="card mx-0 card-style bg-9">
+<div class="card-bottom mx-3">
+<h1 class="color-white font-25">Cookies</h1>
+<p class="mt-n2 mb-2 color-white opacity-70 font-11">Always Delicious</p>
+</div>
+ <div class="card-overlay bg-gradient"></div>
+</div>
+</a>
+</div>
+</div>
+</div>
+</div>
+<div class="card card-style">
+<div class="content">
+<h1 class="font-21">Features to Love<i class="fa fa-heart color-red-dark float-end mt-1 pt-1 font-15"></i></h1>
+<p>
+Filled with easy to use, copy and paste features, made for all users with incredible & flexible control.
+</p>
+<div class="d-flex mb-4">
+<div>
+<a href="#" class="icon icon-xxl gradient-blue rounded-xl"><i class="fa fa-bolt font-29"></i></a>
+</div>
+<div class="me-auto ps-3">
+<h5 class="font-17">Powerful and Flexible</h5>
+<p>It's flexible, so you can combine and mix to create stunning pages quickly.</p>
+</div>
+</div>
+<div class="d-flex mb-4">
+<div>
+<a href="#" class="icon icon-xxl gradient-red rounded-xl"><i class="fa fa-user font-29"></i></a>
+</div>
+<div class="me-auto ps-3">
+<h5 class="font-17">Familiar Bootstrap Code</h5>
+<p>Our code is simple, clean, and built for everyone to enjoy and adapt.</p>
+</div>
+</div>
+<div class="d-flex">
+<div>
+<a href="#" class="icon icon-xxl gradient-green rounded-xl"><i class="fa fa-life-ring font-29"></i></a>
+</div>
+<div class="me-auto ps-3">
+<h5 class="font-17">Hands on Support</h5>
+<p>We love our customers, and we're always here to help out.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="card card-style">
+<div class="content mb-3">
+<h1 class="font-21">Testimonials<i class="fa fa-quote color-green-dark float-end mt-1 pt-1 font-15"></i></h1>
+<p>
+We've love our customers and our customers love us. Here are some of their awesome reviews.
+</p>
+<h2 class="text-center pb-2">
+<i class="fa fa-star font-14 color-yellow-dark"></i>
+<i class="fa fa-star font-16 px-1 color-yellow-dark"></i>
+<i class="fa fa-star font-22 px-1 color-yellow-dark"></i>
+<i class="fa fa-star font-16 px-1 color-yellow-dark"></i>
+<i class="fa fa-star font-14 color-yellow-dark"></i>
+</h2>
+<div class="splide single-slider slider-no-arrows slider-no-dots" id="single-slider-2">
+<div class="splide__track">
+<div class="splide__list">
+<div class="splide__slide">
+<h2 class="text-center font-200 line-height-xl mb-2 pb-1 mx-5">
+The code is always great with any Enabled template, but it's the customer support is amzing.
+</h2>
+<a href="#" class="d-block text-center font-13 pb-3 font-700">ThemeForest Customer</a>
+</div>
+<div class="splide__slide">
+<h2 class="text-center font-200 line-height-xl mb-2 pb-1 mx-5">
+The best support I have ever had, it's so good I purchased another theme. Highlighy Recommended.
+</h2>
+<a href="#" class="d-block text-center font-13 pb-3 font-700">ThemeForest Customer</a>
+</div>
+<div class="splide__slide">
+<h2 class="text-center font-200 line-height-xl mb-2 pb-1 mx-5">
+The code is always great with any Enabled template, but it's the customer support is amzing.
+</h2>
+<a href="#" class="d-block text-center font-13 pb-3 font-700">ThemeForest Customer</a>
+</div>
+<div class="splide__slide">
+<h2 class="text-center font-200 line-height-xl mb-2 pb-1 mx-5">
+The best support I have ever had, it's so good I purchased another theme. Highlighy Recommended.
+</h2>
+<a href="#" class="d-block text-center font-13 pb-3 font-700">ThemeForest Customer</a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="card card-style bg-10" data-card-height="250">
+<div class="card-top">
+<a href="#" class="btn btn-s text-uppercase font-11 btn-center-m mt-n1 text-shadow-l rounded-s gradient-green font-700">Featured Project</a>
+</div>
+<div class="card-bottom boxed-text-xl">
+<h1 class="color-white font-800 font-30">Sticky Mobile</h1>
+<p class="color-white mt-n2 pb-3 opacity-70">
+Meet our best selling product! Get it today!
+</p>
+</div>
+<div class="card-overlay bg-gradient"></div>
+</div>
+<a href="#" class="btn btn-center-m btn-m rounded-xl bg-green-dark font-700 text-uppercase under-slider-btn mb-4">Purchase Today</a>
+<div class="card card-style mt-4">
+<div class="content">
+<h1 class="font-21">Recent Projects<i class="fa fa-image color-green-dark float-end mt-1 pt-1 font-15"></i></h1>
+<p>
+Check out our most recent products. You can even filter them with great ease and select your favorite category.
+</p>
+<ul class="gallery-filter-controls">
+<li class="color-red-dark gallery-filter-all" data-filter="all">All</li>
+<li data-filter="2">Tech</li>
+<li data-filter="1">Food</li>
+<li data-filter="3">Nature</li>
+</ul>
+</div>
+<div class="content mt-n3">
+<div class="gallery gallery-filter">
+<a href="images/pictures/1t.jpg" data-gallery="gallery-1" class="filtr-item" title="Cream Pie" data-category="1">
+<img src="images/empty.png" data-src="images/pictures/1s.jpg" class="preload-img rounded-s shadow-m" alt="Athlete">
+</a>
+<a href="images/pictures/19t.jpg" data-gallery="gallery-1" class="filtr-item" title="Pots and Recipes" data-category="3">
+<img src="images/empty.png" data-src="images/pictures/19t.jpg" class="preload-img rounded-s shadow-m" alt="Mobile Phone">
+</a>
+<a href="images/pictures/31t.jpg" data-gallery="gallery-1" class="filtr-item" title="Pots and Recipes" data-category="2">
+<img src="images/empty.png" data-src="images/pictures/31s.jpg" class="preload-img rounded-s shadow-m" alt="Guitar">
+</a>
+<a href="images/pictures/16t.jpg" data-gallery="gallery-2" class="filtr-item" title="Typeweritter and Vynil" data-category="1">
+<img src="images/empty.png" data-src="images/pictures/16s.jpg" class="preload-img rounded-s shadow-m" alt="Break Dance">
+</a>
+<a href="images/pictures/18t.jpg" data-gallery="gallery-2" class="filtr-item" title="Beautiful Camera" data-category="3">
+<img src="images/empty.png" data-src="images/pictures/18t.jpg" class="preload-img rounded-s shadow-m" alt="Headsets">
+</a>
+<a href="images/pictures/29t.jpg" data-gallery="gallery-3" class="filtr-item" title="Cookies and Flowers" data-category="2">
+<img src="images/empty.png" data-src="images/pictures/20s.jpg" class="preload-img rounded-s shadow-m" alt="Karaoke">
+</a>
+<a href="images/pictures/24t.jpg" data-gallery="gallery-3" class="filtr-item" title="Autumn Leaves" data-category="1">
+<img src="images/empty.png" data-src="images/pictures/24s.jpg" class="preload-img rounded-s shadow-m" alt="Dancing">
+</a>
+<a href="images/pictures/32t.jpg" data-gallery="gallery-2" class="filtr-item" title="Beautiful Camera" data-category="2">
+<img src="images/empty.png" data-src="images/pictures/32s.jpg" class="preload-img rounded-s shadow-m" alt="Saxophone">
+</a>
+<a href="images/pictures/17t.jpg" data-gallery="gallery-3" class="filtr-item" title="Cookies and Flowers" data-category="3">
+<img src="images/empty.png" data-src="images/pictures/17t.jpg" class="preload-img rounded-s shadow-m" alt="Desk Tech">
+</a>
+</div>
+</div>
+</div>
+
+<div data-menu-load="menu-footer.html"></div>
+</div>
+<div class="page-bg"><div></div></div>
+
+
+
+<div id="menu-install-pwa-android" class="menu menu-box-modal" data-menu-height="345" data-menu-width="320">
+<img class="mx-auto mt-4 rounded-m" src="app/icons/icon-128x128.png" alt="img" width="90">
+<h4 class="text-center mt-4 mb-2">Kolor on your Home Screen</h4>
+<p class="text-center boxed-text-xl mb-0">
+Install Kolor on your home screen, and access it just like a regular app. It really is that simple!
+</p>
+<div class="boxed-text-l">
+<a href="#" class="pwa-install mx-auto btn btn-m font-700 btn-gradient mt-4 mb-3 rounded-sm text-uppercase">Add to Home Screen</a>
+<a href="#" class="pwa-dismiss close-menu btn-full text-center text-uppercase font-600 color-red-light font-12">Maybe later</a>
+</div>
+</div>
+
+<div id="menu-install-pwa-ios" class="menu menu-box-modal" data-menu-height="320" data-menu-width="320">
+<div class="boxed-text-xl top-25">
+<img class="mx-auto mt-4 rounded-m" src="app/icons/icon-128x128.png" alt="img" width="90">
+<h4 class="text-center mt-4 mb-2">Kolor on your Home Screen</h4>
+<p class="text-center ms-3 me-3 mb-2 pb-2">
+Install Kolor on your home screen, and access it just like a regular app. Open your Safari menu and tap "Add to Home Screen".
+</p>
+<a href="#" class="pwa-dismiss close-menu btn-full mt-3 text-center text-uppercase font-900 color-red-light opacity-90 font-110">Maybe later</a>
+</div>
+</div>
+</div>
+<script type="text/javascript" src="scripts/bootstrap.min.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
+</body>

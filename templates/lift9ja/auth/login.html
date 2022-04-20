@@ -1,0 +1,57 @@
+{% extends 'lift9ja/base.html' %} {% load static %} {%load humanize%}
+{% block footer %}{% endblock %}
+{% block nav %} {% endblock %}
+
+ {% block body %}
+	<div class="container-signin">
+
+		<div>
+			<div>
+				<div class="hero-sign-in-input-container">
+					<div>
+						<div><a href="/"><img src="static/lift9ja/assets/images/gabzlogoicon.png"></a></div>
+						<div class="hero-text-signin"><span>Sign in to Lift9ja</span></div>
+            {% if messages %}
+              {% for message in messages %}
+                <div class="bg bg-info text-danger text-center" style="padding:1em;">
+                  <p>{{message}}</p>
+                </div>
+              {% endfor %}
+            {% endif %}
+						<div class="msgOut">
+													</div>
+							<form class="formData"  method="POST">
+									{% csrf_token %}
+							<div class="input-form-email">
+								<div><span>Email</span></div>
+								<div><input type="text" name="email" required=""></div>
+							</div>
+							<div class="input-form-password">
+								<div><span>Password</span></div>
+								<div><input type="password" name="password" required=""></div>
+							</div>
+							<div class="btn-signin"><button name="logIn"><span>Sign In</span></button></div>
+							<div class="btn-extra-details">
+								<div><input type="checkbox" name=""> Remember me</div>
+								<div>Forgot Password?</div>
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="hero-text-join"><span>Don't have an account yet?</span><a href="/register"><span>Join LIFT9JA</span></a></div>
+			</div>
+			<div><div class="hero-container-slide-bg"><div></div></div></div>
+		</div>
+	</div>
+	<script src="static/lift9ja/assets/art/jquery-3.5.1.js"></script>
+	<script type="text/javascript">
+		window.addEventListener("load", function () {
+			$(document).ready(function () {
+				setTimeout(() => {
+				$('.msgOut').fadeOut(1000);
+			}, 8000);
+			});
+		});
+	</script>
+
+{% endblock %}

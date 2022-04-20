@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="PYTHON_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/venv" />
+    </content>
+    <orderEntry type="jdk" jdkName="Python 3.9 (Local)" jdkType="Python SDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="peektop" />
+    <orderEntry type="module" module-name="coinsprojects" />
+    <orderEntry type="module" module-name="weevest" />
+    <orderEntry type="module" module-name="sipandpaint" />
+    <orderEntry type="module" module-name="Genisys" />
+    <orderEntry type="module" module-name="Anonymous" />
+    <orderEntry type="module" module-name="ALert" />
+    <orderEntry type="module" module-name="whatsapp-bulk-messenger" />
+    <orderEntry type="module" module-name="1.3 Million Business Emails" />
+    <orderEntry type="module" module-name="courierproject" />
+    <orderEntry type="module" module-name="broker" />
+    <orderEntry type="module" module-name="telebot1530" />
+    <orderEntry type="module" module-name="botProject" />
+    <orderEntry type="module" module-name="Banking" />
+    <orderEntry type="module" module-name="Gitscoin" />
+  </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="PLAIN" />
+    <option name="myDocStringFormat" value="Plain" />
+  </component>
+</module>

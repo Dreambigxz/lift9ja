@@ -1,0 +1,227 @@
+@media (max-width: 768px){
+	#container{
+	  width: 100% !important;
+	  margin-left: 0%;
+	  position: relative;
+	  float: left;
+	  background-color: inherit;
+	  /*background-color: teal !important;*/
+	}
+}
+@media (max-width: 500px){
+	.hero-section-intro-content>div:nth-child(1){
+	  width: 100% !important;
+	  height: inherit;
+	  position: relative;
+	  float: left;
+	  /*background-color: red;*/
+	}
+	.section-element-container{
+		width: 100% !important;
+		position: relative !important
+	}
+	.container-wrapper{
+		width: 100% !important;
+	}
+	.features-card-wrapper>div:nth-child(1){
+		margin-top: 30px;
+	}
+}
+@media (max-width: 568px){
+	.features-card-wrapper>div{
+		width: 100% !important;
+	}
+	.hero-card-element>div:nth-child(2){
+		width: 65%;
+		position: relative;
+	}
+}
+@media (max-width: 450px){
+	.hero-card-element>div:nth-child(2){
+		width: 95%;
+		position: relative;
+	}
+}
+@media (max-width: 300px){
+	gabz-getstarted>input{
+		width: 100% !important;
+		/*margin-bottom: 5px !important;*/
+	}
+	gabz-getstarted>button{
+	  margin-left: 0px !important;
+	  margin-top: 8px;
+	}
+}
+@media (max-width: 1199px){
+	.hero-investment-plan-wrapper{
+	  padding-top: 20px !important;
+	  max-width: 1200px !important;
+	  position: relative;
+	  float: left;
+	}
+}
+@media (max-width: 570px){
+	.hero-element-card-slide{
+	  position: relative;
+	  display: flex;
+	  flex-wrap: wrap;
+	  align-items: center;
+	  max-width: 570px !important;
+	  height: auto;
+	  padding: 40px 0px;
+	  /*background-color: pink;*/
+	}
+}
+/*@media (max-width: 550px){
+	.hero-feature-element-split{
+	  max-width: 240px;
+	  margin-top: 40px;
+	}
+}*/
+@media (max-width: 425px){
+	.faq-header-element{
+		width: 90% !important;
+		margin-left: 5% !important;
+	}
+	#accordion>div:nth-child(1)>.hero-faq-tbl{
+		margin-top: 60px;
+	}
+}
+@media (max-width: 450px){
+	.faq-more-question-button-container>div{
+	  width: 100% !important;
+	  display: flex;
+	  flex-direction: row;
+	  justify-content: space-between;
+	  margin-top: 10px;
+	}
+	.contact-btn{
+	  width: 100% !important;
+	  height: 43px;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  margin-top: 15px;
+	}
+	.faq-more-question-button-container>div{
+	  max-width: 410px;
+	  display: flex;
+	  flex-direction: column !important;
+	  justify-content: space-between;
+	  margin-top: 10px;
+	  /*background-color: teal;*/
+	}
+}
+@media (max-width: 490px){
+.testimonals-content{
+  /*background-color: pink;*/
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-direction: row;
+  margin-top: 40px;
+}
+.hero-testiomonals-card-container{
+  max-width: 490px !important;
+  position: relative;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /*background-color: orange;*/
+  justify-content: space-between;
+  /*align-items: center;*/
+}
+.hero-testiomonals-card-container>div:nth-child(1){
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: auto !important;
+}
+.hero-ring-line, .hero-ring-line-bottom{
+ display: none !important;
+}
+}
+@media (max-width: 749px){
+	#desktop-nav{
+		display: none !important;
+	}
+	#mobile-nav{
+		display: block !important;
+	}
+}
+@media (min-width: 750px){
+	#desktop-nav{
+		display: block !important;
+	}
+	#mobile-nav{
+		display: none !important;
+	}
+	.mobile-nav{
+		display: none !important;
+	}
+}
+@media (max-width: 350px){
+	.hero-plan-bsc-wrapper>div:nth-child(1){
+		width: 100% !important;
+		margin-left: 0% !important;
+		margin-right: 0 !important;
+	}
+	.hero-plan-bsc-wrapper>div:nth-child(2){
+		width: 100% !important;
+		margin-left: 0% !important;
+		margin-right: 0 !important;
+	}
+	/*.hero-feature-element-split{
+		width: 100% !important;
+		margin-left: 0% !important;
+	}*/
+	.feature-header-element{
+		width: 100% !important;
+		margin-left: 0% !important;
+	}
+}
+@media (max-width: 588px){
+	.loans-features-card>div{
+		width: 100% !important;
+		margin-left: 0% !important;
+		margin-right: 0 !important;
+	}
+	.loanfeature-xs{
+		width: 65%;
+	}
+}
+@media (max-width: 450px){
+  .loanfeature-xs{
+  	width: 95%;
+  }
+}
+@media (max-width: 650px){
+	.body-bg-2{
+		margin-top: 50px;
+	}
+}
+@media (max-width: 650px){
+	.hero-class-choose-element-spilit{
+	  width: 100% !important;
+	  position: relative;
+	}
+	.choose-list>div:nth-child(1){
+	  position: relative;
+	  width: 10% !important;
+	}
+	.choose-list>div:nth-child(2){
+	  position: relative;
+	  width: 88% !important;
+	}
+}
+@media (max-width: 520px){
+	.hero-importer-header-float>img{
+		width: 100% !important;
+	}
+}
+

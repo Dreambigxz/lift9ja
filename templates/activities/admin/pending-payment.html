@@ -1,0 +1,113 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/adminControl"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+{% block body %}    
+    
+<div class="page__content page__content--with-header">
+        <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+    
+             
+        <div class="page__title-bar">
+            <h3>Pending withdrawal: <span style="color: red;">{{pending_withdrawal}}</soan></h3>
+          
+        </div>
+          <div>
+                <p>Scroll the table, click the pending button to pay the user authomatically</p>
+
+            </div>
+        
+                <div class="table table--5cols mb-20">
+                    <div class="table__inner">  
+                        <div class="table__row">
+                            <div class="table__section table__section--header">Amount</div>
+                            <div class="table__section table__section--header">Account number</div>
+                            <div class="table__section table__section--header">Bank</div>
+                            <div class="table__section table__section--header">Date</div>
+                           <div class="table__section table__section--header">Status</div>                     
+                        </div>
+
+                        {% if withdrawal %}
+
+                            {% for i in withdrawal %}
+
+                                <div class="table__row">
+                                    <div class="table__section">{{currency}}{{i.amount|intcomma}}</div>
+                                    <div class="table__section">{{i.account_number}}</div>
+                                    <div class="table__section">{{i.bank_name}}</div>
+                                    <div class="table__section">{{i.date}}</div> 
+                                    <div class="table__section"><a href="/process-payment?user_id={{i.id}}" onclick="return confirm('Are you sure?')" class="button button--green button--ex-small {{i.status}}">{{i.status}}</a></div>
+                                </div>
+
+                            {% endfor %}
+
+
+
+                        {% else %}
+                        <p>No data found</p>
+
+                        {% endif %}
+                            
+                        </div>
+
+                        {% if history %}
+
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if history.has_previous %}
+                                    <a href="?page=1#deposit-history">&laquo; First</a>
+                                    <a href="?page={{ history.previous_page_number }}#deposit-history"><i
+                                       style="background:#121330; color: #fff;
+                                       padding: 5px"
+                                      class="la la-angle-left">></i></a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ history.number }} of {{ history.paginator.num_pages }}.
+                                </span>
+
+                                {% if history.has_next %}
+                                    <a href="?page={{ history.next_page_number }}#deposit-history"><i
+                                      style="background:#121330; color: #fff;
+                                      padding: 5px"
+                                      class="fa fa-angle-right"><</i></a>
+                                    <a href="?page={{ history.paginator.num_pages }}#deposit-history">Last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        {% endif %}
+                        
+        </div>
+        
+        
+    </div>
+   
+
+   <style type="text/css">
+       .nav-medical ul {
+    width: 150%;
+    display: flex;
+    flex-wrap: wrap;
+}
+   </style>
+{% endblock %}

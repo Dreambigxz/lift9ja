@@ -1,0 +1,109 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+
+
+ {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/adminControl"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}    
+    
+<div class="page page--login" data-page="deposit">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Add manual GS<br>
+            </h2>  
+        <div class="fieldset">
+            <div class="form">
+                    <form class='UserForm' enctype="multipart/form-data" id="PasswordForm" method="post">
+                        {%csrf_token%}
+                    <!-- 
+                                 
+                                    <div class="form__row">
+                                        <input type="file" name="file" value="" class="form__input required" accept=".jpg, .png, .mp4"/>
+                                        <small style="font-size: 12px; color:red">Note recommended size is 1000x1000 to keep site responsive.</small>
+                                    </div>
+                        -->
+                                        <div class="form__row">
+                                            <label>Available GS</label>
+                                            <select id="get_plan" name='plan' class="form__input required">
+                                                <option  selected="true" disabled="disabled" >
+                                                    View available market
+                                                </option>
+                                                {% for i in plan %}
+                                                <option value="{{i.id}}">
+                                                    {{i.plan}}
+                                                </option>
+                                                {% endfor %}
+
+                                            </select>
+                                        </div>
+                          
+
+                                   <div class="form__row">
+                                        <input type="email" name="email" value="" class="form__input required"  placeholder="paste email" />
+                                    </div>
+
+                                      <div class="form__row">
+                                            <label>GS Withdraw</label>
+                                            <select required="" name='customize_gs_withdrawal' class="form__input required">
+                                                <option  selected="true" disabled="disabled" >
+                                                    Customize GS withdrawal
+                                                </option>
+                                                <option value="24">
+                                                    Withdraw Every 24 Hrs
+                                                </option>
+                                                <option value="48">
+                                                    Withdraw Every 48 Hrs
+                                                </option>
+                                                <option value="4days">
+                                                    Withdraw After 4 Days
+                                                </option>
+                                            </select>
+
+                            <div class="form__row">
+
+                                <div class="login-form__row">
+                                    <input  type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="Update" />
+                                </div>
+                            </div>
+                    </form> 
+
+
+                   <!--  <p style="text-align:center;">Note that peekfund mobile does not have any hidden fees. Any charges incurred during this transaction are totally from your bank.</p> -->
+
+
+                    <div id="fetching">
+                    </div>
+        </div>
+    </div>
+              
+</div>
+
+
+   
+{% endblock %}

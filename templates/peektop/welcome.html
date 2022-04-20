@@ -1,0 +1,903 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+{% block header %}
+
+{% if request.user.is_authenticated %}
+
+	{% if request.user.staff %}
+			<!-- HEADER -->
+		<header class="header header--fixed">
+			<div class="header__inner">
+				<!-- <div class="header__icon header__icon--menu open-panel" data-panel="left" data-arrow="right"><span></span><span></span><span></span><span></span><span></span><span></span></a></div> -->
+				<div class="header__logo header__logo--text"><a href="/adminControl"><strong style="font-size: 18px">Hi</strong><span style="font-size: 18px">{{request.user.username.title}}.</span> </a></div>
+				<div class=" " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+		</header>
+
+	{%else%}
+			<!-- HEADER -->
+		<header class="header header--fixed">
+			<div class="header__inner">
+				<!-- <div class="header__icon header__icon--menu open-panel" data-panel="left" data-arrow="right"><span></span><span></span><span></span><span></span><span></span><span></span></a></div> -->
+				<div class="header__logo header__logo--text"><a href="/welcome"><strong style="font-size: 18px">Hi</strong><span style="font-size: 18px">{{request.user.username.title}}.</span> </a></div>
+				<div class=" " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+		</header>
+	{%endif%}
+
+{% else %}
+
+	<!-- HEADER -->
+	<header class="header header--fixed">
+		<div class="header__inner">
+<!-- 			<div class="header__icon header__icon--menu open-panel" data-panel="left" data-arrow="right"><span></span><span></span><span></span><span></span><span></span><span></span></a></div>
+ -->			<div class="header__logo header__logo--text"><a href="/"><strong>Wood</strong>West</a></div>
+			<div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet}}</div>
+                </div>
+	</header>
+
+{% endif %}
+{% endblock%}
+
+{% block body %}
+
+<div class="page page--intro" data-page="intro-app">
+
+
+
+	<!-- INTRO SLIDER -->
+	<div class="swiper-container slider-menu slider-init">
+		<div class="swiper-wrapper">
+
+			<div class="swiper-slide slider-menu__slide">
+
+					{% if request.user.is_authenticated %}
+						<div style="position: fixed;
+						color: pink;
+						font-size: 12px;
+						padding-top: 6em;
+						padding-left: 2em;
+						font-weight: 500;
+						"
+
+					    class="">
+					    <div class=""><a onclick="return confirm('Are you sure?')" style="color:pink" href="/logout">Logout</a>
+					    </div>
+
+					</div>
+
+					{% else%}
+
+						<div style="position: fixed;
+						color: pink;
+						font-size: 12px;
+						padding-top: 6em;
+						padding-left: 2em;
+						font-weight: 500;
+						"
+
+					    class="">
+
+					    {% if available == False %}
+					    	<div class="" ><a style="color:red" href="/sign-in">WE'RE CURRENTLY NOT AVAILABLE</a>
+					    		<br><small>Click the telegram icon to join our telegram group.</small>
+					    </div>
+					    {% else %}
+					    <div class=""><a href="/sign-in">Login</a>
+					    </div>
+					    {%endif%}
+
+					</div>
+
+
+					  {% endif %}
+
+				<nav class="slider-menu__nav">
+					<ul>
+							<li><a href="/"><img src="{% static 'assets/images/icons/white/home.svg' %}" alt="" title="" /><span>Home</span></a></li>
+							<li><a href="/my-account"><img src="{% static 'assets/images/icons/white/user.svg' %}" alt="" title="" /><span>Account</span></a></li>
+							<li><a href="/my-referral"><img src="{% static 'assets/images/icons/white/users.svg' %}" alt="" title="" /><span>Referrals</span><strong>{{five_active}}</strong></a></li>
+
+						
+						
+
+							<li><a href="/buy-shares"><img src="{% static 'assets/images/icons/white/create.svg' %}" alt="" title="" /><span>Buy</span></a></li>
+							<li><a href="/my-shares"><img src="{% static 'assets/images/icons/white/office.svg' %}" alt="" title="" /><span>Sell</span></a></li>
+							<li><a href="/my-shares"><img src="{% static 'assets/images/icons/white/news.svg' %}" alt="" title="My shares" /><span>My shares</span><strong style="">{{user_subscriptions}}</strong></a></li>
+
+
+							<li><a href="/buy-coupon"><img src="{% static 'assets/images/icons/white/card.svg' %}" alt="" title="" /><span>Buy coupon</span></a></li>
+							<li><a href="/update-coupon" class="open-panel" data-panel="right" data-arrow="left"><img src="{% static 'assets/images/icons/white/policy.svg' %}" alt="" title="" /><span>Update coupon</span></a></li>
+							<li><a href="/withdraw"><img src="{% static 'assets/images/icons/white/withdrawal.svg' %}" alt="" title="" /><span>Withdraw</span></a></li>
+			
+							
+								<li><a href="https://wa.link/e0vmop" target="_blank"><img src="{% static 'assets/images/icons/white/whatsapp.svg' %}" alt="" title="" /><span>Whatsapp</span></a></li>
+							<li><a href="/contact-us"><img src="{% static 'assets/images/icons/white/call.svg' %}" alt="" title="" /><span>Contact</span></a></li>
+							<li><a href="/about-us"><img src="{% static 'assets/images/icons/white/about.svg' %}" alt="" title="" /><span>Know more</span></a></li>
+							
+					</ul>
+				</nav>
+
+						<div class="slider-intro__skip"><div class="text-animation">SWIPE TO SEE LIVE TESTIMONIES</div></div>
+
+			</div>
+
+				<div class="swiper-slide slider-menu__slide">
+				<nav class="slider-menu__nav">
+					<!--
+#### EDIT
+I built this slider when I first started to learn JS, you can rebuild it with more readable, simple and less code, I'm too lazy to update it, sorry :)
+-->
+
+<!--
+	use the left and right arrow keys on your keyboard or just swipe left and right on your smart phone to interact with the slider
+-->
+		    {% if testimony_count >= 4 %}
+
+			<section id="testim" class="testim">
+				<!--         <div class="testim-cover"> -->
+		            <div class="wrap">
+
+		                <span id="right-arrow" class="arrow right fa fa-chevron-right"></span>
+		                <span id="left-arrow" class="arrow left fa fa-chevron-left "></span>
+		                <ul id="testim-dots" class="dots">
+		                    <li class="dot active"></li><!--
+		                    --><li class="dot"></li><!--
+		                    --><li class="dot"></li><!--
+		                    --><li class="dot"></li><!--
+		                    --><li class="dot"></li>
+		                </ul>
+
+		                	<div id="testim-content" class="cont">
+
+		                		{% for i in testimony %}
+				                    <div class="">
+				                        <div class="img">
+				                        	<img src="{% static 'assets/images/photos/avatar.png' %}" alt=""></div>
+				                        <h2>{{i.username}}</h2>
+				                        <p>{{i.testify}}</p>
+				                        <p>{{i.time|timesince}}</p>
+				                    </div>
+				                  {% endfor %}
+
+				                    <div style="display:none;" class="img"><img src=""></div>
+			                        <h2></h2>
+			                        <p></p>
+                    		</div>
+		                	</div>
+<!--         </div> -->
+  			  </section>
+
+
+	   {% else %}
+        	<p style="color: #fff; text-align: center; margin-top: 30%;">No available data here now.</p>
+
+        {% endif %}
+
+<script src="https://use.fontawesome.com/1744f3f671.js"></script>
+
+				</nav>
+			</div>
+		</div>
+		<div class="swiper-pagination slider-menu__pagination"></div>
+	</div>
+
+</div>
+
+
+<script type="text/javascript">
+
+  // vars
+'use strict'
+var	testim = document.getElementById("testim"),
+		testimDots = Array.prototype.slice.call(document.getElementById("testim-dots").children),
+    testimContent = Array.prototype.slice.call(document.getElementById("testim-content").children),
+    testimLeftArrow = document.getElementById("left-arrow"),
+    testimRightArrow = document.getElementById("right-arrow"),
+    testimSpeed = 4500,
+    currentSlide = 0,
+    currentActive = 0,
+    testimTimer,
+		touchStartPos,
+		touchEndPos,
+		touchPosDiff,
+		ignoreTouch = 30;
+;
+
+window.onload = function() {
+
+    // Testim Script
+    function playSlide(slide) {
+        for (var k = 0; k < testimDots.length; k++) {
+            testimContent[k].classList.remove("active");
+            testimContent[k].classList.remove("inactive");
+            testimDots[k].classList.remove("active");
+        }
+
+        if (slide < 0) {
+            slide = currentSlide = testimContent.length-1;
+        }
+
+        if (slide > testimContent.length - 1) {
+            slide = currentSlide = 0;
+        }
+
+        if (currentActive != currentSlide) {
+            testimContent[currentActive].classList.add("inactive");
+        }
+        testimContent[slide].classList.add("active");
+        testimDots[slide].classList.add("active");
+
+        currentActive = currentSlide;
+
+        clearTimeout(testimTimer);
+        testimTimer = setTimeout(function() {
+            playSlide(currentSlide += 1);
+        }, testimSpeed)
+    }
+
+    testimLeftArrow.addEventListener("click", function() {
+        playSlide(currentSlide -= 1);
+    })
+
+    testimRightArrow.addEventListener("click", function() {
+        playSlide(currentSlide += 1);
+    })
+
+    for (var l = 0; l < testimDots.length; l++) {
+        testimDots[l].addEventListener("click", function() {
+            playSlide(currentSlide = testimDots.indexOf(this));
+        })
+    }
+
+    playSlide(currentSlide);
+
+    // keyboard shortcuts
+    document.addEventListener("keyup", function(e) {
+        switch (e.keyCode) {
+            case 37:
+                testimLeftArrow.click();
+                break;
+
+            case 39:
+                testimRightArrow.click();
+                break;
+
+            case 39:
+                testimRightArrow.click();
+                break;
+
+            default:
+                break;
+        }
+    })
+
+		testim.addEventListener("touchstart", function(e) {
+				touchStartPos = e.changedTouches[0].clientX;
+		})
+
+		testim.addEventListener("touchend", function(e) {
+				touchEndPos = e.changedTouches[0].clientX;
+
+				touchPosDiff = touchStartPos - touchEndPos;
+
+				console.log(touchPosDiff);
+				console.log(touchStartPos);
+				console.log(touchEndPos);
+
+
+				if (touchPosDiff > 0 + ignoreTouch) {
+						testimLeftArrow.click();
+				} else if (touchPosDiff < 0 - ignoreTouch) {
+						testimRightArrow.click();
+				} else {
+					return;
+				}
+
+		})
+}
+</script>
+
+<style type="text/css">
+	@import url(//cdn.rawgit.com/rtaibah/dubai-font-cdn/master/dubai-font.css);
+
+
+
+		.testim {
+				width: 100%;
+				position: absolute;
+				top: 50%;
+				-webkit-transform: translatey(-50%);
+				-moz-transform: translatey(-50%);
+				-ms-transform: translatey(-50%);
+				-o-transform: translatey(-50%);
+				transform: translatey(-50%);
+		}
+
+		.testim .wrap {
+		    position: relative;
+		    width: 100%;
+		    max-width: 1020px;
+		    padding: 40px 20px;
+		    margin: auto;
+		}
+
+		.testim .arrow {
+		    display: none;
+		    position: absolute;
+		    color: blue;
+		    cursor: pointer;
+		    font-size: 2em;
+		    top: 50%;
+		    -webkit-transform: translateY(-50%);
+				-ms-transform: translateY(-50%);
+				-moz-transform: translateY(-50%);
+				-o-transform: translateY(-50%);
+				transform: translateY(-50%);
+		    -webkit-transition: all .3s ease-in-out;
+		    -ms-transition: all .3s ease-in-out;
+		    -moz-transition: all .3s ease-in-out;
+		    -o-transition: all .3s ease-in-out;
+		    transition: all .3s ease-in-out;
+		    padding: 5px;
+		    z-index: 22222222;
+		}
+
+		.testim .arrow:before {
+				cursor: #fff;
+		}
+
+		.testim .arrow:hover {
+		    color: #fff;
+		}
+
+
+		.testim .arrow.left {
+		    left: 10px;
+		}
+
+		.testim .arrow.right {
+		    right: 10px;
+		}
+
+		.testim .dots {
+		    text-align: center;
+		    position: absolute;
+		    width: 100%;
+		    bottom: 60px;
+		    left: 0;
+		    display: none;
+		    z-index: 3333;
+				height: 12px;
+		}
+
+		.testim .dots .dot {
+		    list-style-type: none;
+		    display: none;
+		    width: 12px;
+		    height: 12px;
+		    border-radius: 50%;
+		    border: 1px solid #4386fd;
+		    margin: 0 10px;
+		    cursor: pointer;
+		    -webkit-transition: all .5s ease-in-out;
+		    -ms-transition: all .5s ease-in-out;
+		    -moz-transition: all .5s ease-in-out;
+		    -o-transition: all .5s ease-in-out;
+		    transition: all .5s ease-in-out;
+				position: relative;
+		}
+
+		.testim .dots .dot.active,
+		.testim .dots .dot:hover {
+		    background: #4386fd;
+		    border-color: #4386fd;
+		}
+
+		.testim .dots .dot.active {
+		    -webkit-animation: testim-scale .5s ease-in-out forwards;
+		    -moz-animation: testim-scale .5s ease-in-out forwards;
+		    -ms-animation: testim-scale .5s ease-in-out forwards;
+		    -o-animation: testim-scale .5s ease-in-out forwards;
+		    animation: testim-scale .5s ease-in-out forwards;
+		}
+
+		.testim .cont {
+		    position: relative;
+				overflow: hidden;
+		}
+
+		.testim .cont > div {
+		    text-align: center;
+		    position: absolute;
+		    top: 0;
+		    left: 0;
+		    padding: 0 0 70px 0;
+		    opacity: 0;
+		}
+
+		.testim .cont > div.inactive {
+		    opacity: 1;
+		}
+
+
+		.testim .cont > div.active {
+		    position: relative;
+		    opacity: 1;
+		}
+
+
+		.testim .cont div .img img {
+		    display: block;
+		    width: 100px;
+		    height: 100px;
+		    margin: auto;
+		    border-radius: 50%;
+		}
+
+		.testim .cont div h2 {
+		    color: #4386fd;
+		    font-size: 1em;
+		    margin: 15px 0;
+		}
+
+		.testim .cont div p {
+		    font-size: 1.15em;
+		    color: #fff;
+		    width: 80%;
+		    margin: auto;
+		}
+
+		.testim .cont div.active .img img {
+		    -webkit-animation: testim-show .5s ease-in-out forwards;
+		    -moz-animation: testim-show .5s ease-in-out forwards;
+		    -ms-animation: testim-show .5s ease-in-out forwards;
+		    -o-animation: testim-show .5s ease-in-out forwards;
+		    animation: testim-show .5s ease-in-out forwards;
+		}
+
+		.testim .cont div.active h2 {
+		    -webkit-animation: testim-content-in .4s ease-in-out forwards;
+		    -moz-animation: testim-content-in .4s ease-in-out forwards;
+		    -ms-animation: testim-content-in .4s ease-in-out forwards;
+		    -o-animation: testim-content-in .4s ease-in-out forwards;
+		    animation: testim-content-in .4s ease-in-out forwards;
+		}
+
+		.testim .cont div.active p {
+		    -webkit-animation: testim-content-in .5s ease-in-out forwards;
+		    -moz-animation: testim-content-in .5s ease-in-out forwards;
+		    -ms-animation: testim-content-in .5s ease-in-out forwards;
+		    -o-animation: testim-content-in .5s ease-in-out forwards;
+		    animation: testim-content-in .5s ease-in-out forwards;
+		}
+
+		.testim .cont div.inactive .img img {
+		    -webkit-animation: testim-hide .5s ease-in-out forwards;
+		    -moz-animation: testim-hide .5s ease-in-out forwards;
+		    -ms-animation: testim-hide .5s ease-in-out forwards;
+		    -o-animation: testim-hide .5s ease-in-out forwards;
+		    animation: testim-hide .5s ease-in-out forwards;
+		}
+
+		.testim .cont div.inactive h2 {
+		    -webkit-animation: testim-content-out .4s ease-in-out forwards;
+		    -moz-animation: testim-content-out .4s ease-in-out forwards;
+		    -ms-animation: testim-content-out .4s ease-in-out forwards;
+		    -o-animation: testim-content-out .4s ease-in-out forwards;
+		    animation: testim-content-out .4s ease-in-out forwards;
+		}
+
+		.testim .cont div.inactive p {
+		    -webkit-animation: testim-content-out .5s ease-in-out forwards;
+		    -moz-animation: testim-content-out .5s ease-in-out forwards;
+		    -ms-animation: testim-content-out .5s ease-in-out forwards;
+		    -o-animation: testim-content-out .5s ease-in-out forwards;
+		    animation: testim-content-out .5s ease-in-out forwards;
+		}
+
+		@-webkit-keyframes testim-scale {
+		    0% {
+		        -webkit-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+
+		    35% {
+		        -webkit-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    70% {
+		        -webkit-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    100% {
+		        -webkit-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+		}
+
+		@-moz-keyframes testim-scale {
+		    0% {
+		        -moz-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+
+		    35% {
+		        -moz-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    70% {
+		        -moz-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    100% {
+		        -moz-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+		}
+
+		@-ms-keyframes testim-scale {
+		    0% {
+		        -ms-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+
+		    35% {
+		        -ms-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    70% {
+		        -ms-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    100% {
+		        -ms-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+		}
+
+		@-o-keyframes testim-scale {
+		    0% {
+		        -o-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fdht		    }
+
+		    35% {
+		        -o-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    70% {
+		        -o-box-shadow: 0px 0px 10px 5px #4386fd;
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    100% {
+		        -o-box-shadow: 0px 0px 0px 0px #4386fd;
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+		}
+
+		@keyframes testim-scale {
+		    0% {
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+
+		    35% {
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    70% {
+		        box-shadow: 0px 0px 10px 5px #4386fd;
+		    }
+
+		    100% {
+		        box-shadow: 0px 0px 0px 0px #4386fd;
+		    }
+		}
+
+		@-webkit-keyframes testim-content-in {
+		    from {
+		        opacity: 0;
+		        -webkit-transform: translateY(100%);
+		        transform: translateY(100%);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -webkit-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+		}
+
+		@-moz-keyframes testim-content-in {
+		    from {
+		        opacity: 0;
+		        -moz-transform: translateY(100%);
+		        transform: translateY(100%);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -moz-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+		}
+
+		@-ms-keyframes testim-content-in {
+		    from {
+		        opacity: 0;
+		        -ms-transform: translateY(100%);
+		        transform: translateY(100%);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -ms-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+		}
+
+		@-o-keyframes testim-content-in {
+		    from {
+		        opacity: 0;
+		        -o-transform: translateY(100%);
+		        transform: translateY(100%);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -o-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+		}
+
+		@keyframes testim-content-in {
+		    from {
+		        opacity: 0;
+		        transform: translateY(100%);
+		    }
+
+		    to {
+		        opacity: 1;
+		        transform: translateY(0);
+		    }
+		}
+
+		@-webkit-keyframes testim-content-out {
+		    from {
+		        opacity: 1;
+		        -webkit-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -webkit-transform: translateY(-100%);
+		        transform: translateY(-100%);
+		    }
+		}
+
+		@-moz-keyframes testim-content-out {
+		    from {
+		        opacity: 1;
+		        -moz-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -moz-transform: translateY(-100%);
+		        transform: translateY(-100%);
+		    }
+		}
+
+		@-ms-keyframes testim-content-out {
+		    from {
+		        opacity: 1;
+		        -ms-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -ms-transform: translateY(-100%);
+		        transform: translateY(-100%);
+		    }
+		}
+
+		@-o-keyframes testim-content-out {
+		    from {
+		        opacity: 1;
+		        -o-transform: translateY(0);
+		        transform: translateY(0);
+		    }
+
+		    to {
+		        opacity: 0;
+		        transform: translateY(-100%);
+		        transform: translateY(-100%);
+		    }
+		}
+
+		@keyframes testim-content-out {
+		    from {
+		        opacity: 1;
+		        transform: translateY(0);
+		    }
+
+		    to {
+		        opacity: 0;
+		        transform: translateY(-100%);
+		    }
+		}
+
+		@-webkit-keyframes testim-show {
+		    from {
+		        opacity: 0;
+		        -webkit-transform: scale(0);
+		        transform: scale(0);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -webkit-transform: scale(1);
+		        transform: scale(1);
+		    }
+		}
+
+		@-moz-keyframes testim-show {
+		    from {
+		        opacity: 0;
+		        -moz-transform: scale(0);
+		        transform: scale(0);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -moz-transform: scale(1);
+		        transform: scale(1);
+		    }
+		}
+
+		@-ms-keyframes testim-show {
+		    from {
+		        opacity: 0;
+		        -ms-transform: scale(0);
+		        transform: scale(0);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -ms-transform: scale(1);
+		        transform: scale(1);
+		    }
+		}
+
+		@-o-keyframes testim-show {
+		    from {
+		        opacity: 0;
+		        -o-transform: scale(0);
+		        transform: scale(0);
+		    }
+
+		    to {
+		        opacity: 1;
+		        -o-transform: scale(1);
+		        transform: scale(1);
+		    }
+		}
+
+		@keyframes testim-show {
+		    from {
+		        opacity: 0;
+		        transform: scale(0);
+		    }
+
+		    to {
+		        opacity: 1;
+		        transform: scale(1);
+		    }
+		}
+
+		@-webkit-keyframes testim-hide {
+		    from {
+		        opacity: 1;
+		        -webkit-transform: scale(1);
+		        transform: scale(1);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -webkit-transform: scale(0);
+		        transform: scale(0);
+		    }
+		}
+
+		@-moz-keyframes testim-hide {
+		    from {
+		        opacity: 1;
+		        -moz-transform: scale(1);
+		        transform: scale(1);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -moz-transform: scale(0);
+		        transform: scale(0);
+		    }
+		}
+
+		@-ms-keyframes testim-hide {
+		    from {
+		        opacity: 1;
+		        -ms-transform: scale(1);
+		        transform: scale(1);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -ms-transform: scale(0);
+		        transform: scale(0);
+		    }
+		}
+
+		@-o-keyframes testim-hide {
+		    from {
+		        opacity: 1;
+		        -o-transform: scale(1);
+		        transform: scale(1);
+		    }
+
+		    to {
+		        opacity: 0;
+		        -o-transform: scale(0);
+		        transform: scale(0);
+		    }
+		}
+
+		@keyframes testim-hide {
+		    from {
+		        opacity: 1;
+		        transform: scale(1);
+		    }
+
+		    to {
+		        opacity: 0;
+		        transform: scale(0);
+		    }
+		}
+
+		@media all and (max-width: 300px) {
+			body {
+				font-size: 14px;
+			}
+		}
+
+		@media all and (max-width: 500px) {
+			.testim .arrow {
+				font-size: 1.5em;
+			}
+
+			.testim .cont div p {
+				line-height: 25px;
+			}
+
+		}
+</style> <
+
+
+
+<!-- PAGE END -->
+{% endblock %}

@@ -1,0 +1,316 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+
+
+ {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">   
+        <div class="header__inner"> 
+            <div class="header__icon"><a href="/welcome"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>
+            <div class="header__icon " data-panel="right" data-arrow="left">{{currency}}{{wallet|intcomma}}</div>
+                </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}    
+    
+<div class="page page--login" data-page="deposit">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+                    
+                    <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+
+        <h2 class="page__title">Buy coupon code<br>
+            </h2>  
+
+        <div class="fieldset">
+            <div class="form">
+
+                {% if not message %}
+                <form class='UserForm' id="PasswordForm" method="post">
+                        {%csrf_token%}
+                    
+
+<!--                          <h4 class="page__title">Update Details</h4>  
+ -->                        <div class="form__row">
+                                <select id="deposit_type" name='type' class="form__input required">
+                                    <option  selected="true" disabled="disabled" >
+                                        Select Method
+                                    </option>
+                                    <option value="vendor">
+                                        Buy coupon code
+                                    </option>
+                                   
+                              <!--        <option disabled="disabled" value="Card">
+                                        Card Deposit <small>Not available</small>
+                                    </option>
+                                   
+
+                                    <option disabled="disabled" value="cryto">
+                                        Crypto <small>[Not available at the moment]</small> -->
+                                    </option>
+                                </select>
+                            </div>
+
+                                         <div class="form__row">
+                                <select id="deposit_type" name='amount' class="form__input required" required>
+                                    <option  selected="true" disabled="disabled" >
+                                        Select Amount
+                                    </option>
+
+                                    {% for i in plan %}
+                                    <option value="{{i.plan}}">
+                                        {{i.plan}}
+                                    </option>
+                                    {% endfor %}
+                                   
+                                </select>
+                            </div>
+                            <!-- 
+
+                            
+                                    <div class="form__row">
+                                        <input type="number" name="amount" value="" class="form__input required"  placeholder="Amount" />
+                                    </div> -->
+
+                            <div class="form__row">
+
+                                <div class="login-form__row">
+                                    <input  type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="Get available vendors" />
+                                </div>
+                            </div>
+                    </form> 
+
+                    <small class="card_message" style="color:red">
+                        PLease note that our card deposit is processed automatically, you don't need to upload any proof of payment. Your wallet will be credited immediately after your transaction is successful
+                    </small>
+
+                    <br>
+                    <br>
+
+                    {% endif %}
+
+                
+                {% if message %}
+                
+
+                    <h2 class="page__title">{{message}}</h2>
+
+                        <p>Please contact any of the following verified vendor for your coupon code </p>
+                         
+<!--                        <div class="table row">-->
+<!--                            <div class="table__section table__section&#45;&#45;grow bank table__section&#45;&#45;header">{{AccountNumber}}</div>-->
+<!--                            <div class="table__section amount">{{account_number}}</div> -->
+<!--                        </div>-->
+<!--                        <div class="table row">-->
+<!--                            <div class="table__section table__section&#45;&#45;grow bank table__section&#45;&#45;header">{{Bank}}</div>-->
+<!--                            <div class="table__section amount">{{bank}}</div> -->
+<!--                        </div>-->
+<!--                        <div class="table row">-->
+<!--                            <div class="table__section table__section&#45;&#45;grow bank table__section&#45;&#45;header">{{Amount}}</div>-->
+<!--                            <div class="table__section amount">{{currency}}{{amount|intcomma}}</div> -->
+<!--                        </div>-->
+<!--                        -->
+<!--                        <div class="table row">-->
+<!--                            <div class="table__section table__section&#45;&#45;grow bank table__section&#45;&#45;header">{{AccountName}}</div>-->
+<!--                            <div class="table__section amount">{{name}}</div> -->
+<!--                        </div>-->
+
+                                        <div class="table row">
+                            <div class="table__section table__section--grow bank table__section--header">Vendors Name</div>
+                            <div class="table__section amount">Emem luke</div>
+                        </div>
+
+                             <div class="table row">
+                            <div class="table__section table__section--grow bank table__section--header">{{Whatsapp}}</div>
+                            <a href="https://wa.link/ebhicd"><div class="table__section amount">{{wanumber}}</div></a>
+                        </div>
+
+                         <div class="table row">
+                            <div class="table__section table__section--grow bank table__section--header"><span style="color:red">Warning</span></div>
+                            <div class="table__section amount">{{warning}}</div> 
+                       <!--      <div class="table__section amount">Username: <span style="color:green">{{request.user.username}}</span></div>  --><br>
+
+                        </div>
+
+                        <p>.</p>
+                        <div class="table__section"><a href="/update-coupon" class="button button--green button--ex-small success">Update code</a>
+                        </div>
+
+
+
+                        {% if copy == True %}
+                          {% block security %}
+
+                            {% endblock %}
+
+                        {% endif%}
+
+                {% endif%}
+    
+                
+
+                <br>
+                <br>
+
+
+                       <h3>My History</h3>  
+                            {% if history %}
+                                <p>Scroll the table to see more </p>
+                            {% endif %}
+ 
+        
+                <div class="table table--5cols mb-20">
+                    <div class="table__inner">  
+                        <div class="table__row">
+                            <div class="table__section table__section--header">Amount</div>
+                            <div class="table__section table__section--header">Date</div>
+                            <div class="table__section table__section--header">ID</div>
+                           <div class="table__section table__section--header">Status</div>                     
+                        </div>
+
+                        {% if history %}
+
+                            {% for i in history %}
+
+                                <div class="table__row">
+                                    <div class="table__section">{{currency}}{{i.amount|intcomma}}</div>
+                                    <div class="table__section">{{i.date}}</div>
+                                    <div class="table__section">{{i.tx_ref}}</div> 
+                                    <div class="table__section"><a href="#" class="button button--green button--ex-small {{i.status}}">{{i.status}}</a></div>
+                                </div>
+
+                            {% endfor %}
+
+
+
+                        {% else %}
+                        <p>No data found</p>
+
+                        {% endif %}
+                            
+                        </div>
+
+                        {% if history %}
+
+                        <div class="pagination">
+                            <span class="step-links">
+                                {% if history.has_previous %}
+                                    <a href="?page=1">&laquo; First</a>
+                                    <a href="?page={{ history.previous_page_number }}"><i
+                                       style="background:#121330; color: #fff;
+                                       padding: 5px"
+                                      class="la la-angle-left">></i></a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Page {{ history.number }} of {{ history.paginator.num_pages }}.
+                                </span>
+
+                                {% if history.has_next %}
+                                    <a href="?page={{ history.next_page_number }}"><i
+                                      style="background:#121330; color: #fff;
+                                      padding: 5px"
+                                      class="fa fa-angle-right"><</i></a>
+                                    <a href="?page={{ history.paginator.num_pages }}">Last &raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+
+                        {% endif %}
+                        
+        </div>
+        </div>
+    </div>
+              
+</div>
+
+
+
+<script type="text/javascript">
+
+     $('.success').css('background', '{{success}}')
+     $('.pending').css('background', '{{info}}')
+     $('.failed').css('background', '{{error}}')
+
+
+        $('.card_message').hide()
+
+        $("select#deposit_type").change(function(){
+        var deposit_type = $(this).children("option:selected").val();
+
+
+        if (deposit_type == 'Card') {
+
+            $('#submit').val('Deposit')
+                    $('.card_message').show()
+
+        }else if (deposit_type == 'transfer') {
+
+            $('#submit').val('Get available vendors')
+                    $('.card_message').hide()
+        }
+
+        // if (plan !== 'Select investment plan') {
+
+        // $.ajax({
+        //     url:'/plan-subscription',
+        //     type:'get',
+        //     data:{
+        //         plan:plan
+        //     },
+
+        //     success: function functionName(data) {
+
+        //       if (data.packages) {
+
+        //         var packages = data['packages']
+
+        //         var amount = packages[0]
+        //         var daily_earning = packages[1]
+        //         var total_earning = packages[2]
+        //         var period = packages[3]
+              
+
+
+        //         $('#amount').val(amount)
+        //         $('#daily_earning').val(daily_earning)
+        //         $('#total_earning').val(total_earning)
+        //         $('#period').val(period)
+
+
+        //       }
+             
+        //     }
+        // })
+        
+
+     
+    });
+
+
+</script>
+
+<style type="text/css">
+    select.form__input.required {
+    width: calc(100% - 0px) !important;
+}
+</style>
+<!-- PAGE END -->
+   
+{% endblock %}

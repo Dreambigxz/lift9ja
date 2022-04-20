@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+{% extends 'asset/base.html' %}
+
+{% load static %}
+{%load humanize%}
+
+{% block tittle %}<title>Admin</title>{% endblock %}
+
+
+
+{% block content %}
+
+    <div class="content-w">
+        <!-- TradingView Widget BEGIN -->
+        <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                {
+                    "symbols": [
+                    {
+                        "proName": "FOREXCOM:SPXUSD",
+                        "title": "S&P 500"
+                    },
+                    {
+                        "proName": "FOREXCOM:NSXUSD",
+                        "title": "Nasdaq 100"
+                    },
+                    {
+                        "proName": "FX_IDC:EURUSD",
+                        "title": "EUR/USD"
+                    },
+                    {
+                        "proName": "BITSTAMP:BTCUSD",
+                        "title": "BTC/USD"
+                    },
+                    {
+                        "proName": "BITSTAMP:ETHUSD",
+                        "title": "ETH/USD"
+                    },
+                    {
+                        "description": "AUD/USD",
+                        "proName": "FX:AUDUSD"
+                    },
+                    {
+                        "description": "USD/CAD",
+                        "proName": "FX:USDCAD"
+                    },
+                    {
+                        "description": "CHF/JPY",
+                        "proName": "FX:CHFJPY"
+                    },
+                    {
+                        "description": "USD/CHF",
+                        "proName": "FX:USDCHF"
+                    },
+                    {
+                        "description": "NZD/CAD",
+                        "proName": "FX:NZDCAD"
+                    },
+                    {
+                        "description": "AAPL",
+                        "proName": "NASDAQ:AAPL"
+                    },
+                    {
+                        "description": "TSLA",
+                        "proName": "NASDAQ:TSLA"
+                    },
+                    {
+                        "description": "BCH/USD",
+                        "proName": "COINBASE:BCHUSD"
+                    },
+                    {
+                        "description": "SPCE",
+                        "proName": "NYSE:SPCE"
+                    }
+                ],
+                    "showSymbolLogo": true,
+                    "colorTheme": "dark",
+                    "isTransparent": false,
+                    "displayMode": "adaptive",
+                    "locale": "en"
+                }
+            </script>
+        </div>
+        <!-- TradingView Widget END -->
+        <div class="content-i">
+            <div class="content-box">
+
+                <div class="element-wrapper compact pt-4">
+                    <div class="element-actions">
+
+                           <a  style="color: #000; background: #fff" href="{%url 'coins:invest'%}" class="btn btn- btn-sm">
+                            <i class="os-icon os-icon-plus-circle">
+                            </i>
+                            <span>Invest</span>
+                        </a>
+
+                        <a href="{%url 'wallet:deposit'%}" class="btn btn-success btn-sm">
+                            <i class="os-icon os-icon-plus-circle">
+                            </i>
+                            <span>Deposit</span>
+                        </a>
+                        <a href="{%url 'wallet:walletWithdraw'%}" class="btn btn-danger btn-sm">
+                            <i class="os-icon os-icon-minus-circle">
+                            </i>
+                            <span>Withdraw</span>
+                        </a>
+                    </div>
+                            <h6 class="element-header">Your Upline - <span style="color:rgba(218,226,243,0.4)">{{upliner.user.username|title}}</span><small><a  href="{%url 'referral:myRef'%}">>>>View details</small></h6></a>
+                            <div class="element-box-tp">
+
+
+                 <p id="messages" style="
+                font-family: Poppins-Regular;
+                font-size: 14px;
+                line-height: 1.7;
+                color: indianred !important;
+                margin: 0px;
+            ">
+             </p>
+
+
+                                     <div class="row adminControl">
+                            <div class="col-lg-12 col-xxl-12">
+                                <div class="element-balances">
+
+
+                                     <div class="balance">
+
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'myadmin:sendMail'%}?mail_type='general">
+                              <span>General mail
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                                       <div class="balance">
+
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'myadmin:sendMail'%}?mail_type=deposit_mail">
+                              <span>Personal mail
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                        <form action="{%url 'myadmin:sendMail'%}" method="get">
+                                            <div class="balance">
+                                                <input type="text" placeholder="Name" name="name">
+                                                <input style="display: none;" type="text" name="mail_type" value="credit_mail">
+                                                <input type="email" placeholder='email' name="email" value="">
+
+                                        <div
+                                            class="balance-link">
+                                            <button  onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined">
+                                          <span>Send now
+                                          </span>
+                                      </button>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                        </div>
+                                    </div>
+                                     
+
+                                        </form>
+
+                           
+
+
+                                    <script type="text/javascript">
+                                        
+                                    </script>
+
+                                 <div class="balance">
+
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'myadmin:autoGenerator'%}?generate_type=deposit">
+                              <span>Deposit generator
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+                                            <div class="balance">
+
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'myadmin:autoGenerator'%}?generate_type=withdraw">
+                              <span>Withdrawal generator
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                                  <div class="balance">
+
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'myadmin:rScript'%}?generate_type=withdraw">
+                              <span>Run script
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+
+                                            <div class="balance">
+
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'myadmin:addTestimony'%}">
+                              <span>Add Testimony
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                     <hr>
+                            
+                <br>
+                        <div class="row adminControl">
+                            <div class="col-lg-12 col-xxl-12">
+                                <div class="element-balances">
+
+                                        <div class="balance">
+
+                                          <div class="balance-title">Available Withdrawal 
+                                        </div>
+                                        <div class="balance-value">
+                            <span>{{today_withdraw}}
+                            </span><br>
+                            <span>${{today_withdraw_amount|intcomma}}</span>
+                                        </div>
+                                        <div
+                                            class="balance-link">
+                                            <a onclick="return confirm('Are you sure?')" class="btn btn-link btn-underlined" href="{%url 'coins:investmentWithdraw'%}">
+                              <span>Withdraw
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="balance">
+                                        <div class="balance-title">Total users
+                                        </div>
+                                        <div class="balance-value">
+                            <span>{{tot_users}}
+                            </span>
+                                        </div>
+                                      <!--   <div
+                                            class="balance-link">
+                                            <a class="btn btn-link btn-underlined" href="{%url 'coins:invest'%}">
+                              <span>Invest
+                              </span>
+                                                <i class="os-icon os-icon-arrow-right4">
+                                                </i>
+                                            </a>
+                                        </div> -->
+                                    </div>
+                                    <div class="balance">
+                                        <div class="balance-title">Active Users
+                                        </div>
+
+
+                                              <div class="balance-value">{{active_users}}
+                                            </div>
+                                   
+                                    </div>
+
+
+
+                                      <div class="balance ">
+                                        <div class="balance-title">Testimony
+                                        </div>
+                                        <div class="balance-value">{{pending_testimony}}
+                                       
+                                   
+                                    </div>
+                                </div>
+
+                                    <div class="balance ">
+                                        <div class="balance-title">Contact
+                                        </div>
+                                        <div class="balance-value">{{pending_contact}}
+                                       
+                                   
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                     <hr>
+                                  
+                        <div class="row adminControl">
+
+                            <div class="col-lg-12 col-xxl-6">
+                                <div class="element-balances">
+
+                                    <div class="balance ">
+                                        <div class="balance-title">Total investors
+                                        </div>
+
+                                              <div class="balance-value">{{total_investment}}</div>
+                                              <div class="balance-value">${{total_investment_amount|intcomma}}</div>
+
+                                   
+                                    </div>
+                                    <div class="balance ">
+                                        <div class="balance-title">Runing investments
+                                        </div>
+                                        <div class="balance-value">{{running_investment}}</div>
+                                        <div class="balance-value created">${{running_investment_amount|intcomma}}</div>
+                                   
+                                    </div>
+
+                            </div>
+                        </div>
+                    </div>
+                     <hr>
+
+
+                        <div class="row adminControl">
+                          <div class="col-lg-12 col-xxl-6">
+                                <div class="element-balances">
+
+
+                                     <div class="balance ">
+                                        <div class="balance-title">Total Deposit
+                                        </div>
+                                        <div class="balance-value ">{{total_deposit}}</div>
+                                        <div class="balance-value success">${{total_deposit_amount|intcomma}}</div>
+                                   
+                                    </div>
+
+                                     <div class="balance ">
+                                        <div class="balance-title">Total transafer
+                                        </div>
+                                        <div class="balance-value">{{total_withdraw}}
+                                        <div class="balance-value failed">${{total_withdraw_amount|intcomma}}
+                                        </div>
+                                   
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+
+            
+                </div>
+
+                 <div class="row">
+                    <div class="col-sm-10">
+                        <div class="element-wrapper">
+                            <div class="element-box">
+                                <h5 class="form-header">Payment History
+                                </h5>
+                                <div class="form-desc">Here's a list of all pending withdrawals.
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="" width="100%" class="table table-striped table-lightfont">
+                                        <thead>
+                                        <tr>
+                                            <th>Address</th>
+                                            <th>$ Amount</th>
+                                            <th>Date</th>
+                                            <th>location</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            {%if pending_withdrawal%}
+                                                {% for data in pending_withdrawal%}
+
+
+                                                 <tr>
+
+                                                                  
+                                                    <td>
+                                                        <input type=""
+                                                    width="100em" 
+                                                    class="js-copy" name=""
+                                                    value="{{data.withdrawal_address}}">
+                                                     {{data.withdrawal_type|title}} 
+                                                    </td>
+                                                    <td>
+                                                     <input type=""
+                                                    width="100em" 
+                                                    class="js-copy" name=""
+                                                    value="{{data.amount|intcomma}}">
+                                                 </td>
+
+
+                                                    <td><a href="{%url 'myadmin:processWithdraw'%}?id={{data.id}}" onclick="return confirm('Are you sure?')" class="{{data.status}}">{{data.status|title}}</a></td>
+                                                    <td>{{data.preference.location}}</td>
+                                                
+                                                  </tr>
+                                                     
+                                                {%endfor %}
+                                            {% else %}
+                                                                
+                                                <td>
+                                                    <span>You've made no withdrawal</span>
+                                                </td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                            {% endif %}
+                                            </tr>
+                        
+                                    </table>
+                                </div>
+
+                                <br>
+                                <br>
+
+                                {% if data_history.has_other_pages %}
+                                    <nav aria-label="Page navigation conatiner"></nav>
+                                    <ul class="pagination justify-content-center">
+                                    {% if data_history.has_previous %}
+                                    <li><a href="?page={{ data_history.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                                    {% endif %}
+                                    {% if data_history.has_next %}
+                                    <li><a href="?page={{ data_history.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+                                    {% endif %}
+                                    </ul>
+                                    </nav>
+                                    </div>
+                                    {% endif %}
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+    <br><br><br><br><br>
+
+<script type="text/javascript">
+var ip = "{{preference.ip}}"
+var user_location = "{{preference.location}}"
+</script>
+
+
+<script type="text/javascript">
+
+  $('.failed').css('color', 'red')
+
+    $('.created').css('color', '#fbe4a0')
+
+    $('.pending').css('color', '#5bc0de')
+
+    $('.success').css('color', '#20c997')
+
+
+ var copyTextareaBtn = $('.js-copy');
+
+
+
+    $('.js-copy').on('click', function(event) {
+
+
+        var copyTextarea = $(this);
+        copyTextarea.select();
+
+        try {
+            var successful = document.execCommand('copy');
+            // var msg = successful ? 'successful' : 'unsuccessful';
+
+            alert(copyTextarea.val() + ' Copied!!!');
+        } catch (err) {
+            console.log('Oops, unable to copy');
+        }
+    });
+</script>
+
+<style type="text/css">
+    .table tfoot th, .table thead th {
+    font-size: .70rem;
+    text-transform: none !important;
+    border-top: none;
+        border-top-color: currentcolor;
+}
+
+
+input, button, select, optgroup, textarea {
+    background: transparent;
+    margin: 0;
+    border: none;
+    color: rgba(218,226,243,0.4);
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    width: 98%;
+  padding: 1%;
+}
+
+.adminControl {
+    border: #fff 0.1px solid;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,68 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+ <div class="page page--login" data-page="login">
+
+
+	{% block header %}
+	<!-- HEADER -->
+	<header class="header header--fixed">	
+		<div class="header__inner">	
+			<div class="header__icon"><a href="/welcome"><img src="{% static 'assets/images/icons/gray/arrow-back.svg' %}" alt="" title=""/></a></div>	
+                </div>
+	                <div style="display:none" class="container messages">
+                      <p style="text-align:center; color: pink;" class="close">x</p>
+                        <p style="text-align:center" class="alert"></p>
+                    </div>
+	</header>
+	{% endblock %}
+
+{% block body %}	
+	
+		<br>
+        <div class="login">
+		<div class="login__content">	
+			<h2 class="login__title loginTitle">Login to your account</h2>
+				<div class="login-form">
+ 					<form id="PasswordForm" class="UserForm" method="post">
+
+						{% csrf_token %}
+						<div class="login-form__row">
+							<label class="login-form__label">Email</label>
+							<input type="email" name="email" value="" class="login-form__input required" />
+						</div>
+						<div class="login-form__row">
+							<label class="login-form__label">Password</label>
+							<input type="password" name="password" value="" class="login-form__input required" />
+						</div>
+						<div class="login-form__row">
+							<input type="submit" name="submit" class="login-form__submit button button--blue button--full" id="submit" value="SIGN IN" />
+						</div>
+					</form>
+					<div class="login-form__forgot-pass"><a href="/forgot-password">Forgot Password?</a></div>		
+					<div class="login-form__bottom">
+						<p>Don't have an account?</p>
+						<a href="/sign-up" class="button button--green button--full">SIGN UP</a>
+
+					{%if activation_email %}
+						 <p style="color: 000; float: right; padding-top: 30%;">Didn't get the code? <a href="{%url 'user:resendemailActivate' email=activation_email%}" style="color:#188E6D;">Resend code</a> </p>
+					{% endif %}
+
+					</div>
+				</div>
+		</div>
+        </div>
+			  
+
+
+</div>
+
+
+<!-- PAGE END -->
+   
+{% endblock %}

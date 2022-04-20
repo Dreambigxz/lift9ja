@@ -1,0 +1,88 @@
+
+{% extends 'peektop/about.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+
+
+{% block body %}    
+    
+<div class="page page--contact" data-page="intro-contact">
+    
+        <br>
+
+        <div class="page__content page__content--with-header">
+        <h2 style="text-align:center;" class="page__title"><strong><div>Contact us</div></strong></h2>
+        <div class="row">
+
+             <div style="display:none" class="container messages">
+                      <div style="padding: 5px;" class="close">x</div>
+                        <p  class="alert"></p>
+                    </div>
+<!--                 <h4 class="card__title">Acceptance of privacy policy</h4>
+ -->              <p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d7882.222943209316!2d7.390114624254906!3d8.961875224269683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sgoshen%20villa%20hill%20estate%20Lugbe!5e0!3m2!1sen!2sng!4v1631534836343!5m2!1sen!2sng" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </p>
+
+        </div>
+
+
+        <div class="row">
+            
+            <strong>Email</strong>: {{email}} <br>
+<!--            <strong>Instagram</strong>: {{in}} <br>-->
+            <a href="https://wa.link/e0vmop"><strong>Whatsapp</strong>: @ +234 809 543 8736<br></a>
+        </div>
+
+        <small>Tap the link to chat with any of our agency directly on whatsapp.</small>
+
+                <br>
+                <br>
+                <br>
+
+
+    <div class="row">
+        <div class="page__title-bar">
+            <h3>Get in touch</h3>
+        </div>    
+        <div class="fieldset">
+            <h2 id="Note"></h2>
+            <div class="form">
+                <form class="UserForm" id="PasswordForm" method="post">
+                                    {% csrf_token %}
+                    <div class="form__row">
+                        <input type="text" name="fullname" value="" class="form__input required" placeholder="Name" />
+                    </div>
+                    <div class="form__row">
+                        <input type="text" name="telegram_username" value="" class="form__input" placeholder="Telegram username if any" /><small>If you include your telegram username, we will send you a quick response.</small>
+                    </div>
+                    <div class="form__row">
+                        <input type="text" name="email" value="" class="form__input email required" placeholder="Email" />
+                    </div>
+                   
+                    <div class="form__row">
+                        <textarea name="message" maxlength="200" class="form__textarea required" placeholder="Message"></textarea>
+                    </div>  
+
+                    <div class="form__row mt-20">
+                        <input type="submit" name="submit" class="form__submit button button--green button--full" id="submit" value="SUBMIT" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+        
+       
+        
+              
+</div>
+
+
+
+<!-- PAGE END -->
+   
+{% endblock %}

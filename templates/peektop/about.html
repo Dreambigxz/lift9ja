@@ -1,0 +1,278 @@
+
+{% extends 'peektop/base.html' %}
+{%load static%}
+{% load humanize %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+ <header style="background: #121330;" class="header header--fixed">
+
+
+    {% block header %}
+    <!-- HEADER -->
+     <header style="background: #121330;" class="header header--fixed">
+        <div class="header__inner">
+             <div class="header__logo header__logo--text"><a href="/">Wood<strong>west</strong></a></div>
+                <div class="header__icon"><a style="color: #fff;" href="/faq">Faqs</a></div>
+<!-- 
+            <div class="header__icon"><a style="color: #fff;" href="/privacy-policy">Policy</a></div> -->
+            <div class="header__icon " data-panel="right" data-arrow="left"><a style="color:#fff" href="/contact-us">Contact</a></div>
+            </div>
+    </header>
+    {% endblock %}
+
+
+
+{% block body %}
+
+<div class="page page--main" data-page="intro-website">
+
+        <br>
+
+        <div class="page__content page__content--with-header">
+        <h2 style="text-align:center;" class="page__title"><strong><div>About us</div></strong></h2>
+
+            <p>{{sitename}} is an Electric Utility Stocks company that allows users to benefit from the Utility Stocks market.</p>
+
+
+        <br>
+        <p>We are a principal investment, strategic advisory and financial consultants.
+            Since 2018 when we started business, a strong blend of corporate and HNI clients in a broad spectrum
+            of the economy are consistently enjoying our services in Nigeria and the West Africa sub-region.
+            We have worked with businesses in different economic sectors, including energy, oil and gas, financial
+            services and real estates amongst many others.
+            Our team comprises professional and highly experienced individuals drawn from across disciplines such
+            as economics, accountancy, law, securities and investment management.
+            Together we work with our clients to create value. We are not just analysts poring through data and
+            statistics, we are also investors.
+            Thus, what we recommend to our clients, we also do.</p>
+
+        <!-- SLIDER SIMPLE -->
+        <br>
+
+        <p style="text-align:center; font-weight:500">Why 10,000+ people and businesses trust {{sitename}}</p>
+        <div class="swiper-container slider-simple slider-thumb-init mb-20" data-paginationtype="bullets" data-spacebetweenitems="0" data-itemsperview="1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slider-simple__slide" style="background-image:url(static/assets/images/photos/image-1.jpg); background:#121330;">
+                    <div class="slider-simple__caption caption">
+                        <div class="caption__content">
+                            <h2 class="caption__title"><strong>SAFE.</strong></h2>
+                            <p style="font-size:18px">Everything is kept under the military grade encryption from end-end keeping your digital wallet safe.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slider-simple__slide" style="background-image:url(static/assets/images/photos/image-2.jpg); background:#121330;">
+                    <div class="slider-simple__caption caption">
+                        <div class="caption__content">
+                            <h2 class="caption__title"><strong>FAST.</strong></h2>
+                           <p style="font-size:18px">Developed with latest and advance technologies, {{sitename}} is lightweight thus providing a simple navigation for newbies. </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide slider-simple__slide" style="background-image:url(static/assets/images/photos/image-3.jpg); background:#121330;">
+                    <div class="slider-simple__caption caption">
+                        <div class="caption__content">
+                             <h2 class="caption__title"><strong>For Everyone.</strong></h2>
+                            <p style="font-size:18px">Find us where ever there's air and internet connection.
+                             </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-button-prev slider-simple__prev"></div>
+            <div class="swiper-button-next slider-simple__next"></div>
+            <div class="swiper-pagination slider-simple__pagination"></div>
+
+        </div>
+       <!--
+        <div class="page__title-bar">
+            <h3>Our main services</h3>
+        </div>  -->
+              <div class="cards cards--12 mb-10">
+              <div class="card">
+                  <div class="card__icon"><img src="../assets/images/icons/blue/news.svg" alt="" title=""/></div>
+                  <div class="card__details">
+                      <h4 class="card__title">Objective</h4>
+                      <p>Our goal is to be the most preferred place you come for wealth creation solutions and advice</p>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div class="card__icon"><img src="../assets/images/icons/blue/news.svg" alt="" title=""/></div>
+                  <div class="card__details">
+                      <h4 class="card__title">Experienced people</h4>
+                      <p>Our team is made up of highly experienced people with a commitment to add value to your life and business</p>
+                  </div>
+              </div>
+
+              <div class="card">
+                  <div class="card__icon"><img src="../assets/images/icons/blue/news.svg" alt="" title=""/></div>
+                  <div class="card__details">
+                      <h4 class="card__title">Knowledge Driven</h4>
+                      <p>Our work is supported by strong research capabilities. This help us to always anticipate and get the best for our clients</p>
+                  </div>
+              </div>
+
+
+
+              </div>
+
+        <h2 style="text-align:center" class=""><strong><div>Other services we do.</div></strong></h2>
+        <h2>INVESTMENT RESEARCH & INFORMATION</h2>
+        <p>
+            Investment Research and Information services provides you with the intellectual framework you need
+            to invest successfully.
+            We conduct in-depth market, industry, sector, and macroeconomic
+            studies to provide retail and institutional investors with the data
+            and reports used to evaluate the financial conditions of companies
+            for the purpose of making an investment decision or exiting an
+            existing investment positions.
+            We publish unique investment research reports and offer a suit of portfolio management tools so you
+            can build, manage and grow your assets. Since 2018, Money Managers, Asset Managers, Stock Brokers
+            and High Networth Individuals have relied on us to lower risks and improve performance.
+        </p>
+
+        <!-- SLIDER SIMPLE -->
+        <br>
+
+        <h2>PRINCIPAL INVESTMENT</h2>
+        <p>Principal Investment makes equity and quasi equity linked investments in startups and established
+        businesses in high growth sectors such as Information Technology, Agriculture and Real Estates.
+        Investment also partners with interested individuals and corporate organizations that are willing to
+        provide third party funding for our proprietary trading in financial instruments such as stocks, forex,
+        binary options and commodity CFDs.
+        We actively trade in these instruments to ensure good ROI on third part funds.
+        </p>
+
+        <!-- SLIDER SIMPLE -->
+        <br>
+
+
+        <h2>BUSINESS ADVISORY</h2>
+        <p>
+            Business Advisory is geared towards helping you grow your business in every way possible by leveraging
+            on our professional competencies in business formation and management.
+            These services encompasses:
+            Feasibility Studies and Development of Business Plans for startups, new projects and existing businesses.
+            Stalwart Business plans are products of field research and are carefully crafted to meet the
+            requirements of banks, private equity firms, investors and other fund providers.
+            Development of Strategic Plans for new and established businesses as may be needed for sustained
+            growth. We conduct an extensive study of our clients businesses and model them in line with
+            macroeconomic developments in order to craft strategies for growth in the immediate and future terms.
+            Documentation Services: We prepare the documents you may need to pitch investors or submit to
+            regulators when seeking licenses or approvals for your new business. These documents may include amongst others: <br>
+
+            <ul>
+                <li>Feasibility Study Reports and Business Plans</li>
+                <li>Standard Operating Manuals (SOP’s)</li>
+                <li>Investment Memorandum and Pitch Decks</li>
+                <li>Offering Memorandum</li>
+                <li>Investor Presentations</li>
+            </ul>
+
+            <br>
+
+
+            Whether your company is planning a Private Placement, Initial Public Offering (IPO), or is launching a
+            product, seeking licensing or permits or developing real estate projects; we have the expertise to
+            provide the documentation needed by prospective investors or required by regulators.
+            Business Proposals – for contracts with government, MDAs and corporate bodies or one needed to seek
+            grants from NGOs, etc., our proposal writing service got you covered.
+        </p>
+
+        <!-- SLIDER SIMPLE -->
+        <br>
+
+           <br>
+
+        <h2>INVESTMENT MANAGEMENT</h2>
+        <p>Financial Consultancy provides a wide range of services aimed at supporting companies make informed
+        financing decisions.
+        The range of solutions we give include:
+        Capital Mobilization: We mobilize impact capital to support the operations of MSME’s and mid-sized
+        corporates. We have assisted startup businesses raise venture capital and established businesses raise
+        working capital.Due Diligence and Business Valuation: Whether you are considering to buy or acquire a business or
+        combine with another, Stalwart Financial Consultants will conduct financial reviews of the records and
+        other due diligence exercise.
+        Our recommendations will provide a guide in not only placing appropriate values on the businesses but
+        help parties in price negotiation.
+        Corporate Finance – We provide our corporate clients with solutions that help them link corporate and
+        financial strategy to create value. We advise on appropriate capital structure, working capital solutions,
+        debt restructuring and much more to help organizations operate optimally.
+        </p>
+
+        <!-- SLIDER SIMPLE -->
+        <br>
+
+           <br>
+
+        <h2>TRAINING & CAPACITY BUILDING</h2>
+        <p>Manpower services is designed to help individuals and organizations build capacities in critical soft and
+        technical skills to help them management their businesses better. Some of the areas we train people
+        include: digital marketing, selling skills, excel skills and financial modelling, entrepreneurship skills,
+        business analysis, credit and basic accounting skills, amongst others.<br>
+
+        Our training programmes can be organized as in-plant, customized or open courses depending on the
+        choice of the client.
+        <br><br>
+
+        <strong>Crypto Mining</strong><br>
+        Investment funds are suited for Crypto mining. By merging our investors funds, {{sitename}} Limited is able
+        to buy into large crypto mining pools with high hash rates.
+        That way we can grant our customers access to this low risk investment method and strengthen our
+        investment portfolio as a whole, as well as help the Bitcoin industry.
+
+         <br><br>
+
+        <strong>Trading</strong><br>
+        Forex trading is considered as one of the largest and most liquid markets in the world. According to a
+        recent triennial report from the Bank for International Settlements (a global bank for national central
+        banks), the dollar amount of daily transactions in the Forex market is around USD 5 trillion and $1.5
+        trillion of this amount comes from spot trading. This volatility can be difficult because of the limited
+        decision time, that is why dedicated investor teams tend to be more successful than “side traders”.
+
+         <br><br>
+
+        <strong>Real Estate</strong><br>
+        Real estate is an asset form with liquidity relative to other investments, it is also capital intensive and is
+        highly cash flow dependent. If these factors are not well understood and managed by the investor, real
+        estate becomes a risky investment.
+        This is why investing with {{sitename}} Limited is the best option, we don't only make real estate investment
+        cost effective, every risk involved is also curtailed leaving you with guaranteed profits.
+
+        <br><br>
+
+        <strong>Agriculture</strong><br>
+        There are many reasons to invest in agriculture: it is a low-risk investment that keeps pace with inflation
+        and increases in value over the long-term, it is a tangible asset that provides benefit to the community,
+        and it can diversify a portfolio.
+        Investors can make money from cash flow from crops that are harvested. Investing in agriculture may
+        not provide immediate returns, but over the long-term, it can pay off greatly.
+
+        <br><br>
+
+        <strong>Gold</strong><br>
+
+        Of all the precious metals, gold is the most popular as an investment. Investors generally buy gold as a
+        way of diversifying risk, especially through the use of futures contracts and derivatives.
+        The gold market is subject to speculation and volatility as are other markets. Compared to other
+        precious metals used for investment, gold has been the most effective safe haven across a number of
+        countries.
+        </p>
+
+        <!-- SLIDER SIMPLE -->
+        <br>
+
+
+
+
+
+</div>
+
+
+
+<!-- PAGE END -->
+
+{% endblock %}

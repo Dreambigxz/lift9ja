@@ -1,0 +1,81 @@
+{% extends 'peektop/base.html' %}
+
+
+<!-- {% block tittle %}<title>Deposit</title>{% endblock %}
+ -->
+
+ 		{% block header %}
+	<!-- HEADER -->
+	<header class="header header--fixed">	
+		<div class="header__inner">	
+			<div class="header__logo header__logo--text"><a href="#"><strong>Wood</strong>west</a></div>	
+			<div class="header__icon" data-panel="left" data-arrow="right"><span></span><span></span><span></span><span></span><span></span><span></span><a style="color:#fff" href="/about-us">About us</a></div>
+			<div class="header__icon" data-panel="right" data-arrow="left"><a style="color:#fff" href="/contact-us">Contact us</a></div>
+          </div>
+	</header>
+
+	{% endblock %}
+	
+
+{% block body %}
+
+<div class="page page--intro" data-page="intro">
+	
+	<!-- INTRO SLIDER -->
+	<div class="swiper-container slider-intro slider-intro--bottom-nav">
+		<div class="swiper-wrapper">
+
+			<div class="swiper-slide slider-intro__slide" style="background-image:url(static/assets/images/slider/bg.jpg);">
+				<div class="slider-intro__caption caption">
+				<div class="caption__content">
+					<h2 class="caption__title" data-swiper-parallax="-300%" data-swiper-parallax-duration="500">Your right choice</h2>
+					<p class="caption__text" data-swiper-parallax="-100%" data-swiper-parallax-duration="200">Looking for a secure place to work online? </p>
+					<a href="/welcome" class="caption__more button button--small button--blue" data-swiper-parallax="-60%" data-swiper-parallax-duration="200">GET STARTED</a>
+				</div>
+				</div>
+			</div> 
+
+
+			<div class="swiper-slide slider-intro__slide" style="background-image:url(static/assets/images/slider/bg1.jpg);">
+				<div class="slider-intro__caption caption">
+				<div class="caption__content">
+					<h2 class="caption__title" data-swiper-parallax="-300%" data-swiper-parallax-duration="500">At your own pace</h2>
+					<p class="caption__text" data-swiper-parallax="-100%" data-swiper-parallax-duration="200">Buy and resell utility shares</p>
+					<a href="/welcome" class="caption__more button button--small button--blue" data-swiper-parallax="-60%" data-swiper-parallax-duration="200">GET STARTED</a>
+				</div>
+				</div>
+			</div> 
+
+		<!-- 	<div class="swiper-slide slider-intro__slide" style="background-image:url(static/assets/images/slider/bg2.jpg);">
+				<div class="slider-intro__caption caption">
+				<div class="caption__content">
+					<h2 class="caption__title" data-swiper-parallax="-300%" data-swiper-parallax-duration="500">Creative Minds</h2>
+					<p class="caption__text" data-swiper-parallax="-100%" data-swiper-parallax-duration="200">A simple community built for everyone.</p>
+					<a href="welcome" class="caption__more button button--small button--blue" data-swiper-parallax="-60%" data-swiper-parallax-duration="200">GET STARTED</a>
+				</div>
+				</div>
+			</div>  -->
+			<div class="swiper-slide slider-intro__slide" style="background-image:url(static/assets/images/slider/bg3.jpg);">
+				<div class="slider-intro__caption caption">
+				<div class="caption__content">
+					<h2 class="caption__title" data-swiper-parallax="-300%" data-swiper-parallax-duration="500">Join us today.</h2>
+					<p class="caption__text" data-swiper-parallax="-100%" data-swiper-parallax-duration="200">Join the 3,000+ community and still counting</p>
+					<a href="/welcome" class="caption__more button button--small button--blue" data-swiper-parallax="-60%" data-swiper-parallax-duration="200">GET STARTED</a>
+				</div>
+				</div>
+			</div> 
+		</div>
+		<div class="slider-intro__skip"><div class="text-animation">SWIPE FOR MORE</div></div>
+		<div class="swiper-pagination slider-intro__pagination"></div>
+		<div class="swiper-button-prev slider-intro__prev d-none"></div>
+		<div class="swiper-button-next slider-intro__next d-none"></div>	
+		<div class="swiper-button-next slider-intro__next d-none"></div>	
+	</div>
+			  
+
+
+
+</div>
+
+
+{% endblock %}

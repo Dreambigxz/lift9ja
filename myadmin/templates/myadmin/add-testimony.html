@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+{% extends 'asset/base.html' %}
+
+{% load static %}
+
+{% block tittle %}<title>Testimony</title>{% endblock %}
+
+
+
+{% block content %}
+
+ <div class="content-w">
+        <div class="content-i">
+            <div class="content-box">
+                <div class="element-wrapper compact pt-4">
+                    <h6 class="element-header">Add Testify</h6>
+                </div>
+
+
+                   <p id="messages" style="
+                font-family: Poppins-Regular;
+                font-size: 14px;
+                line-height: 1.7;
+                color: indianred !important;
+                margin: 0px;
+            ">
+             </p>
+                <br>
+                
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="element-wrapper">
+                            <div class="element-box">
+                                <form name="form-validation" method="POST"  enctype="multipart/form-data">
+
+                                    {% csrf_token %}
+                                  
+                                    <div style="margin-top: 100px"></div>
+                                 
+                                    <div class="form-group">
+                                        <label class="form-label" for="validation-username">Testify</label>
+                                        <div class="form-group">
+                                            <textarea name="testimony" rows="5" class="form-control" placeholder="Write your testimony here" required="required"></textarea>
+                                         </div>
+                                 
+                                    <div class="form-actions">
+                                        <button id="profileUpdate" type="submit" class="btn btn-danger mr-2 px-5">Update</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+
+    </div>
+    <div class="display-type">
+    </div>
+</div>
+
+{%endblock %}

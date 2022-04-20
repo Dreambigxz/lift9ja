@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+{% extends 'asset/base.html' %}
+
+{% load static %}
+
+{% block tittle %}<title>Pin</title>{% endblock %}
+
+
+
+{% block content %}
+
+        <div class="content-w">
+        <div class="content-i">
+            <div class="content-box">
+                <div class="element-wrapper compact pt-4">
+                    <h6 class="element-header">Pin</h6>
+                </div>
+
+
+          <p id="messages" style="
+                font-family: Poppins-Regular;
+                font-size: 14px;
+                line-height: 1.7;
+                color: indianred !important;
+                margin: 0px;
+            ">
+             </p>
+                <br>
+
+
+                <div class="row">
+                    <div class="col-sm-7">
+                        <div class="element-wrapper">
+                            <div class="element-box">
+                            <form name="form-validation" method="POST">
+                                        {% csrf_token %}
+                                    <div class="form-group">
+                                        <label class="form-label" for="validation-username">Current Pin</label>
+                                        <input
+                                            id="validation-username"
+                                            class="form-control"
+                                            value=""
+                                            name="old_pin"
+                                            type="number"
+                                            required
+                                        />
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="validation-username">New Pin</label>
+                                        <input
+                                            id="validation-username"
+                                            class="form-control"
+                                            name="new_pin"
+                                            value=""
+                                            type="number"
+                                            required
+                                        />
+                                    </div>
+                      
+
+                                    <div class="form-actions">
+                                        <button type="submit" class="btn btn-danger mr-2 px-5">Change</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+<br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>
+        <br><br><br><br><br><br><br><br>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+     
+
+{%endblock %}
